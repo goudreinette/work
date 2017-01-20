@@ -27,6 +27,11 @@
    :description ""})
 
 ; Side Effecting Queries
+(defn find!
+  ([coll db condition] (mc/find-maps db coll condition))
+  ([coll db]           (mc/find-maps db coll {})))
+
+
 (def find-jobs! (partial find! "jobs"))
 
 

@@ -9,7 +9,9 @@
      [com.novemberain/monger "3.1.0"]
      [reinvdwoerd/sandbox "0.0.1"]
      [clj-time "0.13.0"]
-     [clojurewerkz/money "1.9.0"]]
+     [clojurewerkz/money "1.9.0"]
+     [http-kit "2.2.0"]
+     [compojure "1.5.1"]]
   :main work
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}
