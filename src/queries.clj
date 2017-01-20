@@ -1,2 +1,0 @@
-(ns queries
-  (use model))

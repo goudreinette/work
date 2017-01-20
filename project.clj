@@ -7,7 +7,8 @@
      [prismatic/schema "1.1.3"]
      [im.chit/hara.time "2.4.8"]
      [mount "0.1.11"]
-     [com.novemberain/monger "3.1.0"]]
+     [com.novemberain/monger "3.1.0"]
+     [reinvdwoerd/sandbox "0.0.1"]]
   :main work
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}
