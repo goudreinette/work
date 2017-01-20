@@ -11,7 +11,8 @@
 (def euros (partial amounts/amount-of currencies/EUR))
 
 (def now #(c/to-date (t/now)))
-(def minute-rate (-> 0.41 euros))
+(def hourly-rate (euros 25))
+(def minute-rate (amounts/divide hourly-rate 60 :half-even))
 
 ; Constructors
 (defn job [name & {:keys [pricing-type] :or {pricing-type :hourly}}]
@@ -26,19 +27,19 @@
    :end-date nil
    :description ""})
 
-; Side Effecting
-(def find-job! (partial find! "jobs"))
+; Side Effecting Queries
+(def find-jobs! (partial find! "jobs"))
 
 
 ; Operations
-(defn create-job [name & attrs]
+(defn create-job! [name & attrs]
   (mc/insert-and-return db "jobs" (apply job name attrs)))
 
-(defn start-session [job-name]
-  (mc/update db "jobs" {:name job-name}
+(defn start-session! [job-id]
+  (mc/update-by-id db "jobs" job-id
     {:$push {:sessions (session)}}))
 
-(defn end-session []
+(defn end-session! []
   (mc/update db "jobs" {:sessions.end-date nil}
     {:$set {:sessions.$.end-date (now)}}))
 

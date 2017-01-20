@@ -7,7 +7,8 @@
 
 ; Database methods
 (defn find!
-  ([coll db condition] (find-maps db coll condition))
-  ([coll db]           (find-maps db coll {})))
+  ([coll db condition] (mc/find-maps db coll condition))
+  ([coll db]           (mc/find-maps db coll {})))
+
 
 (start)
