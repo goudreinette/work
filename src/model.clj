@@ -4,7 +4,7 @@
            [clj-time.coerce :as c]
            [monger.collection :as mc]
            [joy.macros :refer [le]]
-           [init :refer [db]]
+           [init :refer :all]
            [clojurewerkz.money.amounts :as amounts]
            [clojurewerkz.money.currencies :as currencies]))
 
@@ -26,13 +26,16 @@
    :end-date nil
    :description ""})
 
+; Side Effecting
+(def find-job! (partial find! "jobs"))
+
 
 ; Operations
 (defn create-job [name & attrs]
   (mc/insert-and-return db "jobs" (apply job name attrs)))
 
-(defn start-session [job-id]
-  (mc/update-by-id db "jobs" job-id
+(defn start-session [job-name]
+  (mc/update db "jobs" {:name job-name}
     {:$push {:sessions (session)}}))
 
 (defn end-session []
@@ -45,13 +48,13 @@
   (t/interval (c/from-date start-date)
               (c/from-date end-date)))
 
-(defn job-length [job-id]
-  (le job (mc/find-map-by-id db "jobs" job-id)
-    (->> job :sessions
-      (map session-length)
-      (reduce +))))
+(defn job-length [job]
+  (->> job :sessions
+    (map session-length)
+    (reduce +)))
 
-(defn job-price [job-id]
-  (let [length-in-minutes (-> job-id job-length t/in-minutes)]
-    (println length-in-minutes)
-    (amounts/multiply minute-rate length-in-minutes)))
+(defn job-price [job]
+  (->> job
+    (job-length)
+    (t/in-minutes)
+    (amounts/multiply minute-rate)))
