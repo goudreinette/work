@@ -1,11 +1,12 @@
 (ns model
   (require [schema.core :refer [defschema validate enum optional-key]]
-           [clj-time.core :refer [now minus plus] :as t]
+           [clj-time.core :refer [minus plus] :as t]
            [clj-time.coerce :as c]
            [monger.collection :as mc]
            [joy.macros :refer [le]]
            [init :refer [db]]))
 
+(def now #(c/to-date (t/now)))
 
 ; Constructors
 (defn job [name & {:keys [pricing-type] :or {pricing-type :hourly}}]
@@ -16,7 +17,7 @@
    :amount-paid   0})
 
 (defn session []
-  {:start-date (c/to-date (now))
+  {:start-date (now)
    :end-date nil
    :description ""})
 
