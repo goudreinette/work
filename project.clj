@@ -5,10 +5,10 @@
      [org.clojure/core.match "0.3.0-alpha4"]
      [org.clojure/core.incubator "0.1.4"]
      [prismatic/schema "1.1.3"]
-     [im.chit/hara.time "2.4.8"]
      [mount "0.1.11"]
      [com.novemberain/monger "3.1.0"]
-     [reinvdwoerd/sandbox "0.0.1"]]
+     [reinvdwoerd/sandbox "0.0.1"]
+     [clj-time "0.13.0"]]
   :main work
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}
