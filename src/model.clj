@@ -1,10 +1,6 @@
 (ns model
   (require [schema.core :refer [defschema validate]]
-           [hara.time :refer [now default-type]]))
-
-
-(def Date java.util.Date)
-(default-type Date)
+           [date :refer [Date]]))
 
 
 (defschema Session
