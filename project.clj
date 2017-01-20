@@ -8,7 +8,8 @@
      [mount "0.1.11"]
      [com.novemberain/monger "3.1.0"]
      [reinvdwoerd/sandbox "0.0.1"]
-     [clj-time "0.13.0"]]
+     [clj-time "0.13.0"]
+     [clojurewerkz/money "1.9.0"]]
   :main work
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}

@@ -4,9 +4,14 @@
            [clj-time.coerce :as c]
            [monger.collection :as mc]
            [joy.macros :refer [le]]
-           [init :refer [db]]))
+           [init :refer [db]]
+           [clojurewerkz.money.amounts :as amounts]
+           [clojurewerkz.money.currencies :as currencies]))
+
+(def euros (partial amounts/amount-of currencies/EUR))
 
 (def now #(c/to-date (t/now)))
+(def minute-rate (-> 0.41 euros))
 
 ; Constructors
 (defn job [name & {:keys [pricing-type] :or {pricing-type :hourly}}]
@@ -36,9 +41,17 @@
 
 
 ; Queries
-(defn session-length [{:keys [start-date end-date]}]
-  (t/in-minutes (t/interval (c/from-date start-date) (c/from-date (or end-date (now))))))
+(defn session-length [{:keys [start-date end-date] :or {end-date (now)}}]
+  (t/interval (c/from-date start-date)
+              (c/from-date end-date)))
 
 (defn job-length [job-id]
   (le job (mc/find-map-by-id db "jobs" job-id)
-    (reduce + (map session-length (job :sessions)))))
+    (->> job :sessions
+      (map session-length)
+      (reduce +))))
+
+(defn job-price [job-id]
+  (let [length-in-minutes (-> job-id job-length t/in-minutes)]
+    (println length-in-minutes)
+    (amounts/multiply minute-rate length-in-minutes)))
