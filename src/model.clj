@@ -3,7 +3,6 @@
            [clj-time.core :refer [minus plus] :as t]
            [clj-time.coerce :as c]
            [monger.collection :as mc]
-           [joy.macros :refer [le]]
            [init :refer :all]
            [clojurewerkz.money.amounts :as amounts]
            [clojurewerkz.money.currencies :as currencies]))
@@ -43,6 +42,16 @@
   (mc/update db "jobs" {:sessions.end-date nil}
     {:$set {:sessions.$.end-date (now)}}))
 
+; Helpers
+(defn sum-interval [intervals]
+  (->> intervals
+    (map t/in-minutes)
+    (reduce +)
+    (t/minutes)))
+
+(defn trace [x]
+  (println x)
+  x)
 
 ; Queries
 (defn session-length [{:keys [start-date end-date] :or {end-date (now)}}]
@@ -52,10 +61,10 @@
 (defn job-length [job]
   (->> job :sessions
     (map session-length)
-    (reduce +)))
+    (sum-interval)))
 
 (defn job-price [job]
   (->> job
     (job-length)
-    (t/in-minutes)
-    (amounts/multiply minute-rate)))
+    (t/in-hours)
+    (amounts/multiply hourly-rate)))
