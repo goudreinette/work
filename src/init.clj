@@ -1,9 +1,7 @@
 (ns init
-  (require [mount.core :refer [defstate]]
+  (require [mount.core :refer [defstate start]]
            [monger.core :refer [connect disconnect get-db]]))
 
+(defstate db :start (get-db (connect) "work"))
 
-(defstate conn :start (connect)
-               :stop  (disconnect conn))
-
-(def db (get-db conn "work"))
+(start)

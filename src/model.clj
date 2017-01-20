@@ -1,9 +1,10 @@
 (ns model
-  (require [schema.core :refer [defschema validate]]
+  (require [schema.core :refer [defschema validate enum optional-key]]
            [date :refer [Date]]
            [hara.time :refer [now]]
            [monger.collection :as mc]
-           [joy.macros :refer [le]]))
+           [joy.macros :refer [le]]
+           [init :refer [db]]))
 
 ; Schema's
 (defschema Session
@@ -12,10 +13,11 @@
 
 
 (defschema Job
-  {:name       String
-   :start-date Date
-   :end-date   Date
-   :sessions   [Session]})
+  {:name         String
+   :pricing-type (enum :hourly :fixed)
+   (optional-key :start-date) Date
+   :sessions     [Session]
+   :amount-paid  Float})
 
 (defschema Invoice
   {:date Date
@@ -28,10 +30,23 @@
    :postcode String
    :invoices [Invoice]})
 
+; Constructors
+(defn job [name pricing-type]
+  (validate Job
+    {:name          name
+     :pricing-type  pricing-type
+     :start-date    nil
+     :sessions      []
+     :amount-paid   0}))
+
+(defn session []
+  {:start-date (now)
+   :end-date nil})
+
+
 ; Operations
 (defn start-session [job-id]
-  le
-  (mc/update-by-id conn "jobs" job-id {:$push {:sessions}}))
+  (mc/update-by-id db "jobs" job-id {:$push {:sessions (session)}}))
 
 
 
