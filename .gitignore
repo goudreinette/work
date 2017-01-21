@@ -2,4 +2,3 @@ target/
 .nrepl-port
 db.edn
 .lein-*
-data/
