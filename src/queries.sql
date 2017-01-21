@@ -29,5 +29,6 @@ INSERT INTO Sessions (job_id)
 VALUES (:job_id)
 
 -- name: stop-session!
-UPDATE Sessions (job_id)
+UPDATE Sessions
+WHERE end_date IS NULL
 SET end_date = CURRENT_TIMESTAMP
