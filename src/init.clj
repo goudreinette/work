@@ -4,7 +4,11 @@
            [web :refer [all-routes]]))
 
 
-(defstate db     :start (atom {:id 0 :entities #{}}))
+(defstate dbspec :start {:dbtype "mysql"
+                         :dbname "work"
+                         :user "root"
+                         :password ""})
+
 (defstate server :start (run-server all-routes)
                  :stop  (server))
 
