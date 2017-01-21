@@ -6,6 +6,7 @@
      [org.clojure/core.incubator "0.1.4"]
      [mount "0.1.11"]
      [yesql "0.5.3"]
+     [mysql/mysql-connector-java "5.1.32"]
      [http-kit "2.2.0"]
      [compojure "1.5.1"]
      [reinvdwoerd/sandbox "0.0.1"]
