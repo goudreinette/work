@@ -18,7 +18,6 @@
   {:name          name
    :pricing-type  pricing-type
    :start-date    nil
-   :sessions      []
    :amount-paid   0})
 
 (defn session []
@@ -27,12 +26,19 @@
    :description ""})
 
 ; Side Effecting Queries
-(defn find!
-  ([coll db condition] (mc/find-maps db coll condition))
-  ([coll db]           (mc/find-maps db coll {})))
+(defn find! [coll]
+  (fn ([db]           (mc/find-maps db coll {}))
+      ([db condition] (mc/find-maps db coll condition))))
 
 
-(def find-jobs! (partial find! "jobs"))
+; Convenience shorthands. Clean up with a macro?
+(def find-sessions! (find! "sessions"))
+(def find-jobs!     (find! "jobs"))
+(def find-clients!  (find! "clients"))
+(def find-invoices! (find! "invoices"))
+
+
+
 
 
 ; Operations
@@ -53,10 +59,6 @@
     (map t/in-minutes)
     (reduce +)
     (t/minutes)))
-
-(defn trace [x]
-  (println x)
-  x)
 
 ; Queries
 (defn session-length [{:keys [start-date end-date] :or {end-date (now)}}]
