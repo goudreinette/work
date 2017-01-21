@@ -1,3 +1,13 @@
+-- name: find-jobs
+SELECT *
+FROM Jobs
+WHERE job_id = :job_id
+
+-- name: find-job
+SELECT *
+FROM Jobs
+WHERE job_id = :job_id
+
 -- name: sessions-for-job
 SELECT *
 FROM Sessions
@@ -9,10 +19,4 @@ SELECT TIMESTAMPDIFF(MINUTE, start_date , end_date)
 AS minutes
 FROM Sessions
 NATURAL JOIN Jobs
-WHERE job_id = :job_id
-
-
--- name: find-job
-SELECT *
-FROM Jobs
 WHERE job_id = :job_id
