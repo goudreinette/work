@@ -30,5 +30,5 @@ VALUES (:job_id)
 
 -- name: stop-session!
 UPDATE Sessions
-WHERE end_date IS NULL
 SET end_date = CURRENT_TIMESTAMP
+WHERE end_date IS NULL

@@ -7,7 +7,7 @@
 
 
 (defn job-length-in-minutes [job-id]
-  (->> {:job_id job-id}
+  (->> job-id
     (session-lengths-in-minutes-for-job)
     (map :minutes)
     (reduce +)))
