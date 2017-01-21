@@ -1,7 +1,6 @@
 -- name: find-jobs
 SELECT *
 FROM Jobs
-WHERE job_id = :job_id
 
 -- name: find-job
 SELECT *
