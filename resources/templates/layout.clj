@@ -7,7 +7,7 @@
     (include-css "/semantic.css" "/style.css")])
 
 
-(defn layout []
+(defn layout [resources current-resource]
   [:div#app
    (includes)
    (top-menu ["Discard" "Save"])
