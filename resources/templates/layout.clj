@@ -1,6 +1,6 @@
 (ns templates.layout
   (use [hiccup core page]
-       [templates helpers top-menu resource-menu segment-list]))
+       [templates helpers top-menu resource-menu segment-list single-segment]))
 
 (defn includes []
   [:head
