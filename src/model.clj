@@ -1,7 +1,7 @@
 (ns model
   (use init yesql.core))
 
-(defqueries "queries.sql"
+(defqueries "sql/queries.sql"
   {:connection dbspec})
 
 
