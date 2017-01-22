@@ -12,13 +12,13 @@ FROM Jobs
 WHERE job_id = :id
 
 -- name: job-cost
-SELECT SUM(TIMESTAMPDIFF(MINUTE, start_date , end_date)) / 60 * :hourly_rate
+SELECT SUM(TIMESTAMPDIFF(MINUTE, start_date, end_date)) / 60 * :hourly_rate
 AS cost
 FROM Sessions
 WHERE job_id = :id
 
 -- name: job-length-in-minutes
-SELECT SUM(TIMESTAMPDIFF(MINUTE, start_date , end_date))
+SELECT SUM(TIMESTAMPDIFF(MINUTE, start_date, end_date))
 AS minutes
 FROM Sessions
 WHERE job_id = :id

@@ -1,0 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 25px;
+}
+
+#app {
+  background-color: white;
+  height: calc(100%);
+  border-right: 1px solid lightgrey;
+}
+
+#app > .attached.menu:not(.vertical){
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#app > .attached.menu:not(.vertical) button {
+  margin-left: 5px;
+}
+
+
+#app > :not(.top-menu) {
+  height: calc(100% - 40px);
+}
+
+.resource-menu {
+    float: left;
+    width: 150px;
+}
+
+.list {
+   width: 200px;
+  float:left;
+    border-bottom: 1px solid lightgrey;
+}
+
+.list > div {
+  border-bottom: 1px solid #D4D4D5 !important;
+}
+
+
+main {
+   float: right;
+  width: calc(100% - 410px);
+  padding: 10px;
+  background-color: #eee;
+    border-left: 1px solid #D4D4D5;
+}
+
+main .ui.very.padded.segment {
+
+}

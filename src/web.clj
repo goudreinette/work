@@ -1,9 +1,15 @@
 (ns web
   (use [compojure core route]
-       [clojure.core strint]))
+       [clojure.core strint]
+       [hiccup core]
+       [templates layout]))
+
+(defn greeting [name]
+  [:h1.header (<< "Hello, ~{name}!")])
 
 (defroutes all-routes
+  (resources "/")
   (GET "/" []
-    "Hello World!")
+    (html (layout)))
   (GET "/:name" [name]
-    (<< "Hello ~{name}!")))
+    (html (layout))))
