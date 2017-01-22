@@ -2,14 +2,15 @@
   (use [compojure core route]
        [clojure.core strint]
        [hiccup core]
-       [templates layout]))
+       [templates layout]
+       macros))
 
-(defn greeting [name]
-  [:h1.header (<< "Hello, ~{name}!")])
+(defresource Jobs)
 
 (defroutes all-routes
   (resources "/")
+  Jobs
   (GET "/" []
-    (html (layout)))
+    (html (layout nil nil)))
   (GET "/:name" [name]
-    (html (layout))))
+    (html (layout nil nil))))
