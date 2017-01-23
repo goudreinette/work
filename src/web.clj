@@ -17,4 +17,4 @@
 
 (defroutes all-routes
   (resources "/")
-  (make-routes [Jobs Clients]))
+  (make-routes [Jobs Clients Weight Strength]))
