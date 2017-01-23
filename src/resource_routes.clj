@@ -4,7 +4,7 @@
        resources))
 
 
-(defn resource-routes [resources {:keys [name heading fetch-with save-with delete-with]}]
+(defn resource-routes [layout {:keys [name heading fetch-with save-with delete-with]}]
   (context (resource-prefix name) []
     (GET    "/"         []   "all")
     (GET    "/:id"      [id] "single")
@@ -16,5 +16,8 @@
 
 
 (defn make-routes [resources & options]
-  (apply routes
-    (map #(resource-routes resources %) resources)))
+  (let [layout          (partial layout resources)
+        resource-routes (partial resource-routes layout)]
+    (->> resources
+      (map resource-routes)
+      (apply routes))))
