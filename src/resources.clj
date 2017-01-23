@@ -15,3 +15,10 @@
 
 (defmacro defresource [name & {:as options}]
   `(def ~name ~(resource name options)))
+
+
+; Idea
+(comment
+  (defheading "Work"
+    (resource "Jobs")
+    (resource "Clients")))
