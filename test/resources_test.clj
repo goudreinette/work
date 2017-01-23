@@ -1,5 +1,5 @@
-(ns macros-test
-  (use midje.sweet macros strings))
+(ns resources-test
+  (use midje.sweet resources strings))
 
 ; (defresource Jobs)
 ;

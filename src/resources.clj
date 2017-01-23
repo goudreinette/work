@@ -1,4 +1,4 @@
-(ns macros
+(ns resources
   (use compojure.core clojure.core.strint joy.macros templates.layout strings)
   (:refer-clojure :exclude [update]))
 
@@ -7,6 +7,13 @@
   (defresource Jobs
     :fetch find-jobs
     :heading "Work"))
+
+; Constructor
+(defn resource [heading label]
+  {:heading heading
+   :label label
+   :link (resource-prefix label)})
+
 
 
 ; Show

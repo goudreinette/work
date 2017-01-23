@@ -3,14 +3,14 @@
        [clojure.core strint]
        [hiccup core]
        [templates layout]
-       macros))
+       resources))
 
 (defresource Jobs
   :heading "Work")
 
 (defroutes all-routes
   (resources "/")
-  ; Jobs  
+  ; Jobs
   (GET "/" []
     (html (layout nil nil)))
   (GET "/:name" [name]

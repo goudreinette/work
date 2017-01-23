@@ -18,16 +18,6 @@
       (for [{:keys [label link]} resources]
         (resource-item label link current-uri))]])
 
-
-(defn resource [heading label]
-  {:heading heading
-   :label label
-   :link (resource-prefix label)})
-
-(def all-resources [(resource "Work" "Jobs")
-                    (resource "Work" "Clients")])
-
-
 (defn resource-menu [all-resources current-uri]
   [:div.ui.vertical.attached.menu.resource-menu
     (for [[heading resources] (group-by :heading all-resources)]
