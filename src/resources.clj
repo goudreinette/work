@@ -1,18 +1,13 @@
 (ns resources
   (require [clojure.string :refer [lower-case]]))
 
-; Goal
-(comment
-  (defresource Jobs
-    :fetch find-jobs
-    :heading "Work"))
 
 ; Helpers
 (defn resource-prefix [name]
   (str "/" (lower-case name)))
 
 
-; Resource Setup
+; Constructor
 (defn resource [name options]
   (-> options
     (select-keys [:heading :fetch-with :save-with])

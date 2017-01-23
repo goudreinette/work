@@ -6,13 +6,13 @@
 
 (defn resource-routes [layout {:keys [name heading fetch-with save-with delete-with]}]
   (context (resource-prefix name) []
-    (GET    "/"         []   "all")
-    (GET    "/:id"      [id] "single")
-    (GET    "/new"      []   "form")
-    (POST   "/new"      []   "new")
-    (GET    "/:id/edit" [id] "update form")
-    (PUT    "/:id"      [id] "update")
-    (DELETE "/:id"      [id] "delete")))
+    (GET    "/"         []   (layout))
+    (GET    "/:id"      [id] (layout))
+    (GET    "/new"      []   (layout))
+    (POST   "/new"      []   (layout))
+    (GET    "/:id/edit" [id] (layout))
+    (PUT    "/:id"      [id] (layout))
+    (DELETE "/:id"      [id] (layout))))
 
 
 (defn make-routes [resources & options]

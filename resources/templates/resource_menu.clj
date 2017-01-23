@@ -4,19 +4,21 @@
        [resources]))
 
 (defn submenu-active-class [resources current-uri]
-  (some #(= (:link %) current-uri) resources))
-
-(defn resource-item [label link current-uri]
+  (if (some #(= (:link %) current-uri) resources)
+    "active"
+    ""))
+      
+(defn resource-item [name link current-uri]
   [:a.item {:class (active-class link current-uri)
             :href link}
-           label])
+           name])
 
 (defn resource-submenu [heading resources current-uri]
   [:div.item {:class (submenu-active-class resources current-uri)}
    [:div.header heading]
    [:div.menu
-      (for [{:keys [label link]} resources]
-        (resource-item label link current-uri))]])
+      (for [{:keys [name link]} resources]
+        (resource-item name link current-uri))]])
 
 (defn resource-menu [all-resources current-uri]
   [:div.ui.vertical.attached.menu.resource-menu

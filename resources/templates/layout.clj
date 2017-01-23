@@ -8,9 +8,10 @@
 
 
 (defn layout [all-resources]
-  [:div#app
-   (includes)
-   (top-menu ["Discard" "Save"])
-   (resource-menu all-resources "jobs/")
-   (segment-list ["WooEvents" "Buku" "Guide!"])
-   (single-segment "Guide!")])
+  (html
+    [:div#app
+     (includes)
+     (top-menu ["Discard" "Save"])
+     (resource-menu all-resources "jobs/")
+     (segment-list ["WooEvents" "Buku" "Guide!"])
+     (single-segment "Guide!")]))
