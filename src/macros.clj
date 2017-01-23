@@ -1,6 +1,5 @@
 (ns macros
-  (use compojure.core clojure.core.strint joy.macros templates.layout)
-  (require [clojure.string :refer [lower-case]])
+  (use compojure.core clojure.core.strint joy.macros templates.layout strings)
   (:refer-clojure :exclude [update]))
 
 ; Goal
@@ -9,26 +8,23 @@
     :fetch find-jobs
     :heading "Work"))
 
-; Strings
-(defn resource-prefix [name]
-  (str "/" (lower-case name)))
 
-
-; Handlers
-(defn all [fetch-with]
+; Show
+(defn all [resources fetch-with]
   "all")
 
-(defn single [fetch-with id]
+(defn single [resources fetch-with id]
   "single one")
 
-(defn form [fetch-with]
+(defn form [resources fetch-with]
   "show form")
 
+(defn edit [resources fetch-with id]
+  "show update form")
+
+; Create / Update / Delete
 (defn post [save-with]
   "create new, show message")
-
-(defn edit [fetch-with id]
-  "show update form")
 
 (defn put [save-with id]
   "update, show message")
@@ -37,7 +33,7 @@
   "delete, show message")
 
 ; Routes
-(defn resource-routes [name {:keys [fetch-with save-with delete-with]}]
+(defn resource-routes [resources {:keys [name heading fetch-with save-with delete-with]}]
   (context (resource-prefix name) []
     (GET    "/"         []   (all fetch-with))
     (GET    "/:id"      [id] (single fetch-with id))
@@ -49,7 +45,8 @@
 
 
 (defn make-routes [resources & options]
-  ())
+  (apply routes
+    (map #(resource-routes resources %) resources)))
 
 
 ; Resource Setup

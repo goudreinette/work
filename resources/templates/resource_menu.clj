@@ -1,23 +1,34 @@
 (ns templates.resource-menu
-  (use [templates helpers]))
+  (use [templates helpers]
+       [joy.macros]
+       [strings]))
 
+(defn submenu-active-class [resources current-uri]
+  (some #(= (:link %) current-uri) resources))
 
-(defn resource-item [label active link]
-  [:a.item {:class (active-class label active)
+(defn resource-item [label link current-uri]
+  [:a.item {:class (active-class link current-uri)
             :href link}
            label])
 
-(defn resource-submenu [label active & children]
-  [:div.item {:class (active-class label active)}
-   [:div.header label]
+(defn resource-submenu [heading resources current-uri]
+  [:div.item {:class (submenu-active-class resources current-uri)}
+   [:div.header heading]
    [:div.menu
-      (for [[label link] (partition 2 children)]
-        (resource-item label active link))]])
+      (for [{:keys [label link]} resources]
+        (resource-item label link current-uri))]])
 
-(defn resource-menu []
+
+(defn resource [heading label]
+  {:heading heading
+   :label label
+   :link (resource-prefix label)})
+
+(def all-resources [(resource "Work" "Jobs")
+                    (resource "Work" "Clients")])
+
+
+(defn resource-menu [all-resources current-uri]
   [:div.ui.vertical.attached.menu.resource-menu
-   (resource-submenu "Work" "Work"
-     "Jobs" ""
-     "Clients" "")
-   (resource-item "School" "" "")
-   (resource-item "Fitness" "" "")])
+    (for [[heading resources] (group-by :heading all-resources)]
+      (resource-submenu heading resources current-uri))])
