@@ -7,10 +7,10 @@
     (include-css "/semantic.css" "/style.css")])
 
 
-(defn layout [all-resources current-resource]
+(defn layout [all-resources]
   [:div#app
    (includes)
    (top-menu ["Discard" "Save"])
-   (resource-menu)
+   (resource-menu all-resources "jobs/")
    (segment-list ["WooEvents" "Buku" "Guide!"])
    (single-segment "Guide!")])

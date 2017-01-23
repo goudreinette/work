@@ -1,17 +1,14 @@
 (ns web
   (use [compojure core route]
-       [clojure.core strint]
-       [hiccup core]
-       [templates layout]
-       resources))
+       resources
+       resource-routes))
 
 (defresource Jobs
   :heading "Work")
 
+(defresource Clients
+  :heading "Work")
+
 (defroutes all-routes
   (resources "/")
-  ; Jobs
-  (GET "/" []
-    (html (layout nil nil)))
-  (GET "/:name" [name]
-    (html (layout nil nil))))
+  (make-routes [Jobs Clients]))

@@ -16,7 +16,7 @@
 (defn resource [name options]
   (-> options
     (select-keys [:heading :fetch-with :save-with])
-    (assoc :name name :link (resource-prefix name))))
+    (assoc :name (str name) :link (resource-prefix name))))
 
 (defmacro defresource [name & {:as options}]
   `(def ~name ~(resource name options)))
