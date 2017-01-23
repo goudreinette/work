@@ -12,18 +12,11 @@
   (str "/" (lower-case name)))
 
 
-; Constructor
-(defn resource [heading label]
-  {:heading heading
-   :label label
-   :link (resource-prefix label)})
-
-
 ; Resource Setup
 (defn resource [name options]
   (-> options
-    (assoc :name name)
-    (select-keys [:name :heading :fetch-with :save-with])))
+    (select-keys [:heading :fetch-with :save-with])
+    (assoc :name name :link (resource-prefix name))))
 
 (defmacro defresource [name & {:as options}]
   `(def ~name ~(resource name options)))
