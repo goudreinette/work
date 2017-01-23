@@ -14,25 +14,25 @@
 
 
 ; Handlers
-(defn all [params]
+(defn all [fetch-with]
   "all")
 
-(defn form [params]
-  "show form")
-
-(defn post [params]
-  "create new, show message")
-
-(defn single [params]
+(defn single [fetch-with id]
   "single one")
 
-(defn edit [params]
+(defn form [fetch-with]
+  "show form")
+
+(defn post [save-with]
+  "create new, show message")
+
+(defn edit [fetch-with id]
   "show update form")
 
-(defn put [params]
+(defn put [save-with id]
   "update, show message")
 
-(defn delete [params]
+(defn delete [delete-with id]
   "delete, show message")
 
 (defn resource-routes [name {:keys [fetch-with save-with delete-with]}]
