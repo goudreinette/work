@@ -6,9 +6,9 @@
 ; (defn req [method uri]
 ;   {:request-method method :uri uri})
 ;
-; (facts "about resource-name"
-;   (resource-prefix 'Jobs) => "/jobs")
-;
+(facts "about resource-prefix"
+  (resource-prefix 'Jobs) => "/jobs")
+
 ; (facts "about resource-routes"
 ;   (Jobs (req :get "/jobs"))      => (contains {:body "all"})
 ;   (Jobs (req :get "/jobs/1"))    => (contains {:body "single one"})

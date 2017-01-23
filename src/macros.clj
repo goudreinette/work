@@ -9,8 +9,9 @@
     :fetch find-jobs
     :heading "Work"))
 
+; Strings
 (defn resource-prefix [name]
-  (<< "/~(lower-case name)"))
+  (str "/" (lower-case name)))
 
 
 ; Handlers
@@ -35,6 +36,7 @@
 (defn delete [delete-with id]
   "delete, show message")
 
+; Routes
 (defn resource-routes [name {:keys [fetch-with save-with delete-with]}]
   (context (resource-prefix name) []
     (GET    "/"         []   (all fetch-with))
@@ -45,11 +47,12 @@
     (PUT    "/:id"      [id] (put save-with id))
     (DELETE "/:id"      [id] (delete delete-with id))))
 
-; Routes
-(defn make-routes [resources & options])
+
+(defn make-routes [resources & options]
+  ())
 
 
-; Setup
+; Resource Setup
 (defn resource [name options]
   (-> options
     (assoc :name name)
