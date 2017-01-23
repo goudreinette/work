@@ -7,11 +7,12 @@
     (include-css "/semantic.css" "/style.css")])
 
 
-(defn layout [all-resources]
+(defn layout [all-resources current-uri]
+  (println current-uri)
   (html
     [:div#app
      (includes)
      (top-menu ["Discard" "Save"])
-     (resource-menu all-resources "jobs/")
+     (resource-menu all-resources current-uri)
      (segment-list ["WooEvents" "Buku" "Guide!"])
      (single-segment "Guide!")]))

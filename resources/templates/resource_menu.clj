@@ -7,7 +7,7 @@
   (if (some #(= (:link %) current-uri) resources)
     "active"
     ""))
-      
+
 (defn resource-item [name link current-uri]
   [:a.item {:class (active-class link current-uri)
             :href link}
@@ -20,6 +20,8 @@
       (for [{:keys [name link]} resources]
         (resource-item name link current-uri))]])
 
+; Test me with:
+; (resource-menu [(resource "Jobs" {:heading "Work"}) (resource "Clients" {:heading "Work"})] "/jobs")
 (defn resource-menu [all-resources current-uri]
   [:div.ui.vertical.attached.menu.resource-menu
     (for [[heading resources] (group-by :heading all-resources)]
