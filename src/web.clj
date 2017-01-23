@@ -5,11 +5,12 @@
        [templates layout]
        macros))
 
-(defresource Jobs)
+(defresource Jobs
+  :heading "Work")
 
 (defroutes all-routes
   (resources "/")
-  Jobs
+  ; Jobs  
   (GET "/" []
     (html (layout nil nil)))
   (GET "/:name" [name]
