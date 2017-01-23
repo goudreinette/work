@@ -1,7 +1,7 @@
 (ns templates.resource-menu
   (use [templates helpers]
        [joy.macros]
-       [strings]))
+       [resources]))
 
 (defn submenu-active-class [resources current-uri]
   (some #(= (:link %) current-uri) resources))

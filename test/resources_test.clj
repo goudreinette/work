@@ -1,5 +1,5 @@
 (ns resources-test
-  (use midje.sweet resources strings))
+  (use midje.sweet resources))
 
 ; (defresource Jobs)
 ;
