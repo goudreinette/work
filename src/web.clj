@@ -11,7 +11,8 @@
   :fetch-with get-jobs-with-aggregates
   :display-key :name
   :labels {:client_name "Client"
-           :minutes "Length in minutes"})
+           :minutes "Length in minutes"
+           :cost "Cost in euros"})
 
 (defsection "Work"
   Clients

@@ -9,7 +9,8 @@
   [:div.ui.padded.segment.single.hidden
     [:h3.ui.dividing.header header]
     (for [[k v] (select-keys others (keys labels))]
-      [:p [:strong (labels k)] ":  " v])])
+      [:p [:strong.key (labels k)]
+          [:span.value v]])])
 
 (defn all [resource all]
   [:main
