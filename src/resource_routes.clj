@@ -16,7 +16,7 @@
       ; (PUT    "/:id"      [id] (layout u))
       ; (DELETE "/:id"      [id] (layout u))))
 
-(defn make-routes [all-resources & options]
-  (->> all-resources
-    (map #(resource-routes all-resources %))
+(defn make-routes [& resources]
+  (->> resources
+    (map #(resource-routes resources %))
     (apply routes)))

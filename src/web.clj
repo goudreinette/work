@@ -5,18 +5,16 @@
        resource-routes
        model))
 
+
+(defresource Clients)
+(defresource Jobs
+  :fetch-with find-jobs
+  :list-key :name)
+
 (defsection "Work"
-  (resource Clients)
-  (resource Jobs
-    :fetch-with find-jobs
-    :list-key :name))
-
-(defsection "Fitness"
-  (resource Weight)
-  (resource Strength))
-
-(defresource Stuff)
+  Clients
+  Jobs)
 
 (defroutes all-routes
   (resources "/")
-  (make-routes [Jobs Clients Weight Strength Stuff]))
+  (make-routes Jobs Clients))

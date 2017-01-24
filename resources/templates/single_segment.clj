@@ -2,5 +2,5 @@
 
 (defn single-segment [header & contents]
   [:main
-    [:div.ui.padded.segment [:h3.ui.dividing.header header]
+    [:div.ui.padded.segment.single [:h3.ui.dividing.header header]
       contents]])

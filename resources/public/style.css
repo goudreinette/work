@@ -1,3 +1,6 @@
+/**
+ * Global
+ */
 * {
   box-sizing: border-box;
 }
@@ -12,45 +15,59 @@ body {
   border-right: 1px solid lightgrey;
 }
 
-#app > .attached.menu:not(.vertical){
-  padding: 10px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-#app > .attached.menu:not(.vertical) button {
-  margin-left: 5px;
-}
-
-
 #app > :not(.top-menu) {
   height: calc(100% - 40px);
 }
 
+
+
+/**
+ * Top menu
+ */
+#app > .top-menu {
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: -1;
+}
+
+/**
+ * Resource menu
+ */
 .resource-menu {
     float: left;
     width: 150px;
 }
 
+
+/**
+ * List
+ */
 .list {
-   width: 200px;
+  width: 200px;
   float:left;
-    border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
 }
 
-.list > div {
+.list > .segment {
   border-bottom: 1px solid #D4D4D5 !important;
 }
 
+.list > .segment:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
 
+/**
+ * Single
+ */
 main {
-   float: right;
+  float: right;
   width: calc(100% - 410px);
   padding: 10px;
   background-color: #eee;
-    border-left: 1px solid #D4D4D5;
+  border-left: 1px solid #D4D4D5;
 }
 
-main .ui.very.padded.segment {
+main .single {
 
 }
