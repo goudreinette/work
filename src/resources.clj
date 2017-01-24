@@ -12,13 +12,12 @@
 
 
 (defn make-resource
-  [name {:keys [heading list-key header-key single fetch-with save-with update-with delete-with]}]
+  [name {:keys [heading display-key labels fetch-with save-with update-with delete-with]}]
   {:name        (str name)
    :link        (resource-prefix name)
    :heading      heading
-   :list-key     list-key
-   :header-key   header-key
-   :single       single
+   :display-key  display-key
+   :labels       labels
    :fetch-with   (or fetch-with (constantly []))
    :save-with    save-with
    :update-with  update-with

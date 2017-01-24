@@ -1,7 +1,7 @@
 (ns templates.list)
 
 
-(defn item-list [{lk :list-key} items]
+(defn item-list [{k :display-key} items]
   [:div.list
-    (for [label (map lk items)]
+    (for [label (map k items)]
       [:div.ui.vertical.padded.segment [:p label]])])
