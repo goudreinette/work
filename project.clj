@@ -13,7 +13,7 @@
      [reinvdwoerd/sandbox "0.0.1"]
      [clj-time "0.13.0"]
      [clojurewerkz/money "1.9.0"]]
-  :main work
+  :main init
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}
              :dev {:source-paths ["test"]

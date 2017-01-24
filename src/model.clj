@@ -1,6 +1,8 @@
 (ns model
-  (use init yesql.core joy.macros))
+  (use yesql.core joy.macros))
+
 
 ; Helpers
 (defqueries "sql/queries.sql"
-  {:connection dbspec})
+  {:connection {:dbtype "mysql" :dbname "work"
+                :user   "root"  :password ""}})

@@ -1,18 +1,21 @@
 (ns web
   (use [compojure core route]
+       mount.core
        resources
-       resource-routes))
+       resource-routes
+       model))
 
 (defsection "Work"
   (resource Clients)
-  (resource Jobs))
-  ;
-  ; (defsection "Fitness"
-  ;   (resource 'Weight)
-  ;   (resource 'Strength))
+  (resource Jobs
+    :fetch-with find-jobs))
+
+(defsection "Fitness"
+  (resource Weight)
+  (resource Strength))
 
 (defresource Stuff)
 
 (defroutes all-routes
-  (resources "/"))
-  ;(make-routes [Jobs Clients Weight Strength]))
+  (resources "/")
+  (make-routes [Jobs Clients Weight Strength Stuff]))

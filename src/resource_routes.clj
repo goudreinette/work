@@ -6,7 +6,7 @@
 
 (defn resource-routes [layout {:keys [name heading fetch-with save-with delete-with]}]
   (context (resource-prefix name) [:as {u :uri}]
-    (GET    "/"         []   (layout u))))
+    (GET    "/"         []   (layout (fetch-with) u))))
     ; (GET    "/:id"      [id] (layout u))
     ; (GET    "/new"      []   (layout u))
     ; (POST   "/new"      []   (layout u))
