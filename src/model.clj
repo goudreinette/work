@@ -1,19 +1,37 @@
 (ns model
-  (use yesql.core joy.macros))
+  (use yesql.core joy.macros korma.db korma.core)
+  (:refer-clojure :exclude [update]))
+
+; Setup
+(defdb db (mysql {:host "localhost" :port 3306
+                  :user "root" :db "work"}))
+
+(declare session job client)
+(defn now []
+  (java.util.Date.))
 
 
-; Helpers
-(defqueries "sql/queries.sql"
-  {:connection {:dbtype "mysql" :dbname "work"
-                :user   "root"  :password ""}})
+; Entities
+(defentity session)
 
-(defn get-job-with-aggregates [{id :job_id :as job}]
-  (as-> job j
-    (assoc j :id id)
-    (merge j (first (job-length-in-minutes j)))
-    (merge j (first (job-cost (assoc j :hourly_rate 25))))))
+(defentity job
+  (has-many session)
+  (belongs-to client))
 
-(defn get-jobs-with-aggregates []
-  (->>
-    (find-jobs)
-    (map get-job-with-aggregates)))
+(defentity client
+  (has-many job))
+
+
+; Queries
+(defn find-jobs []
+  (select job
+    (with session)))
+
+(defn start-session! [job-id]
+  (insert session
+    (values {:job_id job-id})))
+
+(defn end-session! []
+  (update session
+    (where {:end_date nil})
+    (set-fields {:end_date (now)})))

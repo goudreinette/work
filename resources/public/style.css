@@ -71,6 +71,7 @@ main {
 
 main .single {
   margin: 0 !important;
+  z-index: 3 !important;
 }
 
 

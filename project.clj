@@ -8,6 +8,7 @@
      [yesql "0.5.3"]
      [mysql/mysql-connector-java "5.1.32"]
      [http-kit "2.2.0"]
+     [korma "0.4.3"]
      [compojure "1.5.1"]
      [hiccup "1.0.5"]
      [reinvdwoerd/sandbox "0.0.1"]
