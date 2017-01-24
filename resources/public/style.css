@@ -72,3 +72,9 @@ main {
 main .single {
 
 }
+
+
+main .single.hidden {
+  height: 0;
+  opacity: 0;
+}

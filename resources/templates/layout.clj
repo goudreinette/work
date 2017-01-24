@@ -1,10 +1,11 @@
 (ns templates.layout
   (use [hiccup core page]
-       [templates helpers top-menu resource-menu segment-list single-segment]))
+       [templates helpers top-menu resource-menu list single]))
 
 (defn includes []
   [:head
-    (include-css "/semantic.css" "/style.css")])
+    (include-css "/semantic.css" "/style.css")
+    (include-js "https://code.jquery.com/jquery-3.1.1.min.js" "/selection.js")])
 
 
 (defn layout [all-resources current-resource items]
@@ -13,5 +14,5 @@
      (includes)
      (top-menu ["Discard" "Save"])
      (resource-menu all-resources (current-resource :link))
-     (segment-list (map (current-resource :list-key) items))
-     (single-segment "Guide!")]))
+     (item-list current-resource items)
+     (all current-resource items)]))

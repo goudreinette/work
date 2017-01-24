@@ -9,7 +9,8 @@
 (defresource Clients)
 (defresource Jobs
   :fetch-with find-jobs
-  :list-key :name)
+  :list-key :name
+  :header-key :name)
 
 (defsection "Work"
   Clients
