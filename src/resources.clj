@@ -8,7 +8,7 @@
 
 (defn make-resource [name options]
   (-> options
-    (select-keys [:heading :fetch-with :save-with])
+    (select-keys [:heading :fetch-with :save-with :update-with :delete-with :list-key])
     (assoc :name (str name) :link (resource-prefix name))))
 
 (defn prep-section [heading resources]

@@ -8,7 +8,8 @@
 (defsection "Work"
   (resource Clients)
   (resource Jobs
-    :fetch-with find-jobs))
+    :fetch-with find-jobs
+    :list-key :name))
 
 (defsection "Fitness"
   (resource Weight)
