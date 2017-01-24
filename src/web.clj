@@ -8,9 +8,10 @@
 
 (defresource Clients)
 (defresource Jobs
-  :fetch-with find-jobs
+  :fetch-with get-jobs-with-aggregates
   :display-key :name
-  :labels {:client_name "Client"})
+  :labels {:client_name "Client"
+           :minutes "Length in minutes"})
 
 (defsection "Work"
   Clients
