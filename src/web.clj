@@ -3,14 +3,16 @@
        resources
        resource-routes))
 
-(defheading Work
+(defsection "Work"
   (resource Clients)
   (resource Jobs))
+  ;
+  ; (defsection "Fitness"
+  ;   (resource 'Weight)
+  ;   (resource 'Strength))
 
-(defheading Fitness
-  (resource Weight)
-  (resource Strength))
+(defresource Stuff)
 
 (defroutes all-routes
-  (resources "/")
-  (make-routes [Jobs Clients Weight Strength]))
+  (resources "/"))
+  ;(make-routes [Jobs Clients Weight Strength]))

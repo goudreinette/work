@@ -8,17 +8,32 @@
 
 
 ; Constructor
-(defn resource [name options]
+(defn make-resource [name options]
   (-> options
     (select-keys [:heading :fetch-with :save-with])
     (assoc :name (str name) :link (resource-prefix name))))
 
-(defmacro defresource [name & {:as options}]
-  `(def ~name ~(resource name options)))
+(defn prep-section [heading resources]
+  (->> resources
+    ; (map eval)
+    (map #(assoc % :heading heading))
+    (map #(update % :name symbol))))
 
+(defmacro resource [name & {:as options}]
+  (make-resource name options))
+
+(defmacro defresource [name & {:as options}]
+ `(def ~name ~(make-resource name options)))
+
+(defn defsection [heading & resources]
+  (doseq [{name :name :as resource} (prep-section heading resources)]
+    (intern *ns* name resource)))
+
+(doseq [sym ['a 'b 'c]]
+  `(def ~sym 5))
 
 ; Idea
 (comment
-  (defheading "Work"
+  (defsection "Work"
     (resource "Jobs")
     (resource "Clients")))
