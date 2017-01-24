@@ -12,7 +12,8 @@
      [hiccup "1.0.5"]
      [reinvdwoerd/sandbox "0.0.1"]
      [clj-time "0.13.0"]
-     [clojurewerkz/money "1.9.0"]]
+     [clojurewerkz/money "1.9.0"]
+     [prone "1.1.4"]]
   :main init
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}

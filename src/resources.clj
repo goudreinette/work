@@ -1,20 +1,26 @@
 (ns resources
   (require [clojure.string :refer [lower-case]]))
 
-
 ; Helpers
 (defn resource-prefix [name]
   (str "/" (lower-case name)))
 
-(defn make-resource [name options]
-  (-> options
-    (select-keys [:heading :fetch-with :save-with :update-with :delete-with :list-key])
-    (assoc :name (str name) :link (resource-prefix name))))
-
 (defn prep-section [heading resources]
-  (->> resources
-    (map #(assoc % :heading heading))
-    (map #(update % :name symbol))))
+ (->> resources
+   (map #(assoc % :heading heading))
+   (map #(update % :name symbol))))
+
+
+(defn make-resource
+  [name {:keys [heading list-key fetch-with save-with update-with delete-with]}]
+  {:name        (str name)
+   :link        (resource-prefix name)
+   :heading      heading
+   :list-key     list-key
+   :fetch-with   (or fetch-with (constantly []))
+   :save-with    save-with
+   :update-with  update-with
+   :delete-with  delete-with})
 
 
 ; Constructors
