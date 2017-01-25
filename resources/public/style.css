@@ -24,6 +24,56 @@ body {
 }
 
 
+/**
+ * Timer
+ */
+.timer {
+  position: absolute !important;
+  top: 27px;
+  left: 25px;
+  z-index: 3;
+  height: 44px;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 209px;
+  border-radius: 0px !important;
+  margin-right: auto !important;
+  background: none !important;
+  border-right: 1px solid #eee !important;
+  font-weight: normal !important;
+  font-size: 12px !important;
+  padding: 5px;
+  padding-top: 0px;
+}
+
+.timer .icon {
+  width: 35px !important;
+  background: none !important;
+  position: relative;
+  top: -3px;
+}
+
+
+.timer:hover .icon, .timer:hover select {
+  color: teal;
+}
+
+.timer select{
+  color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-around;
+  width: 75%;
+  align-items: center;
+  padding-right: 20px;
+  background: none;
+  border: none;
+}
 
 
 /**
