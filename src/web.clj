@@ -31,7 +31,7 @@
   (resources "/")
   (GET "/" []
     (redirect "/jobs"))
-  (GET "/sessions/stop/" []
+  (GET "/sessions/stop" []
     (stop-session!)
     {:status 200})
   (GET "/sessions/start/:id" [id]
