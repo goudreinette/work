@@ -9,7 +9,10 @@
 
 (defresource Clients
   :fetch-with find-clients
-  :display-key :name)
+  :display-key :name
+  :labels {:address "Address"
+           :postcode "Postcode"
+           :city "City"})
 
 (defresource Jobs
   :fetch-with get-jobs
