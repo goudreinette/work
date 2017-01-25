@@ -21,4 +21,4 @@
 (defn all [resource all]
   [:main
     (for [{h :header o :others} (map #(to-single resource %) all)]
-      (single (resource :labels) h o 6))])
+      (single (resource :labels) h o (count all)))])

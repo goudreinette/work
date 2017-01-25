@@ -6,20 +6,24 @@ VALUES (:name, :client_id)
 SELECT *
 FROM Jobs
 
+-- name: find-clients
+SELECT *
+FROM Clients
+
 -- name: find-job
 SELECT *
 FROM Jobs
 WHERE job_id = :job_id
 
 -- name: job-cost
-SELECT SUM(TIMESTAMPDIFF(MINUTE, start_date, end_date)) / 60 * 25
+SELECT  SUM(TIMESTAMPDIFF(MINUTE, start_date, end_date)) / 60 * 25
 AS cost
 FROM Sessions
 WHERE job_id = :job_id
 
--- name: job-duration-in-minutes
+-- name: job-duration
 SELECT SUM(TIMESTAMPDIFF(MINUTE, start_date, end_date))
-AS minutes
+AS duration
 FROM Sessions
 WHERE job_id = :job_id
 

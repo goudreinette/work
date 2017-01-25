@@ -7,13 +7,16 @@
        model))
 
 
-(defresource Clients)
+(defresource Clients
+  :fetch-with find-clients
+  :display-key :name)
+
 (defresource Jobs
   :fetch-with get-jobs
   :display-key :name
   :labels {:client_name "Client"
-           :minutes "Length in minutes"
-           :cost "Cost in euros"})
+           :duration "Duration"
+           :cost "Cost"})
 
 (defsection "Work"
   Clients
