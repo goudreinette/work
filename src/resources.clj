@@ -1,18 +1,31 @@
 (ns resources
   (import clojure.lang.IFn)
-  (require [clojure.core :exclude [defrecord]]
-           [clojure.string :refer [lower-case]]
-           [schema.core :refer [defschema optional-key maybe Keyword Symbol Any]]))
+  (require [clojure.string :refer [lower-case]]
+           [schema.core :refer [defschema validate maybe Keyword Symbol] :rename {maybe ?}]))
 
-(def ? maybe)
+
+; Helpers: separate namespace?
+(defn resource-prefix [name]
+  (str "/" (lower-case name)))
+
+(defn prep-section [heading resources]
+ (->> resources
+   (map #(assoc % :heading heading))
+   (map #(update % :name symbol))))
+
+(defn empty-schema [schema]
+  (apply hash-map (interleave (keys schema) (repeat nil))))
+
+(defn validate-with-defaults [schema map & {:as defaults}]
+  (validate schema (merge map defaults)))
+
 
 ; The Resource Schema
 (defschema Resource
   "Represents a single type of admin resource"
-  {; Structure
-   :name        Symbol
+  {:name        Symbol
    :link        String
-   :heading     (maybe String)
+   :heading     (? String)
 
    ; Display
    :display-key Keyword
@@ -25,36 +38,19 @@
    :delete-with (? IFn)})
 
 
-
-; Helpers
-(defn resource-prefix [name]
-  (str "/" (lower-case name)))
-
-(defn prep-section [heading resources]
- (->> resources
-   (map #(assoc % :heading heading))
-   (map #(update % :name symbol))))
-
-
-(defn make-resource
-  [name {:keys [heading display-key labels fetch-with save-with update-with delete-with]}]
-  {:name        (str name)
-   :link        (resource-prefix name)
-   :heading      heading
-   :display-key  display-key
-   :labels       labels
-   :fetch-with   (or fetch-with (constantly []))
-   :save-with    save-with
-   :update-with  update-with
-   :delete-with  delete-with})
+(defn ->Resource [name options]
+  (validate-with-defaults Resource options
+      :name       name
+      :link       (resource-prefix name)
+      :fetch-with (constantly [])))
 
 
 ; Constructors
 (defmacro resource [name & {:as options}]
-  (make-resource name options))
+  (->Resource name options))
 
 (defmacro defresource [name & {:as options}]
- `(def ~name ~(make-resource name options)))
+ `(def ~name ~(->Resource name options)))
 
 (defn defsection [heading & resources]
   (doseq [{name :name :as resource} (prep-section heading resources)]

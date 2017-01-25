@@ -8,6 +8,7 @@
 
 
 (defresource Clients
+  :heading "Work"
   :fetch-with find-clients
   :display-key :name
   :labels {:address "Address"
@@ -15,15 +16,16 @@
            :city "City"})
 
 (defresource Jobs
+  :heading "Work"
   :fetch-with get-jobs
   :display-key :name
   :labels {:client_name "Client"
            :duration "Duration"
            :cost "Cost"})
 
-(defsection "Work"
-  Clients
-  Jobs)
+; (defsection "Work"
+;   Clients
+;   Jobs)
 
 (defroutes all-routes
   (resources "/")
