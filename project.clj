@@ -8,12 +8,12 @@
      [yesql "0.5.3"]
      [mysql/mysql-connector-java "5.1.32"]
      [http-kit "2.2.0"]
-     [korma "0.4.3"]
      [compojure "1.5.1"]
      [hiccup "1.0.5"]
      [reinvdwoerd/sandbox "0.0.1"]
      [clj-time "0.13.0"]
      [clojurewerkz/money "1.9.0"]
+     [prismatic/schema "1.1.3"]
      [prone "1.1.4"]]
   :main init
   :target-path "target/%s"

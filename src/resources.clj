@@ -1,5 +1,29 @@
 (ns resources
-  (require [clojure.string :refer [lower-case]]))
+  (import clojure.lang.IFn)
+  (require [clojure.core :exclude [defrecord]]
+           [clojure.string :refer [lower-case]]
+           [schema.core :refer [defschema optional-key maybe Keyword Symbol Any]]))
+
+
+; The Resource Schema
+(defschema Resource
+  "Represents a single type of admin resource"
+  {; Structure
+   :name        Symbol
+   :link        String
+   :heading     (maybe String)
+
+   ; Display
+   :display-key Keyword
+   :labels      {Keyword String}
+
+   ; Create, Read, Update, Delete
+   :fetch-with  IFn
+   :save-with   (maybe IFn)
+   :update-with (maybe IFn)
+   :delete-with (maybe IFn)})
+
+
 
 ; Helpers
 (defn resource-prefix [name]
