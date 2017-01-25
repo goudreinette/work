@@ -18,5 +18,5 @@
 (defn validate-with-defaults [schema map & {:as defaults}]
   (validate schema
     (merge (empty-schema schema)
-      map
-      defaults)))
+      defaults
+      map)))

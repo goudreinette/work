@@ -9,7 +9,7 @@
 
 
 (defn layout [all-resources current-resource items]
-  (println current-resource)
+  (println items)
   (html
     [:div#app
      (includes)

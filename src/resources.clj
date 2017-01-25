@@ -7,7 +7,7 @@
 ; The Resource Schema
 (defschema Resource
   "Represents a single type of admin resource"
-  {:name        Symbol
+  {:name        String
    :link        String
    :heading     (? String)
 
@@ -24,7 +24,7 @@
 
 (defn ->Resource [name options]
   (validate-with-defaults Resource options
-      :name       name
+      :name       (str name)
       :link       (resource-prefix name)
       :fetch-with (constantly [])))
 
