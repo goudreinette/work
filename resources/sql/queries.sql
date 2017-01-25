@@ -5,7 +5,6 @@ VALUES (:name, :client_id)
 -- name: find-jobs
 SELECT *
 FROM Jobs
-NATURAL JOIN Clients
 
 -- name: find-job
 SELECT *
