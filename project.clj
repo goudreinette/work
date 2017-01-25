@@ -17,7 +17,20 @@
      [prone "1.1.4"]]
   :main init
   :target-path "target/%s"
+  :plugins [[lein-figwheel "0.5.8"]]
   :profiles {:uberjar {:aot :all}
              :dev {:source-paths ["test"]
                    :dependencies [[midje "1.8.3"]
-                                  [proto-repl "0.3.1"]]}})
+                                  [proto-repl "0.3.1"]]}}
+  :clean-targets [:target-path "out"]
+  :cljsbuild
+  { :builds [{:id "dev"
+              :source-paths ["cljs"]
+              :figwheel true
+              :compiler
+                {:main "client"
+                 :asset-path "cljs/out"
+                 :output-to  "public/js/main.js"
+                 :output-dir "public/js/out"}}]}
+  :figwheel
+  { :css-dirs ["public/css"]})

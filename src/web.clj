@@ -29,5 +29,12 @@
 
 (defroutes all-routes
   (resources "/")
-  (GET "/" [] (redirect "/jobs"))
+  (GET "/" []
+    (redirect "/jobs"))
+  (GET "/sessions/stop/" []
+    (stop-session!)
+    {:status 200})
+  (GET "/sessions/start/:id" [id]
+    (start-session! {:job_id id})
+    {:status 200})
   (make-routes Jobs Clients))
