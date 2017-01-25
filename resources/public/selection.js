@@ -17,11 +17,13 @@ $(() => {
     })
 
     function updateTimer () {
-        var playing = $('.timer .icon').hasClass('play')
+        var playing = $('.timer .icon').hasClass('stop')
         var seconds = $('.timer .time').html()
 
         if (playing) {
-            $('.timer .time').html(seconds++)
+            $('.timer .time').html(Number(seconds) + 1)
         }
     }
+
+    setInterval(updateTimer, 1000)
 })
