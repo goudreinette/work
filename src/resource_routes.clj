@@ -1,6 +1,7 @@
 (ns resource-routes
   (use compojure.core
        templates.layout
+       resource-utils
        resources))
 
 

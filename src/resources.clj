@@ -1,23 +1,7 @@
 (ns resources
+  (use resource-utils)
   (import clojure.lang.IFn)
-  (require [clojure.string :refer [lower-case]]
-           [schema.core :refer [defschema validate maybe Keyword Symbol] :rename {maybe ?}]))
-
-
-; Helpers: separate namespace?
-(defn resource-prefix [name]
-  (str "/" (lower-case name)))
-
-(defn prep-section [heading resources]
- (->> resources
-   (map #(assoc % :heading heading))
-   (map #(update % :name symbol))))
-
-(defn empty-schema [schema]
-  (apply hash-map (interleave (keys schema) (repeat nil))))
-
-(defn validate-with-defaults [schema map & {:as defaults}]
-  (validate schema (merge map defaults)))
+  (require [schema.core :refer [defschema maybe Keyword Symbol] :rename {maybe ?}]))
 
 
 ; The Resource Schema
