@@ -4,6 +4,7 @@ $(() => {
 
         $(`main .single`).addClass('hidden')
         $(`main .single:eq(${index})`).removeClass('hidden')
+        $('#edit').removeClass('hidden')
     })
 
 })

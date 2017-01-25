@@ -20,7 +20,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 
@@ -30,7 +30,7 @@ body {
  * Top menu
  */
 #app > .top-menu {
-  padding: 10px;
+  padding: 5px 8px;
   display: flex;
   justify-content: flex-end;
   margin-left: -1;

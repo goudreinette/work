@@ -6,6 +6,4 @@
 
 
 (def get-jobs
-  (partial get-all-with-aggregates find-jobs
-    job-cost
-    job-duration))
+  (partial get-all-with-aggregates find-jobs job-duration job-cost))
