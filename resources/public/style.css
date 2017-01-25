@@ -19,6 +19,11 @@ body {
   height: calc(100% - 40px);
 }
 
+.hidden {
+  display: none;
+}
+
+
 
 
 /**
@@ -73,12 +78,6 @@ main .single {
   margin: 0 !important;
   z-index: 3 !important;
 }
-
-
-main .single.hidden {
-  display: none;
-}
-
 
 main .single .value {
   margin-left: 10px;

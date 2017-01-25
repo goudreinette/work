@@ -9,11 +9,10 @@
 
 
 (defn layout [all-resources current-resource items]
-  (println items)
   (html
     [:div#app
      (includes)
-     (top-menu ["Discard" "Save"])
+     (top-menu ["Save" "Discard" "Edit"])
      (resource-menu all-resources (current-resource :link))
      (item-list current-resource items)
      (all current-resource items)]))
