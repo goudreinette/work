@@ -1,4 +1,4 @@
-(ns model-utils)
+(ns utils)
 
 ; TODO: Move me to sandbox
 (defn merge-with-aggregate [result aggregate-fn]

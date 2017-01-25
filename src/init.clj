@@ -1,12 +1,11 @@
 (ns init
   (require [mount.core :refer [defstate start]]
            [org.httpkit.server :refer [run-server]]
-           [web :refer [all-routes]]
+           [routes :refer [all-routes]]
            [prone.middleware :as prone]))
 
-(def app
-  (-> all-routes
-    (prone/wrap-exceptions)))
+(def app (prone/wrap-exceptions all-routes))
+
 
 (defstate server :start (run-server app)
                  :stop  (server))

@@ -1,5 +1,5 @@
-(ns model
-  (use yesql.core model-utils))
+(ns db
+  (use yesql.core utils))
 
 (defqueries "sql/queries.sql"
   {:connection {:dbtype "mysql" :dbname "work" :user "root"    :password ""}})
