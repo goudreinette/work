@@ -1,6 +1,6 @@
 (ns model-utils)
 
-
+; TODO: Move me to sandbox
 (defn merge-with-aggregate [result aggregate-fn]
   (merge result (aggregate-fn result {:result-set-fn first})))
 
@@ -11,6 +11,6 @@
   (merge-with-aggregates (first (initial-result-fn)) aggregate-fns))
 
 (defn get-all-with-aggregates [initial-results-fn & aggregate-fns]
-  (->
+  (->>
     (initial-results-fn)
     (map #(merge-with-aggregates % aggregate-fns))))
