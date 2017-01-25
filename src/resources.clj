@@ -4,6 +4,7 @@
            [clojure.string :refer [lower-case]]
            [schema.core :refer [defschema optional-key maybe Keyword Symbol Any]]))
 
+(def ? maybe)
 
 ; The Resource Schema
 (defschema Resource
@@ -19,9 +20,9 @@
 
    ; Create, Read, Update, Delete
    :fetch-with  IFn
-   :save-with   (maybe IFn)
-   :update-with (maybe IFn)
-   :delete-with (maybe IFn)})
+   :save-with   (? IFn)
+   :update-with (? IFn)
+   :delete-with (? IFn)})
 
 
 
