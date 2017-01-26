@@ -1,4 +1,1 @@
-target/
-.nrepl-port
-db.edn
-.lein-*
+public/semantic.css
