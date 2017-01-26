@@ -23,7 +23,7 @@ end
 
 get "/clients/new" do
   @client = Client.new
-  erb :form
+  erb :client_form
 end
 
 post "/clients/new" do
@@ -33,12 +33,12 @@ end
 
 get "/clients/edit/:id" do
   @client = Client.find params[:id]
-  erb :form
+  erb :client_form
 end
 
 post "/clients/edit/:id" do
-  Client.update params[:client]
-  redirect "/clients"
+  Client.update params[:id], params[:client]
+  redirect "/clients/#{params[:id]}"
 end
 
 get "/clients/:id" do

@@ -4,9 +4,9 @@
 
 <div id="app">
     <div class="ui attached secondary menu top-menu">
-      <% ['Sessions', 'Jobs', 'Clients', 'Invoices'].each do |a| %>
-        <a class="item" href="/<%= a.downcase %>">
-          <%= a %>
+      <% ['Sessions', 'Jobs', 'Clients', 'Invoices'].each do |label| %>
+        <a class="item" href="/<%= label.downcase %>">
+          <%= label %>
         </a>
       <% end %>
     </div>

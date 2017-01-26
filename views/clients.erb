@@ -1,7 +1,7 @@
 <div class="ui cards">
-    <% @clients.each do |client| %>
-      <a class="card" href="/clients/<%= client.id %>">
-        <div class="content">
+  <% @clients.each do |client| %>
+    <a class="card" href="/clients/<%= client.id %>">
+      <div class="content">
           <h4 class="header">
             <%= client.name %>
           </h4>
@@ -9,8 +9,7 @@
             <%= client.jobs.count %> jobs and
             <%= client.session_count %> sessions
           </div>
-        </div>
       </div>
     </a>
-    <% end %>
+  <% end %>
 </div>
