@@ -20,10 +20,10 @@ class Client <  ActiveRecord::Base
   end
 
   def facts
-    {'Address'  => client.address,
-     'City'     => client.city,
-     'Postcode' => client.postcode,
-     'Jobs'     => client.jobs.count,
-     'Sessions' => client.session_count}
+    {'Address'  => address,
+     'City'     => city,
+     'Postcode' => postcode,
+     'Jobs'     => jobs.count,
+     'Sessions' => session_count}
   end
 end
