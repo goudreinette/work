@@ -1,0 +1,19 @@
+<div class="ui container">
+  <div class="ui padded segment">
+    <h3 class="ui header">
+      <%= @header %>
+    </h3>
+    <div class="ui divided very relaxed list">
+
+      <% @facts.each do |header, description| %>
+        <div class="item">
+          <div class="content">
+            <div class="header"><%= header %></div>
+            <%= description %>
+          </div>
+        </div>
+      <% end  %>
+
+    </div>
+  </div>
+</div>
