@@ -11,3 +11,12 @@ get "/jobs" do
   @jobs = Job.all
   erb :jobs
 end
+
+get "/clients" do
+  @clients = Client.all
+  erb :clients
+end
+
+get "/invoices" do
+
+end

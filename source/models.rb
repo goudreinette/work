@@ -13,4 +13,9 @@ end
 
 class Client <  ActiveRecord::Base
   has_many :jobs
+
+  def session_count
+    jobs.flat_map { |j| j.sessions }
+        .count
+  end
 end

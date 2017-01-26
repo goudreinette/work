@@ -1,0 +1,16 @@
+<div class="ui cards">
+    <% @clients.each do |client| %>
+      <div class="card">
+        <div class="content">
+          <h4 class="header">
+            <%= client.name %>
+          </h4>
+          <div class="meta">
+            <%= client.jobs.count %> jobs and
+            <%= client.session_count %> sessions
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+</div>
