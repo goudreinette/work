@@ -18,4 +18,12 @@ class Client <  ActiveRecord::Base
     jobs.flat_map { |j| j.sessions }
         .count
   end
+
+  def facts
+    {'Address'  => client.address,
+     'City'     => client.city,
+     'Postcode' => client.postcode,
+     'Jobs'     => client.jobs.count,
+     'Sessions' => client.session_count}
+  end
 end

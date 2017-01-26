@@ -20,9 +20,11 @@ end
 get "/clients/:id" do
   client = Client.find params[:id]
   @header = client.name
-  @facts = {'Address' => client.address,
-            'City' => client.city,
-            'Postcode' => client.postcode}
+  @facts = {'Address'  => client.address,
+            'City'     => client.city,
+            'Postcode' => client.postcode,
+            'Jobs'     => client.jobs.count,
+            'Sessions' => client.session_count}
   erb :detail
 end
 

@@ -111,3 +111,10 @@ main {
   background-color: #eee;
   overflow-y: auto;
 }
+
+/**
+ * Facts list
+ */
+.very.relaxed.list .header {
+  margin-bottom: 3px !important;
+}
