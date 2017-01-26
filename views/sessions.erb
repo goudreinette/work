@@ -1,11 +1,22 @@
 <div class="ui container">
+  <div class="ui divided relaxed items">
     <% @sessions.each do |session| %>
-      <div class="ui segment">
-        <h4 class="ui dividing header">
-          <%= session.job.name %>
-        </h4>
-        <p>Start: <%= session.start_date %></p>
-        <p>End: <%= session.end_date %> </p>
+      <div class="item">
+        <div class="content">
+            <a class="header">
+              <%= session.job.name %>
+            </a>
+            <div class="meta">
+              <span class="start-date">
+                <%= session.start_date %>
+              </span>
+              -
+              <span class="end-date">
+                <%= session.start_date %>
+              </span>
+            </div>
+          </div>
       </div>
     <% end %>
+  </div>
 </div>

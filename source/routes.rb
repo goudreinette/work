@@ -17,6 +17,14 @@ get "/clients" do
   erb :clients
 end
 
+get "/clients/new" do
+  erb :form
+end
+
+post "/clients/new" do
+  'created'
+end
+
 get "/clients/:id" do
   client = Client.find params[:id]
   @header = client.name
@@ -24,9 +32,6 @@ get "/clients/:id" do
   erb :detail
 end
 
-get "/clients/new" do
-  erb :form
-end
 
 get "/invoices" do
 

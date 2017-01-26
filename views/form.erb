@@ -1,0 +1,27 @@
+<div class="ui container">
+    <form class="ui padded segment form" method="post">
+        <h3 class="ui header">
+          Register Client
+          <button type="submit" class="ui tiny right floated button">
+            Save
+          </button>
+        </h3>
+
+       <div class="field">
+          <label>Name</label>
+          <input name="client[name]" value="<%= @client.name %>" placeholder="Name">
+        </div>
+        <div class="field">
+          <label>Address</label>
+          <input name="client[address]" value="<%= @client.address %>" placeholder="Address">
+        </div>
+        <div class="field">
+          <label>City</label>
+          <input name="client[city]" placeholder="City">
+        </div>
+        <div class="field">
+          <label>Postcode</label>
+          <input name="client[postcode]" placeholder="Postcode">
+        </div>
+    </form>
+</div>
