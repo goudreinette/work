@@ -1,4 +1,8 @@
 get "/" do
+  redirect "/sessions"
+end
+
+get "/sessions" do
   @sessions = Session.all
   erb :sessions
 end

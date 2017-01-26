@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="/style.css">
-<!-- <link rel="stylesheet" href="/semantic.css"> -->
+<link rel="stylesheet" href="/semantic.min.css">
 
 
 <div id="app">
-    <div class="ui attached menu top-menu">
+    <div class="ui menu top-menu">
       <% ['Sessions', 'Jobs', 'Clients', 'Invoices'].each do |a| %>
         <a class="item" href="<%= a.downcase %>">
           <%= a %>
