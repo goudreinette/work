@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/style.css">
+<!-- <link rel="stylesheet" href="/semantic.css"> -->
+
+
+<div id="app">
+    <div class="ui attached menu top-menu">
+      <% ['Sessions', 'Jobs', 'Clients', 'Invoices'].each do |a| %>
+        <a class="item" href="<%= a.downcase %>">
+          <%= a %>
+        </a>
+      <% end %>
+    </div>
+
+    <main>
+      <%= yield %>
+    </main>
+</div>

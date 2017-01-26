@@ -1,0 +1,12 @@
+<div class="ui container">
+    <% @sessions.each do |session| %>
+      <div class="ui segment">
+        <h4 class="ui dividing header">
+          <%= session.job.name %>
+        </h4>
+        <p>Start: <%= session.start_date.class %></p>
+        <p>End: <%= session.end_date %> </p>
+        <p>Duration: <%= session.end_date -  session.start_date%></p>
+      </div>
+    <% end %>
+</div>
