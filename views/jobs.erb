@@ -1,13 +1,15 @@
-<div class="ui stackable grid">
-    <% @jobs.each do |job| %>
-    <div class="six wide column">
-      <div class="ui segment">
-        <h4 class="ui dividing header">
-          <%= job.name %>
-        </h4>
-        <p>Client: <%= job.client %></p>
-        <p>Duration:</p>
+<div class="ui cards">
+  <% @jobs.each do |job|  %>
+    <a class="card" href="/jobs/<%= job.id %>">
+      <div class="content">
+          <h4 class="header">
+            <%= job.name %>
+          </h4>
+          <div class="meta">
+            <div><%= job.client.name %></div>
+            <div><%= job.duration %></div>
+          </div>
       </div>
-    </div>
-    <% end %>
+    </a>
+  <% end %>
 </div>

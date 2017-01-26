@@ -9,14 +9,17 @@ end
 class Job < ActiveRecord::Base
   has_many :sessions
   belongs_to :client
+
+  def duration
+    "10 hours and 15 minutes"
+  end
 end
 
 class Client <  ActiveRecord::Base
   has_many :jobs
 
   def session_count
-    jobs.flat_map { |j| j.sessions }
-        .count
+    jobs.flat_map(&:sessions).count
   end
 
   def facts

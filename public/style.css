@@ -113,8 +113,11 @@ main {
 }
 
 /**
- * Items
+ * Card
  */
+.cards .card .header {
+  margin-bottom: 3px;
+}
 
 
 /**
