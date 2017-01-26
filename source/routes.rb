@@ -24,6 +24,10 @@ get "/clients/:id" do
   erb :detail
 end
 
+get "/clients/new" do
+  erb :form
+end
+
 get "/invoices" do
 
 end
