@@ -22,7 +22,7 @@ class Job < ActiveRecord::Base
     when 'fixed'
       "€#{cost}"
     when 'hourly'
-      "#{pricing_value} * #{duration} = €#{cost.round(2)}"
+      "#{pricing_value} * #{duration} = €#{format '%.2f', cost}"
     end
   end
 
