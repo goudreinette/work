@@ -19,4 +19,18 @@ class Session < ActiveRecord::Base
   def duration_in_seconds
     (end_date || Time.new) - start_date
   end
+
+
+  # FIXME ---------
+  def formatted_date
+    "#{start_date.strftime '%a %e %B  %H:%M'}
+     -
+     #{end_date&.strftime('%H:%M') || 'now'}"
+  end
+
+  def facts
+    {'Job'         => job.name,
+     'Description' => description || '-',
+     'Duration'    => duration}
+  end
 end

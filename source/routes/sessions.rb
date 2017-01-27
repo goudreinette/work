@@ -5,6 +5,7 @@ namespace "/sessions" do
   end
 
   get "/start/:id" do
+    Session.stop
     Session.start params[:id]
   end
 
@@ -13,6 +14,9 @@ namespace "/sessions" do
   end
 
   get "/:id" do
-    'single'
+    session = Session.find params[:id]
+    @header = session.formatted_date
+    @facts = session.facts
+    erb :detail
   end
 end
