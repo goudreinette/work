@@ -16,36 +16,67 @@ end
 
 
 # Clients
+namespace "/clients" do
+  get "/" do
+    @clients = Client.all
+    erb :clients
+  end
+
+  get "/:id" do
+    client = Client.find params[:id]
+    @header = client.name
+    @facts = client.facts
+    erb :detail
+  end
+
+  namespace "/new" do
+    get do
+      @client = Client.new
+      erb :client_form
+    end
+
+    post do
+      Client.create params[:client]
+      redirect "/clients/#{params[:id]}"
+    end
+  end
+
+  namespace "/edit/:id" do
+    get do
+      @client = Client.find params[:id]
+      erb :client_form
+    end
+
+    post do
+      Client.update params[:id], params[:client]
+      redirect "/clients/#{params[:id]}"
+    end
+  end
+end
+
+
 get "/clients" do
-  @clients = Client.all
-  erb :clients
+
 end
 
 get "/clients/new" do
-  @client = Client.new
-  erb :client_form
+
 end
 
 post "/clients/new" do
-  Client.create params[:client]
-  redirect "/clients"
+
 end
 
 get "/clients/edit/:id" do
-  @client = Client.find params[:id]
-  erb :client_form
+
 end
 
 post "/clients/edit/:id" do
-  Client.update params[:id], params[:client]
-  redirect "/clients/#{params[:id]}"
+
 end
 
 get "/clients/:id" do
-  client = Client.find params[:id]
-  @header = client.name
-  @facts = client.facts
-  erb :detail
+
 end
 
 

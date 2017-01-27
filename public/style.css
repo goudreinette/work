@@ -113,6 +113,13 @@ main {
 }
 
 /**
+ * Detail
+ */
+.detail-actions {
+  float: right !important;
+}
+
+/**
  * Card
  */
 .cards .card .header {
