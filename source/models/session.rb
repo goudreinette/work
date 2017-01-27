@@ -1,4 +1,6 @@
 class Session < ActiveRecord::Base
+  include Duration
+  
   belongs_to :job
 
   def self.start(job_id)

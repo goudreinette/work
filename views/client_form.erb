@@ -3,7 +3,7 @@
         <%=
           @new = @client.new_record?
           @class = @client.class
-          erb :form_header
+          erb :"partials/form_header"
         %>
 
         <% ['Name', 'Address', 'City', 'Postcode'].each do |field| %>

@@ -3,7 +3,7 @@
         <%=
           @new = @job.new_record?
           @class = @job.class
-          erb :form_header
+          erb :"partials/form_header"
         %>
         <div class="field">
           <label>Name</label>

@@ -1,4 +1,4 @@
 get "/sessions" do
-  @sessions = Session.all
+  @sessions = Session.order(:end_date)
   erb :sessions
 end

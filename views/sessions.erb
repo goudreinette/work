@@ -1,21 +1,44 @@
+<!-- <%=
+
+@cards = @sessions
+@header = lambda do |session|
+  day_of_month = session.start_date.strftime '%a %e %B'
+  start_time = session.start_date.strftime '%H:%M'
+  end_time = if session.end_date
+               session.end_date.strftime '%H:%M'
+             else
+               'now'
+             end
+
+
+  "#{day_of_month} #{start_time} - #{end_time}"
+end
+
+@meta = lambda do |session|
+  "<div>#{session.job}</div>"
+  "<div>#{session.job}</div>"
+end
+
+%> -->
+
 <div class="ui container">
-  <div class="ui divided relaxed items">
+  <div class="ui large feed">
     <% @sessions.each do |session| %>
-      <div class="item">
+      <div class="event">
         <div class="content">
-            <a class="header">
-              <%= session.job.name %>
-            </a>
-            <div class="meta">
-              <span class="start-date">
-                <%= session.start_date %>
-              </span>
+          <div class="summary">
+            <%= session.job.name %>
+            <div class="date">
+              <%= session.start_date.strftime '%a %e %B  %H:%M' %>
               -
-              <span class="end-date">
-                <%= session.start_date %>
-              </span>
+              <%= session.end_date ? session.end_date.strftime('%H:%M') : 'now' %>
             </div>
           </div>
+          <div class="meta">
+            <i class="hourglass end icon"></i> <%= session.duration %> <br/>
+            <i class="pencil icon"></i> <%= session.description %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
