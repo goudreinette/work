@@ -23,21 +23,24 @@ class Job < ActiveRecord::Base
     end
   end
 
-  def pricing_text
+  def cost_calculation
     case pricing_type
     when 'fixed'
-      "€#{pricing_value}"
+      "€#{cost}"
     when 'hourly'
-      "€#{pricing_value} * #{duration / 60}hrs = #{cost}"
+      "#{pricing_value} * #{duration} = €#{cost}"
     end
+  end
+
+  def cost_text
+    "#{pricing_type.to_s.capitalize}: #{cost_calculation}"
   end
 
   def facts
     {'Client'       => client.name,
      'Sessions'     => sessions.count,
      'Duration'     => duration,
-     'Pricing'      => "#{pricing_type.to_s.capitalize}, #{pricing_text}",
-     'Cost'         => "€#{cost}"}
+     'Cost'         => cost_text}
   end
 end
 
@@ -53,6 +56,6 @@ class Client < ActiveRecord::Base
      'City'     => city,
      'Postcode' => postcode,
      'Jobs'     => jobs.count,
-     'Sessions' => session_count}
+     'Sessions' => sessions.count}
   end
 end
