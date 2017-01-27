@@ -10,7 +10,7 @@ end
 
 # Jobs
 namespace "/jobs" do
-  get "/" do
+  get do
     @jobs = Job.all
     erb :jobs
   end
@@ -27,7 +27,7 @@ end
 
 # Clients
 namespace "/clients" do
-  get "/" do
+  get do
     @clients = Client.all
     erb :clients
   end
