@@ -18,7 +18,13 @@ namespace "/jobs" do
   namespace "/new" do
     get do
       @job = Job.new
+      @clients = Client.all
       erb :job_form
+    end
+
+    post do
+      job = Job.create params[:job]
+      redirect "/jobs/#{job.id}"
     end
   end
 
