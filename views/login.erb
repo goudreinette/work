@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/semantic.min.css">
+
+<div class="login">
+  <h2 class="ui header">Log In</h2>
+  <form class="ui form">
+    <% ['Email', 'Password'].each do |field| %>
+      <div class="field">
+        <input
+          name="user[<%= field.downcase %>]"
+          type="<%= field.downcase %>"
+          placeholder="<%= field %>"
+        >
+      </div>
+    <% end %>
+  </form>
+</div>

@@ -7,6 +7,10 @@ before do
   @path = request.path
 end
 
+get "/login" do
+  erb :login, layout: false
+end
+
 get "/" do
   redirect "/sessions"
 end
