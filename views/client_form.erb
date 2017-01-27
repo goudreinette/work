@@ -1,11 +1,10 @@
 <div class="ui container">
     <form class="ui padded segment form" method="post">
-        <h3 class="ui header">
-          <%=  @client.new_record? ? 'Register' : 'Update' %> Client
-          <button type="submit" class="ui tiny right floated button">
-            Save
-          </button>
-        </h3>
+        <%=
+          @new = @client.new_record?
+          @class = @client.class
+          erb :form_header
+        %>
 
         <% ['Name', 'Address', 'City', 'Postcode'].each do |field| %>
          <div class="field">

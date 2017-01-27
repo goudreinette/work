@@ -1,0 +1,17 @@
+<div class="ui container">
+    <form class="ui padded segment form" method="post">
+        <%=
+          @new = @job.new_record?
+          @class = @job.class
+          erb :form_header
+        %>
+         <div class="field">
+            <label>
+              Name
+            </label>
+            <input
+              name="job[name]"
+            />
+          </div>
+    </form>
+</div>

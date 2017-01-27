@@ -122,7 +122,17 @@ main {
 /**
  * Card
  */
-.cards .card .header {
+.card.new {
+  opacity: 0.3 !important;
+  height: 88px;
+}
+
+.card.new:hover {
+  opacity: 0.6 !important;
+}
+
+
+.card .header {
   margin-bottom: 3px;
 }
 

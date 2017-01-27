@@ -15,6 +15,13 @@ namespace "/jobs" do
     erb :jobs
   end
 
+  namespace "/new" do
+    get do
+      @job = Job.new
+      erb :job_form
+    end
+  end
+
   get "/:id" do
     job = Job.find params[:id]
     @header = job.name
@@ -32,13 +39,6 @@ namespace "/clients" do
     erb :clients
   end
 
-  get "/:id" do
-    client = Client.find params[:id]
-    @header = client.name
-    @facts = client.facts
-    erb :detail
-  end
-
   namespace "/new" do
     get do
       @client = Client.new
@@ -46,8 +46,8 @@ namespace "/clients" do
     end
 
     post do
-      Client.create params[:client]
-      redirect "/clients/#{params[:id]}"
+      client = Client.create params[:client]
+      redirect "/clients/#{client.id}"
     end
   end
 
@@ -61,6 +61,18 @@ namespace "/clients" do
       Client.update params[:id], params[:client]
       redirect "/clients/#{params[:id]}"
     end
+  end
+
+  get "/:id" do
+    client = Client.find params[:id]
+    @header = client.name
+    @facts = client.facts
+    erb :detail
+  end
+
+  get "/delete/:id" do
+    Client.destroy params[:id]
+    redirect "/clients"
   end
 end
 
