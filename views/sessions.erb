@@ -21,7 +21,7 @@ end
 
 %> -->
 
-<div class="ui container">
+<div class="ui container feed-container">
   <div class="ui large feed">
     <% @sessions.each do |session| %>
       <div class="event">
@@ -35,8 +35,14 @@ end
             </div>
           </div>
           <div class="meta">
-            <i class="hourglass end icon"></i> <%= session.duration %> <br/>
-            <i class="pencil icon"></i> <%= session.description %>
+            <div class="duration">
+              <i class="hourglass end icon"></i>
+              <%= session.duration %>
+            </div>
+            <div class="description">
+              <i class="pencil icon"></i>
+              <%= session.description || '<span class="placeholder">no description</span>' %>
+            </div>
           </div>
         </div>
       </div>

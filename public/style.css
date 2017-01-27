@@ -107,7 +107,7 @@ body {
 main {
   height: calc(100% - 50px);
   width: 100%;
-  padding: 10px;
+  padding: 25px;
   background-color: #eee;
   overflow-y: auto;
 }
@@ -136,6 +136,27 @@ main {
   margin-bottom: 3px;
 }
 
+/**
+ * Feed
+ */
+.ui.container.feed-container  {
+  max-width: 600px !important;
+}
+
+
+.feed .event {
+  margin-bottom: 50px !important;
+}
+
+
+.feed .event .meta > * {
+  margin-left: 0 !important;
+  margin-bottom: 5px;
+}
+
+.feed .event .meta .placeholder {
+  opacity: 0.5;
+}
 
 /**
  * Facts list
