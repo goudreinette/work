@@ -6,7 +6,7 @@
 <div id="app">
     <div class="ui attached secondary menu top-menu">
       <% ['Sessions', 'Jobs', 'Clients', 'Invoices'].each do |label| %>
-        <a class="item" href="/<%= label.downcase %>">
+        <a class="item <%= 'active' if @path.include? label.downcase %>" href="/<%= label.downcase %>">
           <%= label %>
         </a>
       <% end %>
