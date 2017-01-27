@@ -24,7 +24,7 @@ end
 <div class="ui container feed-container">
   <div class="ui large feed">
     <% @sessions.each do |session| %>
-      <div class="event">
+      <a class="event">
         <div class="content">
           <div class="summary">
             <%= session.job.name %>
@@ -45,7 +45,7 @@ end
             </div>
           </div>
         </div>
-      </div>
+      </a>
     <% end %>
   </div>
 </div>
