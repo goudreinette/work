@@ -1,4 +1,5 @@
 require "sinatra"
+require "sinatra/namespace"
 require "active_record"
 require "mysql2"
 require "timerizer"
