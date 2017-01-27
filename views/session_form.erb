@@ -1,0 +1,21 @@
+<div class="ui container">
+    <form class="ui padded segment form" method="post">
+        <h3 class="ui header">
+          Edit Description
+          <button type="submit" class="ui tiny right floated button">
+            Save
+          </button>
+        </h3>
+
+
+         <div class="field">
+            <label>
+              Description
+            </label>
+            <textarea
+              name="session[description]"
+              placeholder="Description"
+            ><%= @session.description %></textarea>
+          </div>
+    </form>
+</div>
