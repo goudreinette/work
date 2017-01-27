@@ -13,6 +13,15 @@ class Job < ActiveRecord::Base
   def duration
     "10 hours and 15 minutes"
   end
+
+  def price
+    case pricing_type
+    when 'fixed'
+      pricing_value
+    when 'hourly'
+      pricing_value * duration.in_hours
+    end
+  end
 end
 
 class Client <  ActiveRecord::Base
