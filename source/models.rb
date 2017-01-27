@@ -2,7 +2,7 @@ class Session < ActiveRecord::Base
   belongs_to :job
 
   def duration
-    TimeDifference.between(start_date, end_date).in_minutes
+    end_date - start_date # Time.now.strftime "%H:%M:%S"
   end
 end
 
@@ -11,7 +11,7 @@ class Job < ActiveRecord::Base
   belongs_to :client
 
   def duration
-    "10 hours and 15 minutes"
+    sessions.map(&:duration).sum
   end
 
   def price
@@ -27,8 +27,8 @@ end
 class Client <  ActiveRecord::Base
   has_many :jobs
 
-  def session_count
-    jobs.flat_map(&:sessions).count
+  def sessions
+    jobs.flat_map(&:sessions)
   end
 
   def facts
