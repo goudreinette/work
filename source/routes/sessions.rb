@@ -5,11 +5,11 @@ namespace "/sessions" do
   end
 
   get "/start/:id" do
-    'start'
+    Session.start params[:id]
   end
 
   get "/stop" do
-    'stop'
+    Session.stop
   end
 
   get "/:id" do
