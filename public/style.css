@@ -2,7 +2,7 @@
  * Global
  */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 body {
@@ -12,6 +12,8 @@ body {
 #app {
   background-color: white;
   height: 100%;
+  border: 1px solid #D4D4D5;
+  border-bottom: none;
 }
 
 .hidden {
@@ -90,6 +92,7 @@ body {
 #app > .top-menu {
   padding: 5px 8px;
   display: flex;
+  border-width: 0px;
 }
 
 /**
@@ -105,11 +108,12 @@ body {
  * Single
  */
 main {
-  height: calc(100% - 50px);
+  height: calc(100% - 46px);
   width: 100%;
   padding: 25px;
   background-color: #eee;
   overflow-y: auto;
+  border-bottom: 1px solid #D4D4D5;
 }
 
 /**
