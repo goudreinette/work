@@ -13,7 +13,7 @@ class Job < ActiveRecord::Base
     when 'fixed'
       pricing_value
     when 'hourly'
-      pricing_value * (duration_in_seconds/60)
+      pricing_value * (duration_in_seconds/3600)
     end
   end
 
@@ -22,7 +22,7 @@ class Job < ActiveRecord::Base
     when 'fixed'
       "€#{cost}"
     when 'hourly'
-      "#{pricing_value} * #{duration} = €#{cost}"
+      "#{pricing_value} * #{duration} = €#{cost.round(2)}"
     end
   end
 
