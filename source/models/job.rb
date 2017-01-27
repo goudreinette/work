@@ -31,9 +31,9 @@ class Job < ActiveRecord::Base
   end
 
   def facts
-    {'Client'       => client.name,
-     'Sessions'     => sessions.count,
-     'Duration'     => duration,
-     'Cost'         => cost_text}
+    {'Client'   => client.name,
+     'Sessions' => sessions.count,
+     'Duration' => duration,
+     'Cost'     => cost_text}
   end
 end
