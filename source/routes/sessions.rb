@@ -1,4 +1,4 @@
 get "/sessions" do
-  @sessions = Session.order(:end_date)
+  @sessions = Session.order('start_date DESC')
   erb :sessions
 end
