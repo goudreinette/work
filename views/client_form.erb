@@ -7,21 +7,16 @@
           </button>
         </h3>
 
-       <div class="field">
-          <label>Name</label>
-          <input name="client[name]" value="<%= @client.name %>" placeholder="Name">
-        </div>
-        <div class="field">
-          <label>Address</label>
-          <input name="client[address]" value="<%= @client.address %>" placeholder="Address">
-        </div>
-        <div class="field">
-          <label>City</label>
-          <input name="client[city]" value="<%= @client.city %>" placeholder="City">
-        </div>
-        <div class="field">
-          <label>Postcode</label>
-          <input name="client[postcode]" value="<%= @client.postcode %>"placeholder="Postcode">
-        </div>
+        <% ['Name', 'Address', 'City', 'Postcode'].each do |field| %>
+         <div class="field">
+            <label>
+              <%= field %>
+            </label>
+            <input
+              name="client[<%= field.downcase %>]"
+              value="<%= @client.send(field.downcase.to_sym) %>"
+              placeholder="<%= field %>">
+          </div>
+        <% end %>
     </form>
 </div>
