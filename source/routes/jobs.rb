@@ -36,4 +36,9 @@ namespace "/jobs" do
     @facts = job.facts
     erb :detail
   end
+
+  get "/delete/:id" do
+    Job.destroy params[:id]
+    redirect "/jobs"
+  end
 end
