@@ -1,0 +1,14 @@
+<div class="ui cards">
+    <% @cards.each do |card| %>
+      <a class="card" href="/<%= card.class.to_s.pluralize.downcase %>/<%= card.id %>">
+        <div class="content">
+          <h4 class="header">
+            <%= @header.call card %>
+          </h4>
+          <div class="meta">
+            <%= @meta.call card %>
+          </div>
+        </div>
+      </a>
+    <% end %>
+</div>

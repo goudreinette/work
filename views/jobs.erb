@@ -1,22 +1,11 @@
-<div class="ui cards">
-  <% @jobs.each do |job|  %>
-    <a class="card" href="/jobs/<%= job.id %>">
-      <div class="content">
-          <h4 class="header">
-            <%= job.name %>
-          </h4>
-          <div class="meta">
-            <div><%= job.client.name %></div>
-            <div><%= job.duration %></div>
-          </div>
-      </div>
-    </a>
-  <% end %>
-    <a class="card new" href="/jobs/new">
-      <div class="content">
-        <h4 class="header">
-          New
-        </h4>
-      </div>
-    </a>
-</div>
+<%=
+@cards = @jobs
+@header = lambda(&:name)
+
+@meta = lambda do |job|
+  "<div>#{job.client.name}</div>
+  <div>#{job.duration}</div>"
+end
+
+erb :cards
+%>
