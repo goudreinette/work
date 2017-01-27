@@ -11,4 +11,11 @@
         </div>
       </a>
     <% end %>
+    <a class="card new" href="/<%= @cards.first.class.to_s.pluralize.downcase %>/new">
+      <div class="content">
+        <h4 class="header">
+          New
+        </h4>
+      </div>
+    </a>
 </div>
