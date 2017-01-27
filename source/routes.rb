@@ -9,10 +9,20 @@ get "/sessions" do
 end
 
 # Jobs
-get "/jobs" do
-  @jobs = Job.all
-  erb :jobs
+namespace "/jobs" do
+  get "/" do
+    @jobs = Job.all
+    erb :jobs
+  end
+
+  get "/:id" do
+    job = Job.find params[:id]
+    @header = job.name
+    @facts = job.facts
+    erb :detail
+  end
 end
+
 
 
 # Clients
