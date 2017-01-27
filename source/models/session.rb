@@ -1,6 +1,6 @@
 class Session < ActiveRecord::Base
   include Duration
-  
+
   belongs_to :job
 
   def self.start(job_id)
@@ -8,6 +8,6 @@ class Session < ActiveRecord::Base
   end
 
   def duration_in_seconds
-    (end_date || Time.new) + 3600 - start_date # FIXME
+    (end_date || Time.new) - start_date # FIXME
   end
 end
