@@ -24,7 +24,7 @@ class Job < ActiveRecord::Base
   end
 end
 
-class Client <  ActiveRecord::Base
+class Client < ActiveRecord::Base
   has_many :jobs
 
   def sessions
