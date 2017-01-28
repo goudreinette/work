@@ -5,6 +5,8 @@ require "mysql2"
 require "timerizer"
 require "time_difference"
 
+set :static, true
+
 local_db = {
     adapter:  'mysql2', # or 'postgresql' or 'sqlite3'
     database: 'work',
