@@ -12,11 +12,15 @@
           <div class="meta">
             <div class="duration">
               <i class="hourglass end icon"></i>
-              <%= session.duration %>
+              <span>
+                <%= session.duration %>
+              </span>
             </div>
             <div class="description">
               <i class="pencil icon"></i>
-              <%= session.description || '<span class="placeholder">no description</span>' %>
+              <span class="<%= 'placeholder' unless session.description %>">
+                <%= session.description || 'no description' %>
+              </span>
             </div>
           </div>
         </div>
