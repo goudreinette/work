@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="/semantic.min.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="/semantic.min.js"></script>
+<script src="/timer.jquery.min.js"></script>
+<script src="/timer.js"></script>
 
 <div id="app">
     <div class="ui attached secondary menu top-menu">
@@ -11,8 +13,20 @@
         </a>
       <% end %>
 
-      <div class="ui timer right floated">
-
+      <div
+        class="ui timer right floated"
+        data-startdate=""
+        data-job=""
+        data-playing=""
+      >
+        <button class="toggle">
+          <i class="ui icon play"></i>
+          <i class="ui icon stop"></i>
+        </button>
+        <div class="text">
+          <span class="job">Sailing very long job here</span>
+          <span class="duration">45:03min</span>
+        </div>
       </div>
     </div>
 

@@ -10,7 +10,6 @@ body {
 }
 
 #app {
-  background-color: white;
   height: 100%;
   border: 1px solid #D4D4D5;
 }
@@ -36,8 +35,46 @@ body {
 /**
  * Timer
  */
-.timer {
+.menu .timer {
+  min-width: 200px;
+  align-items: center;
+  display: flex;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  padding: 3px;
+  margin: 0 .35714286em;
+  margin-left: auto;
+}
 
+.menu .timer .toggle {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+
+.menu .timer .toggle:hover {
+  border: 1px solid #D4D4D5;
+}
+
+.menu .timer .toggle i {
+  position: relative;
+  top: -3px;
+  left: 2px;
+}
+
+.menu .timer .toggle:hover i {
+  color: teal;
+}
+
+
+.menu .timer .text span {
+  padding: 0px 10px;
 }
 
 
@@ -128,3 +165,6 @@ main {
 .very.relaxed.list .header {
   margin-bottom: 3px !important;
 }
+
+
+button.toggle {}
