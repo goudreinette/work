@@ -13,7 +13,6 @@ body {
   background-color: white;
   height: 100%;
   border: 1px solid #D4D4D5;
-  border-bottom: none;
 }
 
 .hidden {
@@ -38,64 +37,7 @@ body {
  * Timer
  */
 .timer {
-  position: absolute !important;
-  top: 27px;
-  left: 25px;
-  z-index: 3;
-  height: 44px;
-  display: flex !important;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  width: 209px;
-  border-radius: 0px !important;
-  margin-right: auto !important;
-  background: none !important;
-  border-right: 1px solid #eee !important;
-  font-weight: normal !important;
-  font-size: 12px !important;
-  padding: 5px;
-  padding-top: 0px;
-}
 
-.timer .icon {
-  width: 35px !important;
-  background: none !important;
-  position: relative;
-  top: -3px;
-}
-
-
-.timer:hover .icon, .timer:hover select {
-  color: teal;
-}
-
-
-.timer select{
-  color: rgba(0, 0, 0, 0.7);
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  justify-content: space-around;
-  width: 75%;
-  align-items: center;
-  padding-right: 20px;
-  background: none;
-  border: none;
-  outline: none;
-}
-
-.timer select option {
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.timer .time {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
 }
 
 
@@ -121,12 +63,11 @@ body {
  * Single
  */
 main {
-  height: calc(100% - 46px);
+  height: calc(100% - 45px);
   width: 100%;
   padding: 25px;
   background-color: #eee;
   overflow-y: auto;
-  border-bottom: 1px solid #D4D4D5;
 }
 
 /**
