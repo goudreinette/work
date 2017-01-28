@@ -1,6 +1,7 @@
 class Session < ActiveRecord::Base
   include Duration
 
+  default_scope { order start_date: :desc }
   belongs_to :job
 
   def self.start(job_id)
@@ -14,7 +15,6 @@ class Session < ActiveRecord::Base
   def end_date
     super&.+ 3600
   end
-
 
   def duration_in_seconds
     (end_date || (Time.new + 3600)) - start_date

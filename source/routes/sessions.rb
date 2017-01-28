@@ -1,6 +1,6 @@
 namespace "/sessions" do
   get do
-    @sessions = Session.order('start_date DESC')
+    @sessions = Session.all
     erb :sessions
   end
 
@@ -21,7 +21,7 @@ namespace "/sessions" do
 
     post do
       Session.update params[:id], params[:session]
-      redirect "/sessions/#{params[:id]}" 
+      redirect "/sessions/#{params[:id]}"
     end
   end
 
