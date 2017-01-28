@@ -5,9 +5,7 @@ require "mysql2"
 require "timerizer"
 require "time_difference"
 
-set :static, true
-set :root, File.dirname(__FILE__)
-set :public_folder, 'public'
+use Rack::Static, :root => "public"
 
 local_db = {
     adapter:  'mysql2', # or 'postgresql' or 'sqlite3'
