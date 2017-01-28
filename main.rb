@@ -6,6 +6,7 @@ require "timerizer"
 require "time_difference"
 
 set :static, true
+set :root, File.dirname(__FILE__)
 
 local_db = {
     adapter:  'mysql2', # or 'postgresql' or 'sqlite3'
