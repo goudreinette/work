@@ -7,6 +7,7 @@ $(() => {
     $timer.find('.stop').click(stop)
 
 
+
     if (jobId) {
         const jobName = $timer.find(`.job-select [data-id="${jobId}"]`).text()
         $timer.find('.job').text(jobName)
