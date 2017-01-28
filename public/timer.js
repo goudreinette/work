@@ -9,21 +9,23 @@ $(() => {
     if (jobId) {
         $timer.find('.stop').removeClass('hidden')
     } else {
-        $timer.find('.start').removeClass('hidden')
+        $timer.find('.play').removeClass('hidden')
     }
 
     if (jobId) {
         const jobName = $timer.find(`.job-select [data-id="${jobId}"]`).text()
-        debugger
         $timer.find('.job').text(jobName)
     }
 
     function start () {
         $.get(`/sessions/start/${jobId}`)
-        $timer.find('.duration').timer({seconds})
+        $timer.find('.duration').timer()
+        $timer.find('.play, .stop, .duration').toggleClass('hidden')
     }
 
     function stop () {
-        $.get()
+        $.get(`/sessions/stop`)
+        $timer.find('.duration').timer('remove')
+        $timer.find('.play, .stop, .duration').toggleClass('hidden')
     }
 })
