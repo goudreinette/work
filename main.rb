@@ -7,6 +7,7 @@ require "time_difference"
 
 set :static, true
 set :root, File.dirname(__FILE__)
+set :public_folder, 'public'
 
 local_db = {
     adapter:  'mysql2', # or 'postgresql' or 'sqlite3'
