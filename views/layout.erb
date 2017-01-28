@@ -15,18 +15,22 @@
 
       <div
         class="ui timer right floated"
-        data-startdate=""
-        data-job=""
-        data-playing=""
+        data-seconds="12245"
+        data-job-id="6"
       >
         <button class="toggle">
-          <i class="ui icon play"></i>
-          <i class="ui icon stop"></i>
+          <i class="ui icon play hidden"></i>
+          <i class="ui icon stop hidden"></i>
         </button>
         <div class="text">
-          <span class="job">Sailing very long job here</span>
-          <span class="duration">45:03min</span>
+          <span class="job">-</span>
+          <span class="duration">-</span>
         </div>
+        <select class="job-select hidden">
+          <% @jobs.each do |job| %>
+            <option data-id="<%= job.id %>" value="<%= job.id %>"><%= job.name %></option>
+          <% end %>
+        </select>
       </div>
     </div>
 
