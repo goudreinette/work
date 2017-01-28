@@ -1,6 +1,7 @@
 before do
   @path = request.path
   @jobs = Job.all
+  @session = Session.active
 end
 
 namespace "/login" do

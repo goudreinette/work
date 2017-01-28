@@ -4,6 +4,10 @@ class Session < ActiveRecord::Base
   default_scope { order start_date: :desc }
   belongs_to :job
 
+  def self.active
+    Session.where(end_date: nil).first
+  end
+
   def self.start(job_id)
     Session.create(job_id: job_id)
   end

@@ -15,16 +15,16 @@
 
       <div
         class="ui timer right floated"
-        data-seconds="12245"
-        data-job-id="6"
+        data-seconds="<%= @session&.duration_in_seconds.floor %>"
+        data-job-id="<%= @session&.job_id %>"
       >
         <button class="toggle">
           <i class="ui icon play hidden"></i>
           <i class="ui icon stop hidden"></i>
         </button>
         <div class="text">
-          <span class="job">-</span>
-          <span class="duration">-</span>
+          <span class="job"></span>
+          <span class="duration"></span>
         </div>
         <select class="job-select hidden">
           <% @jobs.each do |job| %>
