@@ -9,7 +9,7 @@ ActiveRecord::Schema.define do
   create_table :jobs do |t|
     t.string     :name
     t.column     :pricing_type, "ENUM('fixed', 'hourly')", default: 'fixed'
-    t.decimal    :pricing_value, precision: 2
+    t.decimal    :pricing_value, precision: 2, scale: 10
     t.belongs_to :client
   end
 
