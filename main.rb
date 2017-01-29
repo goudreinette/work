@@ -16,5 +16,7 @@ local_db = {
 
 set :database, ENV['DATABASE_URL'] || local_db
 
+database.default_timezone = :local
+
 require_relative "source/routes.rb"
 require_relative "source/models.rb"
