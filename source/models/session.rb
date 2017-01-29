@@ -9,15 +9,15 @@ class Session < ActiveRecord::Base
   end
 
   def self.start(job_id)
-    Session.create(job_id: job_id, start_date: Time.now)
+    Session.create(job_id: job_id, start_date: Time.new.getlocal("+01:00"))
   end
 
   def self.stop
-    Session.where(end_date: nil).update_all(end_date: Time.new)
+    Session.where(end_date: nil).update_all(end_date: Time.new.getlocal("+01:00"))
   end
 
   def duration_in_seconds
-    (end_date || Time.new) - start_date
+    (end_date || Time.new.getlocal("+01:00")) - start_date
   end
 
 
