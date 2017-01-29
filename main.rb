@@ -5,7 +5,6 @@ require "mysql2"
 require "timerizer"
 require "time_difference"
 
-use Rack::Static, :root => "public"
 
 local_db = {
     adapter:  'mysql2', # or 'postgresql' or 'sqlite3'
