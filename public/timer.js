@@ -1,5 +1,5 @@
 $(() => {
-    const $timer           = $('.menu .timer')
+    const $timer        = $('.menu .timer')
 
     if (!$timer) return
 
@@ -9,10 +9,7 @@ $(() => {
     const $text         = $timer.find('.text')
     const $jobText      = $timer.find('.job')
     const $durationText = $timer.find('.duration')
-    const $jobSelect    = $timer.find(`.job-select`)
-
-    // Other elements
-    const $feedDuration = $('.feed .event:first-child .duration span')
+    const $jobSelect    = $timer.find('.job-select')
 
     // Event handlers
     $play.click(start)
@@ -23,20 +20,17 @@ $(() => {
     update()
 
 
-    function update () {
-        const {jobId, seconds, playing} = $timer.data()
+    function update (newData) {
+        const {jobId, seconds, playing} = newData || $timer.data()
 
         // Timer
         if (playing) {
             $durationText.timer({seconds})
-            $feedDuration.timer({seconds})
         } else {
             $durationText.timer('remove')
-            $feedDuration.timer('remove')
         }
 
         // Job label
-        const jobId   = $jobSelect.val()
         const jobName = $jobSelect.find(`[data-id="${jobId}"]`).text()
         $jobText.text(jobName)
 
@@ -51,17 +45,20 @@ $(() => {
 
     function switchJob () {
         const jobId = $jobSelect.val()
-        $timer.data('job-id', jobId)
+        $timer.attr('data-job-id', jobId)
     }
 
     function start () {
+        const jobId = $jobSelect.val()
         $.get(`/sessions/start/${jobId}`)
-        $timer.data('playing', true)
+        $timer.attr('data-playing', true)
+        update({playing: true, seconds: 0, jobId})
     }
 
     function stop () {
         $.get(`/sessions/stop`)
-        $timer.data('playing', false)
-        $timer.data('seconds', 0)
+        $timer.attr('data-playing', false)
+        $timer.attr('data-seconds', 0)
+        update({playing: false, seconds: 0, jobId: null})
     }
 })
