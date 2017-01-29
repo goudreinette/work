@@ -14,11 +14,9 @@ $(() => {
     // Event handlers
     $play.click(start)
     $stop.click(stop)
-    $jobSelect.change(switchJob)
 
     // Show initial state
     update()
-
 
     function update (newData) {
         const {jobId, seconds, playing} = newData || $timer.data()
@@ -43,22 +41,14 @@ $(() => {
         $stop.toggle(playing)
     }
 
-    function switchJob () {
-        const jobId = $jobSelect.val()
-        $timer.attr('data-job-id', jobId)
-    }
-
     function start () {
         const jobId = $jobSelect.val()
         $.get(`/sessions/start/${jobId}`)
-        $timer.attr('data-playing', true)
         update({playing: true, seconds: 0, jobId})
     }
 
     function stop () {
         $.get(`/sessions/stop`)
-        $timer.attr('data-playing', false)
-        $timer.attr('data-seconds', 0)
         update({playing: false, seconds: 0, jobId: null})
     }
 })
