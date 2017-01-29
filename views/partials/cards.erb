@@ -1,6 +1,6 @@
 <div class="ui cards">
     <% @cards.each do |card| %>
-      <a class="card" href="/<%= card.class.to_s.pluralize.downcase %>/<%= card.id %>">
+      <a class="card" href="/<%= @prefix %>/<%= card.id %>">
         <div class="content">
           <h4 class="header">
             <%= @header.call card %>
@@ -11,7 +11,7 @@
         </div>
       </a>
     <% end %>
-    <a class="card new" href="/<%= @cards.first.class.to_s.pluralize.downcase %>/new">
+    <a class="card new" href="/<%= @prefix %>/new">
       <div class="content">
         <h4 class="header">
           New

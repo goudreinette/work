@@ -1,5 +1,6 @@
 namespace "/clients" do
   get do
+    @prefix = 'client'
     @clients = Client.all
     erb :clients
   end
