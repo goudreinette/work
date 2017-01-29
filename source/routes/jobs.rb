@@ -1,6 +1,6 @@
 namespace "/jobs" do
   get do
-    @prefix = 'job'
+    @prefix = 'jobs'
     @jobs = Job.all
     erb :jobs
   end
