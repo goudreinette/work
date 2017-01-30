@@ -11,7 +11,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def subtotal
-    job.cost.inject(:+)
+    jobs.map(&:cost).inject(:+)
   end
 
   def tax
@@ -23,9 +23,9 @@ class Invoice < ActiveRecord::Base
   end
 
   def facts
-    {'Client'   => client,
+    {'Client'   => client.name,
      'Date'     => formatted_date,
-     'Jobs'     => jobs.map(&:name),
+     'Jobs'     => jobs.map(&:name).join(', '),
      'Subtotal' => subtotal,
      'Tax 21%'  => tax,
      'Total'    => total}

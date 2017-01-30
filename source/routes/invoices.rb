@@ -34,9 +34,7 @@ namespace "/invoices" do
   end
 
   get "/:id" do
-    invoice = Invoice.find params[:id]
-    @header = invoice.no
-    @facts = invoice.facts
-    erb :detail
+    @invoice = Invoice.find params[:id]
+    erb :invoice_detail
   end
 end
