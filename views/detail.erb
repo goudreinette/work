@@ -12,7 +12,6 @@
       </div>
     </h3>
     <div class="ui divided very relaxed list">
-
       <% @facts.each do |header, description| %>
         <div class="item">
           <div class="content">
@@ -21,7 +20,8 @@
           </div>
         </div>
       <% end  %>
-
     </div>
+
+    <%= @extra %>
   </div>
 </div>

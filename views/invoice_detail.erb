@@ -1,8 +1,9 @@
 <%=
 @header = "Invoice #{@invoice.no}"
 @facts = @invoice.facts
+@columns = ['Job', 'Subtotal', 'Tax 21%', 'Total']
+@rows = []
+@extra = erb :"partials/table"
 
 erb :detail
 %>
-
-<table></table>

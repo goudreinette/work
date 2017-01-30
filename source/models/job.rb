@@ -18,6 +18,14 @@ class Job < ActiveRecord::Base
     end
   end
 
+  def tax
+    cost * 0.21
+  end
+
+  def cost_with_tax
+    cost + tax
+  end
+
   def cost_calculation
     case pricing_type
     when 'fixed'
