@@ -20,7 +20,7 @@ class Job < ActiveRecord::Base
   def cost_calculation
     case pricing_type
     when 'fixed'
-      "€#{format '%.2f', cost}"
+      "€#{format '%.2f', cost} / #{duration} = €#{format '%.2f', (pricing_value / duration_in_hours)}/hour"
     when 'hourly'
       "€#{format '%.2f', pricing_value} * #{duration} = €#{format '%.2f', cost}"
     end
