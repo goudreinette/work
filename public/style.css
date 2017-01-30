@@ -80,6 +80,8 @@ body {
 
 .menu .timer .job-select {
   background: none;
+  /* padding-right: 50px; */
+  width: 70%;
   border: none;
 }
 

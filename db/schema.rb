@@ -20,4 +20,14 @@ ActiveRecord::Schema.define do
     t.text       :description
     t.belongs_to :job
   end
+
+  create_table :invoices do |t|
+    t.string     :no, limit: 8
+    t.datetime   :date
+  end
+
+  create_table :invoices_jobs, id: false do |t|
+    t.belongs_to :invoice
+    t.belongs_to :job
+  end
 end
