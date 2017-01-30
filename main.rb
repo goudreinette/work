@@ -4,6 +4,7 @@ require "sinatra/activerecord"
 require "mysql2"
 require "timerizer"
 require "time_difference"
+require "juxt"
 
 
 local_db = {

@@ -2,7 +2,9 @@
 @header = "Invoice #{@invoice.no}"
 @facts = @invoice.facts
 @columns = ['Job', 'Subtotal', 'Tax 21%', 'Total']
-@rows = []
+@rows = @invoice.jobs.to_a.map_juxt(:name, :cost, :tax, :cost_with_tax)
+@footer = ['', @invoice.subtotal, @invoice.tax, @invoice.total]
+
 @extra = erb :"partials/table"
 
 erb :detail

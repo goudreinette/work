@@ -24,10 +24,6 @@ class Invoice < ActiveRecord::Base
 
   def facts
     {'Client'   => client.name,
-     'Date'     => formatted_date,
-     'Jobs'     => jobs.map(&:name).join(', '),
-     'Subtotal' => subtotal,
-     'Tax 21%'  => tax,
-     'Total'    => total}
+     'Date'     => formatted_date}
   end
 end

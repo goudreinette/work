@@ -115,6 +115,10 @@ main {
   overflow-y: auto;
 }
 
+main table {
+  margin-top: 20px !important;
+}
+
 /**
  * Detail
  */

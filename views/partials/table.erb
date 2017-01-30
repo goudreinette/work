@@ -16,4 +16,12 @@
       </tr>
     <% end %>
   </tbody>
+
+  <tfoot>
+    <tr>
+      <% @footer.each do |column| %>
+        <th><%= column %></th>
+      <% end %>
+    </tr>
+  </tfoot>
 </table>
