@@ -26,8 +26,8 @@ ActiveRecord::Schema.define do
     t.datetime   :date
   end
 
-  create_table :invoices_jobs, id: false do |t|
-    t.belongs_to :invoice
-    t.belongs_to :job
+  create_join_table :invoices, :jobs do |t|
+    t.index [:job_id, :invoice_id]
+    t.index [:invoice_id, :job_id]
   end
 end
