@@ -10,6 +10,18 @@ class Invoice < ActiveRecord::Base
     date.strftime('%a %e %B  %H:%M')
   end
 
+  def subtotal
+    job.cost.inject(:+)
+  end
+
+  def tax
+    subtotal * 0.21
+  end
+
+  def total
+    subtotal + tax
+  end
+
   def facts
     {'Client'   => client,
      'Date'     => formatted_date,

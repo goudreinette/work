@@ -12,4 +12,31 @@ namespace "/invoices" do
 
     erb :"partials/cards"
   end
+
+  namespace "/new" do
+    get do
+
+    end
+
+    post do
+
+    end
+  end
+
+  namespace "/edit/:id" do
+    get do
+
+    end
+
+    post do
+
+    end
+  end
+
+  get "/:id" do
+    invoice = Invoice.find params[:id]
+    @header = invoice.no
+    @facts = invoice.facts
+    erb :detail
+  end
 end
