@@ -3,8 +3,8 @@ namespace "/invoices" do
     @prefix = 'invoices'
     @cards = Invoice.all
 
-    @header = lambda {|invoice| invoice.no }
-    @meta = lambda {|invoice| invoice.facts }
+    @header = lambda(&:no)
+    @meta = lambda(&:facts)
 
     erb :"partials/cards"
   end

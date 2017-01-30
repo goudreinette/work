@@ -24,6 +24,7 @@ ActiveRecord::Schema.define do
   create_table :invoices do |t|
     t.string     :no, limit: 8
     t.datetime   :date
+    t.belongs_to :client
   end
 
   create_join_table :invoices, :jobs do |t|
