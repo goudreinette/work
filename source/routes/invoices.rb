@@ -4,7 +4,11 @@ namespace "/invoices" do
     @cards = Invoice.all
 
     @header = lambda(&:no)
-    @meta = lambda(&:facts)
+    @meta = lambda do |invoice|
+      "#{invoice.formatted_date},
+       #{invoice.jobs.count}
+       #{invoice.jobs.count > 1 ? 'jobs' : 'job'}"
+    end
 
     erb :"partials/cards"
   end
