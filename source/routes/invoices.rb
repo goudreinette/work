@@ -1,4 +1,10 @@
 namespace "/invoices" do
+  helpers do
+    def find_jobs_from_multiselect
+
+    end
+  end
+
   get do
     @prefix = 'invoices'
     @cards = Invoice.all
@@ -15,11 +21,13 @@ namespace "/invoices" do
 
   namespace "/new" do
     get do
-
+      @invoice = Invoice.new
+      erb :"invoices/edit"
     end
 
     post do
-
+      invoice = Invoice.create params[:invoice]
+      redirect "/invoices/#{invoice[:id]}"
     end
   end
 
@@ -30,7 +38,7 @@ namespace "/invoices" do
     end
 
     post do
-      params[:invoice][:jobs] = Job.find(params[:job_ids])
+
       Invoice.update params[:id], params[:invoice]
       redirect "/invoices/#{params[:id]}"
     end
