@@ -28,7 +28,7 @@
             <input name="job[pricing_value]" value="<%= @job.pricing_value %>" placeholder="Price">
           </div>
           <div class="field">
-            <select name="job[pricing_type]">
+            <select class="ui fluid dropdown" name="job[pricing_type]">
               <% ['Fixed', 'Hourly'].each do |pricing_type| %>
                 <option
                   value="<%= pricing_type.downcase  %>"

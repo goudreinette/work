@@ -25,16 +25,13 @@
           <label>
             Jobs
           </label>
-          <div class="ui fluid multiple search selection dropdown">
-            <input type="hidden" name="country">
-            <i class="dropdown icon"></i>
-            <div class="default text">Select Jobs...</div>
-            <div class="menu">
-              <% @jobs.each do |job| %>
-                <div class="item" data-value="<%= job.id %>"><%= job.name %></div>
-              <% end %>
-            </div>
-          </div>
+          <select multiple class="ui fluid dropdown" name="invoice[jobs]">
+            <% @jobs.each do |job| %>
+              <option data-value="<%= job.id %>" <%= 'selected' if @invoice.jobs.map(&:id).include?(job.id) %>>
+                <%= job.name %>
+              </option>
+            <% end %>
+          </select>
         </div>
     </form>
 </div>

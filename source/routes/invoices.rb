@@ -30,7 +30,8 @@ namespace "/invoices" do
     end
 
     post do
-
+      Invoice.update params[:id], params[:invoice]
+      redirect "/invoices/#{params[:id]}"
     end
   end
 
