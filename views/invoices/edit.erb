@@ -1,0 +1,40 @@
+<div class="ui container">
+    <form class="ui padded segment form" method="post">
+        <h3 class="ui header">
+          Generate Invoice
+          <button type="submit" class="ui tiny right floated button">
+            Save
+          </button>
+        </h3>
+
+
+        <div class="field">
+          <label>
+            Client
+          </label>
+          <select class="ui fluid dropdown" name="invoice[client_id]">
+            <% @clients.each do |client| %>
+              <option value="<%= client.id %>" <%= 'selected' if client.id == @invoice.client_id  %>>
+                <%= client.name %>
+              </option>
+            <% end %>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>
+            Jobs
+          </label>
+          <div class="ui fluid multiple search selection dropdown">
+            <input type="hidden" name="country">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select Jobs...</div>
+            <div class="menu">
+              <% @jobs.each do |job| %>
+                <div class="item" data-value="<%= job.id %>"><%= job.name %></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    </form>
+</div>

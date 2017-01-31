@@ -25,7 +25,8 @@ namespace "/invoices" do
 
   namespace "/edit/:id" do
     get do
-
+      @invoice = Invoice.find params[:id]
+      erb :"invoices/edit"
     end
 
     post do

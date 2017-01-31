@@ -1,6 +1,11 @@
 before do
   @path = request.path
+
+  # TODO: for user
   @jobs = Job.all
+  @clients = Client.all
+  @invoices = Invoice.all
+  @sessions = Session.all
   @session = Session.active
 end
 
