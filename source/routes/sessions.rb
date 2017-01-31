@@ -1,7 +1,7 @@
 namespace "/sessions" do
   get do
     @sessions = Session.all
-    erb :sessions
+    erb :"sessions/edit"
   end
 
   get "/start/:id" do
@@ -16,7 +16,7 @@ namespace "/sessions" do
   namespace "/edit/:id" do
     get do
       @session = Session.find params[:id]
-      erb :session_form
+      erb: :"sessions/edit"
     end
 
     post do
@@ -29,6 +29,6 @@ namespace "/sessions" do
     session = Session.find params[:id]
     @header = "#{session.job.name} #{session.formatted_date}"
     @facts = session.facts
-    erb :detail
+    erb :"partials/detail"
   end
 end

@@ -38,6 +38,6 @@ namespace "/invoices" do
     @header = "Invoice #{@invoice.no}"
     @facts = @invoice.facts
 
-    erb :invoice_detail
+    erb :"invoices/single"
   end
 end

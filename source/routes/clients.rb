@@ -2,13 +2,13 @@ namespace "/clients" do
   get do
     @prefix = 'clients'
     @clients = Client.all
-    erb :clients
+    erb :"clients/all"
   end
 
   namespace "/new" do
     get do
       @client = Client.new
-      erb :client_form
+      erb :"clients/edit"
     end
 
     post do
@@ -20,7 +20,7 @@ namespace "/clients" do
   namespace "/edit/:id" do
     get do
       @client = Client.find params[:id]
-      erb :client_form
+      erb :"clients/edit"
     end
 
     post do
@@ -33,7 +33,7 @@ namespace "/clients" do
     client = Client.find params[:id]
     @header = client.name
     @facts = client.facts
-    erb :detail
+    erb :"partials/detail"
   end
 
   get "/delete/:id" do

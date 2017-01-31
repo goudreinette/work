@@ -2,14 +2,14 @@ namespace "/jobs" do
   get do
     @prefix = 'jobs'
     @jobs = Job.all
-    erb :jobs
+    erb :"jobs/all"
   end
 
   namespace "/new" do
     get do
       @job = Job.new
       @clients = Client.all
-      erb :job_form
+      erb :"jobs/edit"
     end
 
     post do
@@ -22,7 +22,7 @@ namespace "/jobs" do
     get do
       @job = Job.find params[:id]
       @clients = Client.all
-      erb :job_form
+      erb :"jobs/edit"
     end
 
     post do
@@ -35,7 +35,7 @@ namespace "/jobs" do
     job = Job.find params[:id]
     @header = job.name
     @facts = job.facts
-    erb :detail
+    erb :"partials/detail"
   end
 
   get "/delete/:id" do
