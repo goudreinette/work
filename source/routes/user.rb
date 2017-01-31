@@ -1,5 +1,23 @@
+helpers do
+  def authenticate(credentials)
+    session[:username] = credentials[:username]
+    session[:password] = credentials[:password]
+  end
+
+  def authenticated?
+    User.exists?(username: session[:username],
+                 password: session[:password])
+  end
+
+  def ensure_authenticated
+    redirect '/login' unless authenticated?
+  end
+end
+
 before do
   @path = request.path
+
+  ensure_authenticated unless @path == '/login'
 
   # TODO: for user
   @jobs = Job.all
@@ -15,7 +33,7 @@ namespace "/login" do
   end
 
   post do
-    # Authenticate here
+    authenticate params[:user]
     redirect "/sessions"
   end
 end

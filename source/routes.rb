@@ -6,5 +6,5 @@ require_relative "routes/sessions.rb"
 require_relative "routes/invoices.rb"
 
 get "/" do
-  redirect "/login"
+  redirect "/sessions"
 end

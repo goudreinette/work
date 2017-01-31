@@ -3,15 +3,19 @@
 <div class="login">
   <h2 class="ui header">Log In</h2>
   <form class="ui form" method="post">
-    <% ['Email', 'Password'].each do |field| %>
       <div class="field">
         <input
-          name="user[<%= field.downcase %>]"
-          type="<%= field.downcase %>"
-          placeholder="<%= field %>"
+          name="user[username]"
+          placeholder="Username"
         >
       </div>
-    <% end %>
+      <div class="field">
+        <input
+          name="user[password]"
+          placeholder="Password"
+          type="password"
+        >
+      </div>
     <button class="ui right floated secondary button" type="submit">
       Login
     </button>
