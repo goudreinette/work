@@ -1,3 +1,4 @@
+require_relative "models/user.rb"
 require_relative "models/duration.rb"
 require_relative "models/client.rb"
 require_relative "models/job.rb"

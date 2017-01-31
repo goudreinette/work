@@ -4,6 +4,7 @@ ActiveRecord::Schema.define do
     t.string :address
     t.string :city
     t.string :postcode, limit: 6
+    t.belongs_to :user
   end
 
   create_table :jobs do |t|
@@ -11,6 +12,7 @@ ActiveRecord::Schema.define do
     t.column     :pricing_type, "ENUM('fixed', 'hourly')", default: 'fixed'
     t.float      :pricing_value
     t.belongs_to :client
+    t.belongs_to :user
   end
 
   create_table :sessions do |t|
@@ -19,11 +21,13 @@ ActiveRecord::Schema.define do
     t.datetime   :end_date
     t.text       :description
     t.belongs_to :job
+    t.belongs_to :user
   end
 
   create_table :invoices do |t|
     t.datetime   :date
     t.belongs_to :client
+    t.belongs_to :user
   end
 
   create_join_table :invoices, :jobs do |t|
@@ -32,9 +36,9 @@ ActiveRecord::Schema.define do
   end
 
   create_table :users do |t|
-    t.string :email
-    t.string :password
-    t.float  :default_hourly_rate
-    t.bool   :pomodoro?
+    t.string  :username
+    t.string  :password
+    t.float   :default_hourly_rate
+    t.boolean :pomodoro?
   end
 end
