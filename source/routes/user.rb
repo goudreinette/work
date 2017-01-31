@@ -4,9 +4,13 @@ helpers do
     session[:password] = credentials[:password]
   end
 
-  def authenticated?
-    User.exists?(username: session[:username],
+  def user
+    User.find_by(username: session[:username],
                  password: session[:password])
+  end
+
+  def authenticated?
+    not user.nil?
   end
 
   def ensure_authenticated
@@ -20,11 +24,11 @@ before do
   ensure_authenticated unless @path == '/login'
 
   # TODO: for user
-  @jobs = Job.all
-  @clients = Client.all
-  @invoices = Invoice.all
-  @sessions = Session.all
-  @session = Session.active
+  @jobs = user.jobs
+  @clients = user.clients
+  @invoices = user.invoices
+  @sessions = user.sessions
+  @session = user.active_session
 end
 
 namespace "/login" do

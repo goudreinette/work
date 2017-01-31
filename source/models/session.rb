@@ -4,8 +4,8 @@ class Session < ActiveRecord::Base
   default_scope { order start_date: :desc }
   belongs_to :job
 
-  def self.active
-    Session.where(end_date: nil).first
+  def self.active(user_id)
+    Session.where(end_date: nil, user_id: user_id).first
   end
 
   def self.start(job_id)
