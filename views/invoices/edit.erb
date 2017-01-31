@@ -27,7 +27,7 @@
           </label>
           <select multiple class="ui fluid dropdown" name="job_ids[]">
             <% @jobs.each do |job| %>
-              <option value="<%= job.id %>">
+              <option value="<%= job.id %>" <%= 'selected' if @invoice.job_ids.include?(job.id) %>>
                 <%= job.name %>
               </option>
             <% end %>
