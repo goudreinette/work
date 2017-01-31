@@ -21,6 +21,8 @@ end
 before do
   @path = request.path
 
+  $user = user # HACK
+
   guard!
 
   if authenticated?

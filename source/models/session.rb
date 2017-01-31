@@ -2,8 +2,8 @@ class Session < ActiveRecord::Base
   include Duration
   include BelongsToUser
 
-  default_scope { order start_date: :desc }
   belongs_to :job
+  default_scope { order start_date: :desc }
 
   def self.active(user_id)
     Session.where(end_date: nil, user_id: user_id).first

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define do
     t.datetime   :start_date
     t.datetime   :end_date
     t.text       :description
+    t.boolean    :paid?
     t.belongs_to :job
     t.belongs_to :user
   end

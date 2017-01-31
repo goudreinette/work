@@ -1,8 +1,8 @@
 class Job < ActiveRecord::Base
   include Duration
-  include BelongsToUser
 
   has_many :sessions
+  include BelongsToUser
   belongs_to :client
   has_and_belongs_to_many :jobs
 
@@ -10,12 +10,20 @@ class Job < ActiveRecord::Base
     sessions.map(&:duration_in_seconds).sum
   end
 
+  def paid_sessions
+    sessions.where(paid?: true)
+  end
+
+  def paid_duration_in_seconds
+    paid_sessions.map(&:duration_in_seconds).sum
+  end
+
   def cost
     case pricing_type
     when 'fixed'
       pricing_value
     when 'hourly'
-      pricing_value * (duration_in_seconds/3600)
+      pricing_value * (paid_duration_in_seconds/3600)
     end
   end
 

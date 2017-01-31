@@ -1,5 +1,5 @@
 class Invoice < ActiveRecord::Base
-  include BelongsToUser
+  belongs_to  :user
   belongs_to :client
   has_and_belongs_to_many :jobs
 
