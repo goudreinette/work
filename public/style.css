@@ -61,6 +61,7 @@ body {
 
 .menu .timer .toggle:hover {
   border: 1px solid #D4D4D5;
+    color: teal;
 }
 
 .menu .timer .toggle i {
@@ -68,11 +69,6 @@ body {
   top: -3px;
   left: 2px;
 }
-
-.menu .timer .toggle:hover i {
-  color: teal;
-}
-
 
 .menu .timer .text span {
   margin-left: 10px;
