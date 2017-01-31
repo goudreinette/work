@@ -1,5 +1,6 @@
 class Job < ActiveRecord::Base
   include Duration
+  include BelongsToUser
 
   has_many :sessions
   belongs_to :client

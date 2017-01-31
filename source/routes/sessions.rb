@@ -1,6 +1,5 @@
 namespace "/sessions" do
   get do
-    @sessions = Session.all
     erb :"sessions/all"
   end
 

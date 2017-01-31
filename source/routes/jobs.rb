@@ -1,14 +1,12 @@
 namespace "/jobs" do
   get do
     @prefix = 'jobs'
-    @jobs = Job.all
     erb :"jobs/all"
   end
 
   namespace "/new" do
     get do
       @job = Job.new
-      @clients = Client.all
       erb :"jobs/edit"
     end
 
@@ -21,7 +19,6 @@ namespace "/jobs" do
   namespace "/edit/:id" do
     get do
       @job = Job.find params[:id]
-      @clients = Client.all
       erb :"jobs/edit"
     end
 

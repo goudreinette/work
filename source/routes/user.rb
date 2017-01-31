@@ -13,22 +13,23 @@ helpers do
     not user.nil?
   end
 
-  def ensure_authenticated
-    redirect '/login' unless authenticated?
+  def guard!
+    redirect '/login' unless authenticated? or @path == '/login'
   end
 end
 
 before do
   @path = request.path
 
-  ensure_authenticated unless @path == '/login'
+  guard!
 
-  # TODO: for user
-  @jobs = user.jobs
-  @clients = user.clients
-  @invoices = user.invoices
-  @sessions = user.sessions
-  @session = user.active_session
+  if authenticated?
+    @jobs = user.jobs
+    @clients = user.clients
+    @invoices = user.invoices
+    @sessions = user.sessions
+    @session = user.active_session
+  end
 end
 
 namespace "/login" do

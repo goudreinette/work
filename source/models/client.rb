@@ -1,4 +1,5 @@
 class Client < ActiveRecord::Base
+  include BelongsToUser
   has_many :jobs
   has_many :invoices
 

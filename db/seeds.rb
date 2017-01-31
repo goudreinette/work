@@ -3,6 +3,19 @@ user = User.create(
   password: 'demo'
 )
 
+other_user = User.create(
+  username: 'me',
+  password: ''
+)
+
+hide_me = Client.create(
+  user_id: other_user.id,
+  name: 'Private Client',
+  address: 'PrivateStreet 12',
+  city: 'MyCity',
+  postcode: '5432VB'
+)
+
 client = Client.create(
   user_id: user.id,
   name: 'Test Client',

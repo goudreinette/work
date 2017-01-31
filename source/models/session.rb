@@ -1,5 +1,6 @@
 class Session < ActiveRecord::Base
   include Duration
+  include BelongsToUser
 
   default_scope { order start_date: :desc }
   belongs_to :job

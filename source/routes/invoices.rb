@@ -7,9 +7,8 @@ namespace "/invoices" do
 
   get do
     @prefix = 'invoices'
-    @cards = Invoice.all
-
     @header = lambda(&:no)
+    @cards = @sessions
     @meta = lambda do |invoice|
       "#{invoice.formatted_date},
        #{invoice.jobs.count}
