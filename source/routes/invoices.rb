@@ -30,6 +30,7 @@ namespace "/invoices" do
     end
 
     post do
+      params[:invoice][:jobs] = Job.find(params[:job_ids])
       Invoice.update params[:id], params[:invoice]
       redirect "/invoices/#{params[:id]}"
     end
