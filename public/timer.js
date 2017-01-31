@@ -4,6 +4,7 @@ $(() => {
     if (!$timer) return
 
     // Timer children
+    const $toggle       = $timer.find('.toggle')
     const $play         = $timer.find('.play')
     const $stop         = $timer.find('.stop')
     const $text         = $timer.find('.text')
@@ -12,8 +13,7 @@ $(() => {
     const $jobSelect    = $timer.find('.job-select')
 
     // Event handlers
-    $play.click(start)
-    $stop.click(stop)
+    $toggle.click(toggle)
 
     // Show initial state
     update()
@@ -39,6 +39,14 @@ $(() => {
         // Visibility: Elements for playing state
         $text.toggle(playing)
         $stop.toggle(playing)
+    }
+
+    function toggle () {
+        if ($play.is(':visible')) {
+            start()
+        } else if ($stop.is(':visible')) {
+            stop()
+        }
     }
 
     function start () {
