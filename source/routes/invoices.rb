@@ -45,6 +45,12 @@ namespace "/invoices" do
     end
   end
 
+  get "/delete/:id" do
+    Invoice.destroy params[:id]
+    redirect "/invoices"
+  end
+
+
   get "/:id" do
     @invoice = Invoice.find params[:id]
     @header = "Invoice #{@invoice.no}"
