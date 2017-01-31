@@ -12,9 +12,9 @@
     <% @jobs.each do |job| %>
       <tr>
         <td><%= job.name %></td>
-        <td>€<%= job.cost  %></td>
-        <td>€<%= job.tax %></td>
-        <td>€<%= job.cost_with_tax %></td>
+        <td>€<%= format '%.2f', job.cost  %></td>
+        <td>€<%= format '%.2f', job.tax %></td>
+        <td>€<%= format '%.2f', job.cost_with_tax %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,9 +22,9 @@
   <tfoot>
     <tr>
       <th></th>
-      <th>€<%= @invoice.subtotal %></th>
-      <th>€<%= @invoice.tax %></th>
-      <th>€<%= @invoice.total %></th>
+      <th>€<%= format '%.2f', @invoice.subtotal %></th>
+      <th>€<%= format '%.2f', @invoice.tax %></th>
+      <th>€<%= format '%.2f', @invoice.total %></th>
     </tr>
   </tfoot>
 </table>
