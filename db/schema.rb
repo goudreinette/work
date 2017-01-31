@@ -30,4 +30,11 @@ ActiveRecord::Schema.define do
     t.index [:job_id, :invoice_id]
     t.index [:invoice_id, :job_id]
   end
+
+  create_table :users do |t|
+    t.string :email
+    t.string :password
+    t.float  :default_hourly_rate
+    t.bool   :pomodoro?
+  end
 end
