@@ -1,0 +1,30 @@
+<table class="ui celled table job-table">
+  <thead>
+    <tr>
+      <th>Job</th>
+      <th>Subtotal</th>
+      <th>Tax 21%</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.name %></td>
+        <td>€<%= job.cost  %></td>
+        <td>€<%= job.tax %></td>
+        <td>€<%= job.cost_with_tax %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>€<%= @invoice.subtotal %></th>
+      <th>€<%= @invoice.tax %></th>
+      <th>€<%= @invoice.total %></th>
+    </tr>
+  </tfoot>
+</table>
