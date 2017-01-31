@@ -7,7 +7,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def formatted_date
-    date.strftime('%a %e %B  %H:%M')
+    date.strftime('%A %e %B')
   end
 
   def subtotal

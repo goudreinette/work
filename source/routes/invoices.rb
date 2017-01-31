@@ -1,7 +1,7 @@
 namespace "/invoices" do
   helpers do
-    def find_jobs_from_multiselect
-
+    def jobs_from_multiselect
+      params[:invoice][:jobs] = Job.find(params[:job_ids])
     end
   end
 
@@ -26,8 +26,9 @@ namespace "/invoices" do
     end
 
     post do
+      jobs_from_multiselect
       invoice = Invoice.create params[:invoice]
-      redirect "/invoices/#{invoice[:id]}"
+      redirect "/invoices/#{invoice.id}"
     end
   end
 
@@ -38,7 +39,7 @@ namespace "/invoices" do
     end
 
     post do
-
+      jobs_from_multiselect
       Invoice.update params[:id], params[:invoice]
       redirect "/invoices/#{params[:id]}"
     end
