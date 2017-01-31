@@ -7,8 +7,6 @@ module BelongsToUser
   end
 
   def associate_with_user
-    if defined? $user
-      user = $user # HACK
-    end
+    self.user_id = $USER.id # HACK
   end
 end

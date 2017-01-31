@@ -21,7 +21,7 @@ end
 before do
   @path = request.path
 
-  $user = user # HACK
+  $USER = user # HACK
 
   guard!
 
