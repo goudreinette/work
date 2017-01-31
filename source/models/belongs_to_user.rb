@@ -7,7 +7,8 @@ module BelongsToUser
   end
 
   def associate_with_user
-    p $user
-    user = $user # HACK
+    if defined? $user
+      user = $user # HACK
+    end
   end
 end
