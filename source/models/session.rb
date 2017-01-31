@@ -28,10 +28,4 @@ class Session < ActiveRecord::Base
      -
      #{end_date&.strftime('%H:%M') || 'now'}"
   end
-
-  def facts
-    {'Job'         => job.name,
-     'Description' => description || '-',
-     'Duration'    => duration}
-  end
 end

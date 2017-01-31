@@ -27,7 +27,10 @@ namespace "/sessions" do
   get "/:id" do
     session = Session.find params[:id]
     @header = "#{session.job.name} #{session.formatted_date}"
-    @facts = session.facts
+    @facts = {'Job'         => session.job.name,
+              'Description' => session.description || '-',
+              'Paid session?' => session.paid? ? 'Yes' : 'No',
+              'Duration'    => session.duration}
     erb :"partials/detail"
   end
 end

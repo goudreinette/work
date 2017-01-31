@@ -1,8 +1,8 @@
 <div
   class="ui timer right floated"
-  data-seconds="<%= @session&.duration_in_seconds&.floor %>"
-  data-job-id="<%= @session&.job_id %>"
-  data-playing="<%= not @session.nil? %>"
+  data-seconds="<%= @active_session&.duration_in_seconds&.floor %>"
+  data-job-id="<%= @active_session&.job_id %>"
+  data-playing="<%= not @active_session.nil? %>"
 >
   <button class="toggle">
     <i class="ui icon play"></i>

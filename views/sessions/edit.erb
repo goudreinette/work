@@ -8,14 +8,13 @@
         </h3>
 
          <div class="field">
-            <label>
-              Paid session?
-            </label>
-            <input
-              name="session[paid?]"
-              type="checkbox"
-            ><%= @session.paid? %></input>
+           <label>Paid session?</label>
+            <div class="ui slider checkbox">
+              <input type="checkbox" name="session[paid?]" <%= 'checked' if @session.paid? %>>
+              <label></label>
+            </div>
           </div>
+
 
          <div class="field">
             <label>

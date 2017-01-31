@@ -29,7 +29,7 @@ before do
     @clients = user.clients
     @invoices = user.invoices
     @sessions = user.sessions
-    @session = user.active_session
+    @active_session = user.active_session
   end
 end
 
