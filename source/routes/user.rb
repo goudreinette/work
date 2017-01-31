@@ -21,11 +21,10 @@ end
 before do
   @path = request.path
 
-  $USER = user # HACK
-
   guard!
 
   if authenticated?
+    $USER = user # HACK
     @jobs = user.jobs
     @clients = user.clients
     @invoices = user.invoices
