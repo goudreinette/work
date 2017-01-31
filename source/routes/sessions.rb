@@ -1,7 +1,7 @@
 namespace "/sessions" do
   get do
     @sessions = Session.all
-    erb :"sessions/edit"
+    erb :"sessions/all"
   end
 
   get "/start/:id" do
@@ -16,7 +16,7 @@ namespace "/sessions" do
   namespace "/edit/:id" do
     get do
       @session = Session.find params[:id]
-      erb: :"sessions/edit"
+      erb :"sessions/edit"
     end
 
     post do
