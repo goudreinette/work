@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def total_time
-    sessions.map(&:duration_in_seconds).reduce(:+)
+    sessions.map(&:duration_in_seconds).reduce(0, :+)
   end
 
   def time_today
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def total_earned
-    jobs.map(&:cost).reduce(:+)
+    jobs.map(&:cost).reduce(0, :+)
   end
 
   def average_hourly_rate

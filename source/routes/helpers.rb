@@ -1,6 +1,6 @@
 helpers do
   def money n
-    "€#{format '%.2f', n}"
+    "€#{format '%.2f', n || 0}"
   end
 
   def date date
@@ -8,7 +8,7 @@ helpers do
   end
 
   def duration n
-    seconds = if n.is_a? Numeric then n.to_i else n.duration_in_seconds.to_i end
+    seconds = if n.is_a? Numeric or n.nil? then n.to_i else n.duration_in_seconds.to_i end
     [seconds / 3600, seconds / 60 % 60, seconds % 60]
       .map { |t| t.to_s.rjust(2,'0') }.join(':')
   end
