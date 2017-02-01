@@ -8,7 +8,7 @@ helpers do
   end
 
   def authenticated?
-    session[:user_id]
+    User.exists? session[:user_id]
   end
 
   def login?
@@ -50,7 +50,7 @@ namespace "/login" do
   end
 
   post do
-    try_login User.find_by(username: params[:username], password: params[:password])
+    try_login User.find_by(params[:user])
   end
 end
 
@@ -59,5 +59,5 @@ post "/try" do
 end
 
 post "/register" do
-  try_login User.register params[:username], params[:password]
+  try_login User.register params[:user]
 end
