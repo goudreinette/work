@@ -31,6 +31,10 @@ class User < ActiveRecord::Base
   end
 
   def average_hourly_rate
-    total_earned / (total_time / 3600)
+    if total_earned > 0
+      total_earned / (total_time / 3600)
+    else
+      0
+    end
   end
 end
