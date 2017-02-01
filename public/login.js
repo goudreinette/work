@@ -1,19 +1,21 @@
 $(() => {
-    $('.try').click(() => {
+    $('#try').click(() => {
         $.post('/try')
     })
 
-    $('.register').click(() => {
-        $.post('/register', $('form').serialize()).done((response) => {
-            // success? redirect
-            // fail? animation
-        })
-    })
+    $('#register').click(() => tryLogin('/register'))
+    $('#login').click(() => tryLogin('/login'))
 
-    $('.login').click(() => {
-        $.post('/login', $('form').serialize()).done((response) => {
-            // success? redirect
-            // fail? animation
-        })
-    })
+    function tryLogin (url) {
+        $.post(url, getUser())
+            .done(() => location.assign('/sessions'))
+            .fail(() => $('.login').addClass('animated wobble'))
+    }
+
+    function getUser () {
+        return {
+            username: $('[name=username]').val(),
+            password: $('[name=password]').val()
+        }
+    }
 })

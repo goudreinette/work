@@ -4,10 +4,6 @@ class User < ActiveRecord::Base
   has_many :sessions
   has_many :invoices
 
-  def self.find(username, password)
-    User.find_by(username: username, password: password)
-  end
-
   def self.exists?(username, password)
     super username: username, password: password
   end

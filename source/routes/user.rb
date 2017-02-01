@@ -1,20 +1,31 @@
 helpers do
   def authenticate(user)
-    session[:username] = User.username
-    session[:password] = User.password
+    session[:user_id] = user.id
   end
 
   def user
-    User.find_by(username: session[:username],
-                 password: session[:password])
+    User.find(session[:user_id])
   end
 
   def authenticated?
-    User.exists? session[:username], session[:password]
+    session[:user_id]
+  end
+
+  def login?
+    ['/login', '/try', '/register'].include? request.path
   end
 
   def guard!
-    redirect '/login' unless authenticated? or @path == '/login'
+    redirect '/login' unless authenticated? or login?
+  end
+
+  def try_login(user)
+    if user
+      authenticate user
+      json user
+    else
+      status 400
+    end
   end
 end
 
@@ -39,19 +50,14 @@ namespace "/login" do
   end
 
   post do
-    authenticate User.find_by(params[:user])
-    redirect "/sessions"
+    try_login User.find_by(username: params[:username], password: params[:password])
   end
 end
 
-
 post "/try" do
-  authenticate User.create_demo
-  redirect "/sessions"
+  try_login User.create_demo
 end
 
 post "/register" do
-  User.create params[:user]
-  authenticate params[:user]
-  redirect "/sessions"
+  try_login User.register params[:username], params[:password]
 end

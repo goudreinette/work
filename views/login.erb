@@ -2,7 +2,7 @@
 
 <div class="login">
   <h2 class="ui header">Log In</h2>
-  <form class="ui login form" method="post">
+  <div class="ui form">
       <div class="field">
         <input
           name="user[username]"
@@ -16,14 +16,16 @@
           type="password"
         >
       </div>
-    <button class="ui basic button try">
-      Try
-    </button>
-    <button class="ui basic button register">
-      Register
-    </button>
-    <button class="ui right floated secondary button">
-      Login
-    </button>
-  </form>
+      <div class="actions">
+        <button id="try" class="ui basic button try">
+          Try
+        </button>
+        <button id="register" class="ui basic button register">
+          Register
+        </button>
+        <button id="login" class="ui right floated secondary button">
+          Login
+        </button>
+      </div>
+  </div>
 </div>
