@@ -1,10 +1,7 @@
 $(() => {
-    $('#try').click(() => {
-        $.post('/try')
-    })
-
+    $('#try').click(()      => tryLogin('/try'))
     $('#register').click(() => tryLogin('/register'))
-    $('#login').click(() => tryLogin('/login'))
+    $('#login').click(()    => tryLogin('/login'))
 
     function tryLogin (url) {
         $.post(url, $('form').serialize())

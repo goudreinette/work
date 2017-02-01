@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   def self.create_demo
     n = pluck(:id).max + 1
-    User.register("demo-#{n}", "")
+    User.register({username: "demo-#{n}", password: ""})
   end
 
   def active_session
