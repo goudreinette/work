@@ -29,10 +29,8 @@ namespace "/jobs" do
   end
 
   get "/:id" do
-    job = Job.find params[:id]
-    @header = job.name
-    @facts = job.facts
-    erb :"partials/detail"
+    @job = Job.find params[:id]
+    erb :"jobs/single"
   end
 
   get "/delete/:id" do

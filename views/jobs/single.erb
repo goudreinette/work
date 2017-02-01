@@ -1,0 +1,9 @@
+<%=
+@header = @job.name
+@facts =  {'Client'   => @job.client.name,
+           'Sessions' => @job.sessions.count,
+           'Duration' => duration(@job),
+           'Cost'     => job_cost(@job)}
+
+erb :"partials/detail"
+%>
