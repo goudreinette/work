@@ -3,7 +3,6 @@ require "sinatra/namespace"
 require "sinatra/activerecord"
 require "sinatra/json"
 require "mysql2"
-require "timerizer"
 require "time_difference"
 require "juxt"
 
