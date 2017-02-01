@@ -2,6 +2,21 @@
   <div class="ui padded segment">
     <h3 class="ui header">
       Profile
+      <a href="/logout" class="ui tiny right floated button">
+        Log out
+      </a>
     </h3>
+    <div class="ui divided very relaxed list">
+      <% {
+        'Username' => @user.username,
+      }.each do |header, description| %>
+        <div class="item">
+          <div class="content">
+            <div class="header"><%= header %></div>
+            <%= description %>
+          </div>
+        </div>
+      <% end  %>
+    </div>
   </div>
 </div>

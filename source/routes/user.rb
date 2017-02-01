@@ -3,6 +3,10 @@ helpers do
     session[:user_id] = user.id
   end
 
+  def logout
+    session[:user_id] = nil
+  end
+
   def user
     User.find(session[:user_id])
   end
@@ -35,12 +39,12 @@ before do
   guard!
 
   if authenticated?
-    $USER = user # HACK
-    @jobs = user.jobs
-    @clients = user.clients
-    @invoices = user.invoices
-    @sessions = user.sessions
-    @active_session = user.active_session
+    @user, $USER  = user # HACK
+    @jobs = @user.jobs
+    @clients = @user.clients
+    @invoices = @user.invoices
+    @sessions = @user.sessions
+    @active_session = @user.active_session
   end
 end
 
@@ -60,4 +64,9 @@ end
 
 post "/register" do
   try_login User.register params[:user]
+end
+
+get "/logout" do
+  logout
+  redirect "/login"
 end
