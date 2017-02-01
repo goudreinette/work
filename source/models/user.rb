@@ -17,4 +17,24 @@ class User < ActiveRecord::Base
   def active_session
     Session.active id
   end
+
+  def total_duration
+    sessions.map(&:duration_in_seconds).reduce(:+)
+  end
+
+  def total_earned
+
+  end
+
+  def average_hours_a_day
+
+  end
+
+  def hours_today
+
+  end
+
+  def average_hourly_rate
+    total_hours / total_earned
+  end
 end

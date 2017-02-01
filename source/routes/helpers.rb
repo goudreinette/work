@@ -7,8 +7,8 @@ helpers do
     date.strftime('%A %e %B')
   end
 
-  def duration record
-    seconds = record.duration_in_seconds.to_i
+  def duration n
+    seconds = if n.is_a? Numeric then n.to_i else n.duration_in_seconds.to_i end
     [seconds / 3600, seconds / 60 % 60, seconds % 60]
       .map { |t| t.to_s.rjust(2,'0') }.join(':')
   end
