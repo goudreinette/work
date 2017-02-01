@@ -18,16 +18,12 @@ class User < ActiveRecord::Base
     Session.active id
   end
 
-  def sessions_today
-    Session.today(id)
-  end
-
   def total_time
     sessions.map(&:duration_in_seconds).reduce(:+)
   end
 
   def time_today
-    sessions_today.map(&:duration_in_seconds).reduce(:+)
+    Session.today(id).map(&:duration_in_seconds).reduce(:+)
   end
 
   def total_earned
