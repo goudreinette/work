@@ -43,3 +43,15 @@ namespace "/login" do
     redirect "/sessions"
   end
 end
+
+
+post "/try" do
+  authenticate username: 'demo', password: 'demo'
+  redirect "/sessions"
+end
+
+post "/register" do
+  User.create params[:user]
+  authenticate params[:user]
+  redirect "/sessions"
+end
