@@ -1,7 +1,7 @@
 helpers do
-  def authenticate(credentials)
-    session[:username] = credentials[:username]
-    session[:password] = credentials[:password]
+  def authenticate(user)
+    session[:username] = User.username
+    session[:password] = User.password
   end
 
   def user
@@ -10,7 +10,7 @@ helpers do
   end
 
   def authenticated?
-    not user.nil?
+    User.exists? session[:username], session[:password]
   end
 
   def guard!
@@ -39,14 +39,14 @@ namespace "/login" do
   end
 
   post do
-    authenticate params[:user]
+    authenticate User.find_by(params[:user])
     redirect "/sessions"
   end
 end
 
 
 post "/try" do
-  authenticate username: 'demo', password: 'demo'
+  authenticate User.create_demo
   redirect "/sessions"
 end
 
