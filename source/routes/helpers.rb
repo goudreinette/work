@@ -25,4 +25,10 @@ helpers do
   def job_cost job
     "#{job.pricing_type.capitalize}: #{cost_calculation job}"
   end
+
+  def session_span session
+    "#{session.start_date.strftime '%a %e %B  %H:%M'}
+     -
+     #{session.end_date&.strftime('%H:%M') || 'now'}"
+  end
 end

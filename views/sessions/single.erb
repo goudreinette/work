@@ -1,0 +1,9 @@
+<%=
+@header = "#{@session.job.name} #{session_span @session}"
+@facts  = {'Job'  => @session.job.name,
+           'Description'   => @session.description || '-',
+           'Paid session?' => @session.paid? ? 'Yes' : 'No',
+           'Duration'      => @session.duration}
+
+erb :"partials/detail"
+%>
