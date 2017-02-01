@@ -39,7 +39,7 @@ before do
   guard!
 
   if authenticated?
-    @user, $USER  = user # HACK
+    @user = $USER = user # HACK
     @jobs = @user.jobs
     @clients = @user.clients
     @invoices = @user.invoices
