@@ -9,6 +9,12 @@ class Session < ActiveRecord::Base
     Session.where(end_date: nil, user_id: user_id).first
   end
 
+  def self.today(user_id)
+    Session.where(
+      user_id: user_id,
+      end_date: Time.now.beginning_of_day..Time.now.end_of_day)
+  end
+
   def self.start(job_id)
     Session.create(job_id: job_id, start_date: Time.new)
   end
