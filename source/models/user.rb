@@ -35,6 +35,6 @@ class User < ActiveRecord::Base
   end
 
   def average_hourly_rate
-    total_hours / total_earned
+    total_earned / (total_time / 3600)
   end
 end
