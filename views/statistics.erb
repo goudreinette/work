@@ -7,7 +7,6 @@
     <h4 class="ui dividing header">
       Time
     </h4>
-
     <ul class="ui very relaxed divided list">
       <li>Total: <%= duration @user.total_time %></li>
       <li>Today: <%= duration @user.time_today %></li>
@@ -16,5 +15,8 @@
     <h4 class="ui dividing header">
       Money
     </h4>
+    <ul class="ui very relaxed divided list">
+      <li>Total: <%= money @user.total_earned %></li>
+    </ul>
   </div>
 </div>

@@ -16,7 +16,7 @@ class Session < ActiveRecord::Base
   end
 
   def self.start(job_id)
-    Session.create(job_id: job_id, start_date: Time.new)
+    Session.create(job_id: job_id, start_date: Time.new, paid?: true)
   end
 
   def self.stop
