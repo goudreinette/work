@@ -1,8 +1,28 @@
-<%=
-@header = "Invoice #{@invoice.no}"
-@facts = @invoice.facts
-@jobs = @invoice.jobs
-@extra = erb :"invoices/job_table"
+<div class="ui container">
+  <div class="ui padded segment">
+    <h3 class="ui header">
+      Invoice <%= @invoice.no %>
+      <div class="detail-actions right floated">
+        <a href="delete/<%= params[:id] %>" class="ui tiny  basic red floated button">
+          Delete
+        </a>
+        <a href="edit/<%= params[:id] %>" class="ui tiny right floated button">
+          Edit
+        </a>
+      </div>
+    </h3>
 
-erb :"partials/detail"
-%>
+    <%=
+      @items = {
+        'Client'   => @invoice.client.name,
+        'Date'     => date(@invoice.date)
+      }
+      erb :"partials/divided_list"
+     %>
+
+    <%=
+      @jobs = @invoice.jobs
+      erb :"invoices/job_table"
+     %>
+  </div>
+</div>

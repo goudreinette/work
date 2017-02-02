@@ -7,10 +7,6 @@ class Invoice < ActiveRecord::Base
     "##{date.strftime('%Y%m%d')}"
   end
 
-  def formatted_date
-    date.strftime('%A %e %B')
-  end
-
   def subtotal
     jobs.map(&:cost).inject(:+)
   end
@@ -21,10 +17,5 @@ class Invoice < ActiveRecord::Base
 
   def total
     subtotal + tax
-  end
-
-  def facts
-    {'Client'   => client.name,
-     'Date'     => formatted_date}
   end
 end
