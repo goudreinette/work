@@ -44,6 +44,10 @@ class DefaultTemplate < Template
     'default'
   end
 
+  def self.fonts_path
+    "#{super}/#{path}"
+  end
+
   def self.text(pdf, text, options = {})
     x = -36 + options[:at][0]
     y = 805 - options[:at][1]
