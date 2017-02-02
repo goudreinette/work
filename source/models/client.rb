@@ -7,6 +7,10 @@ class Client < ActiveRecord::Base
     jobs.flat_map(&:sessions)
   end
 
+  def combined_address
+    "#{address}, \n#{postcode}, #{city}"
+  end
+
   def facts
     {'Address'  => address,
      'City'     => city,
