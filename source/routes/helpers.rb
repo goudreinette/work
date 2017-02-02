@@ -1,6 +1,6 @@
 helpers do
   def pluralize n, string
-    "#{n} #{n > 1 ? string.singularize : string.pluralize}"
+    "#{n} #{n > 1 ? string.pluralize : string.singularize}"
   end
 
   def money n
