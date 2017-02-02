@@ -4,6 +4,12 @@
       Invoice <%= @invoice.no %>
       <div class="detail-actions right floated">
         <%= erb :"partials/edit_delete_buttons" %>
+
+        <%=
+          @action = 'Download'
+          @extra_class = ''
+          erb :"partials/action_button"
+        %>
       </div>
     </h3>
 
