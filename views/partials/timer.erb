@@ -4,7 +4,7 @@
   data-job-id="<%= @active_session&.job_id %>"
   data-playing="<%= not @active_session.nil? %>"
 >
-  <button class="toggle">
+  <button class="toggle" <%= 'disabled' unless @jobs.present?  %>>
     <i class="ui icon play"></i>
     <i class="ui icon stop"></i>
   </button>
@@ -12,9 +12,13 @@
     <span class="job"></span>
     <span class="duration"></span>
   </div>
-  <select class="job-select">
-    <% @jobs.each do |job| %>
-      <option data-id="<%= job.id %>" value="<%= job.id %>"><%= job.name %></option>
-    <% end %>
-  </select>
+  <% if @jobs.present? %>
+    <select class="job-select">
+      <% @jobs.each do |job| %>
+        <option data-id="<%= job.id %>" value="<%= job.id %>"><%= job.name %></option>
+      <% end %>
+    </select>
+  <% else %>
+    - no jobs -
+  <% end %>
 </div>
