@@ -59,7 +59,7 @@ body {
   margin-right: 10px;
 }
 
-.menu .timer .toggle[disabled] {
+.menu .timer .toggle[disabled], .menu .timer .placeholder {
   color: grey;
 }
 
