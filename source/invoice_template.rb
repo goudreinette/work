@@ -23,7 +23,7 @@ class Template
 
 
   def self.root_path
-    "#{Dir.pwd}/public/pdf"
+    "#{Dir.pwd}/resources/pdf"
   end
 
   def self.generated_path
