@@ -3,12 +3,7 @@
     <h3 class="ui header">
       Invoice <%= @invoice.no %>
       <div class="detail-actions right floated">
-        <a href="delete/<%= params[:id] %>" class="ui tiny  basic red floated button">
-          Delete
-        </a>
-        <a href="edit/<%= params[:id] %>" class="ui tiny right floated button">
-          Edit
-        </a>
+        <%= erb :"partials/edit_delete_buttons" %>
       </div>
     </h3>
 
