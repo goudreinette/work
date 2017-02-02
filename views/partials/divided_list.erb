@@ -1,0 +1,10 @@
+<div class="ui divided very relaxed list">
+  <% @items.each do |header, description| %>
+    <div class="item">
+      <div class="content">
+        <div class="header"><%= header %></div>
+        <%= description %>
+      </div>
+    </div>
+  <% end  %>
+</div>
