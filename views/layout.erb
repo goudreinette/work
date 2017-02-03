@@ -2,7 +2,7 @@
 
 <div id="app">
   <%= erb :"partials/menu" %>
-  <main>
+  <main id="<%= request.path[1..-1] %>">
     <%= yield %>
   </main>
 </div>

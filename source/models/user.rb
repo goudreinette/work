@@ -43,10 +43,12 @@ class User < ActiveRecord::Base
       v.map { |e| e.merge(user_id: id) }
     end
 
+    p data
+
     Client.create(data['clients'])
     Job.create(data['jobs'])
     Invoice.create(data['invoices'])
-    Session.create(data['sessions'])
+    Session.create(data['sessions']) if data['sessions']
   end
 
   def export

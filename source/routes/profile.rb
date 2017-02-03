@@ -4,8 +4,10 @@ namespace "/profile" do
   end
 end
 
-get "/import" do
-  # todo
+post "/import" do
+  data = params[:file][:tempfile].read
+  user.import data
+  data
 end
 
 get "/export" do

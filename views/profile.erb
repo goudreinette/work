@@ -3,8 +3,15 @@
     <h3 class="ui header">
       Profile
       <div class="detail-actions">
-        <% {'upload' => 'Import',
-            'download' => 'Export',
+        <div style="display: inline">
+          <label for="import" class="ui tiny labeled icon button">
+            <i class="upload icon"></i>
+            Import
+          </label>
+          <input id="import" type="file" id="file" style="display:none">
+        </div>
+
+        <% {'download' => 'Export',
             'sign out' => 'Logout'}.each do |icon, label|
         %>
           <%= @icon = icon
