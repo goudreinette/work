@@ -2,9 +2,20 @@
   <div class="ui padded segment">
     <h3 class="ui header">
       Profile
-      <a href="/logout" class="ui tiny right floated button">
-        Log out
-      </a>
+      <div class="detail-actions">
+          <button class="ui labeled icon tiny button">
+            <i class="upload icon"></i>
+            Import
+          </button>
+          <button class="ui labeled icon tiny button">
+            <i class="download icon"></i>
+            Export
+          </button>
+          <a href="/logout" class="ui labeled icon tiny button">
+            <i class="sign out icon"></i>
+            Log out
+          </a>
+        </div>
     </h3>
 
     <%=
