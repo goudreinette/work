@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 
   def import(yaml)
     data = YAML.load(yaml).transform_values do |v|
-      v.map { |e| e.merge({'user_id' => id}) }
+      v.map { |e| e.merge(user_id: id) }
     end
 
     Client.create(data['clients'])
