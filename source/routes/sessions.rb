@@ -38,6 +38,11 @@ namespace "/sessions" do
     end
   end
 
+  get "/delete/:id" do
+    Session.destroy params[:id]
+    redirect "/sessions/"
+  end
+
   get "/:id" do
     @session = Session.find params[:id]
     erb :"sessions/single"
