@@ -43,6 +43,9 @@ class User < ActiveRecord::Base
   end
 
   def export
-
+    {sessions: sessions.map(&:attributes),
+     jobs: jobs.map(&:attributes),
+     clients: '',
+     invoices: ''}.to_yaml
   end
 end

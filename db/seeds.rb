@@ -1,5 +1,3 @@
-require 'yaml'
-
 data = YAML.load_file('db/seeds.yml')
 
 User.create(data['users'])
