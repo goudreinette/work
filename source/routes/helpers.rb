@@ -1,4 +1,8 @@
 helpers do
+  def pluralize n, string
+    "#{n} #{n == 1 ? string.singularize : string.pluralize}"
+  end
+
   def money n
     "€#{format '%.2f', n || 0}"
   end

@@ -5,6 +5,8 @@ require "sinatra/json"
 require "mysql2"
 require "time_difference"
 require "juxt"
+require "prawn"
+require "combine_pdf"
 
 
 local_db = {
@@ -23,3 +25,4 @@ enable :sessions
 
 require_relative "source/routes.rb"
 require_relative "source/models.rb"
+require_relative "source/invoice_template.rb"

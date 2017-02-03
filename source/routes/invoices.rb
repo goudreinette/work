@@ -10,9 +10,7 @@ namespace "/invoices" do
     @header = lambda(&:no)
     @cards = @invoices
     @meta = lambda do |invoice|
-      "#{invoice.formatted_date},
-       #{invoice.jobs.count}
-       #{invoice.jobs.count > 1 ? 'jobs' : 'job'}"
+      "#{date invoice.date}, #{pluralize invoice.jobs.count, 'jobs'}"
     end
 
     erb :"partials/cards"
@@ -49,12 +47,16 @@ namespace "/invoices" do
     redirect "/invoices"
   end
 
+  get "/download/:id" do
+    invoice = Invoice.find params[:id]
+    # HACK
+    generated_pdf_path = DefaultTemplate.render_to_pdf(invoice)
+    filename = File.basename(generated_pdf_path)
+    send_file generated_pdf_path, filename: filename
+  end
 
   get "/:id" do
     @invoice = Invoice.find params[:id]
-    @header = "Invoice #{@invoice.no}"
-    @facts = @invoice.facts
-
     erb :"invoices/single"
   end
 end

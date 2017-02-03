@@ -59,9 +59,13 @@ body {
   margin-right: 10px;
 }
 
-.menu .timer .toggle:hover {
+.menu .timer .toggle[disabled], .menu .timer .placeholder {
+  color: grey;
+}
+
+.menu .timer .toggle:not([disabled]):hover {
   border: 1px solid #D4D4D5;
-    color: teal;
+  color: teal;
 }
 
 .menu .timer .toggle i {

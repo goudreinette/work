@@ -7,8 +7,8 @@ class Invoice < ActiveRecord::Base
     "##{date.strftime('%Y%m%d')}"
   end
 
-  def formatted_date
-    date.strftime('%A %e %B')
+  def recipient
+    "#{client.name},\n#{client.combined_address}"
   end
 
   def subtotal
@@ -21,10 +21,5 @@ class Invoice < ActiveRecord::Base
 
   def total
     subtotal + tax
-  end
-
-  def facts
-    {'Client'   => client.name,
-     'Date'     => formatted_date}
   end
 end

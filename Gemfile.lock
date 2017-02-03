@@ -14,18 +14,25 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.4)
     backports (3.6.8)
+    combine_pdf (0.2.33)
+      ruby-rc4 (>= 0.1.5)
     concurrent-ruby (1.0.4)
     i18n (0.7.0)
     juxt (0.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
     mysql2 (0.4.5)
+    pdf-core (0.6.1)
+    prawn (2.1.0)
+      pdf-core (~> 0.6.1)
+      ttfunk (~> 1.4.0)
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (12.0.0)
+    ruby-rc4 (0.1.5)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -44,7 +51,7 @@ GEM
     tilt (2.0.5)
     time_difference (0.5.0)
       activesupport
-    timerizer (0.1.4)
+    ttfunk (1.4.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
 
@@ -52,17 +59,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  combine_pdf
   juxt
   mysql2
+  prawn
   rake
   sinatra
   sinatra-activerecord
   sinatra-contrib
   time_difference
-  timerizer
 
 RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.13.7
+   1.14.3

@@ -8,7 +8,7 @@ $(() => {
             .done(() => location.assign('/sessions'))
             .fail(() => {
                 $('.login').addClass('animated wobble')
-                setTimeout(() => $('.login').removeClass('animated wobble'), 10)
+                setTimeout(() => $('.login').removeClass('animated wobble'), 1000)
             })
     }
 })
