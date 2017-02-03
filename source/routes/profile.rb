@@ -5,9 +5,10 @@ namespace "/profile" do
 end
 
 get "/import" do
-
+  # todo
 end
 
 get "/export" do
-
+  attachment "export.yaml"
+  user.export
 end
