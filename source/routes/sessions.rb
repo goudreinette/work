@@ -34,7 +34,7 @@ namespace "/sessions" do
 
     post do
       session = Session.create params[:session]
-      redirect "/sesisons/#{session.id}"
+      redirect "/sessions/#{session.id}"
     end
   end
 

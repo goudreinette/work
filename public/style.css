@@ -163,11 +163,16 @@ main table {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: lightgrey;
-  border: 1px dashed lightgrey !important;
+  color: grey;
+  border: grey;
+    width: 40px;
+  height: 40px;
+  top: 10px;
+  right: 10px;
+    position: absolute;
 }
 
-.feed .event:hover {
+.feed .event:hover, .feed .new-session:hover {
   background-color: rgba(0, 0, 0, 0.03) !important;
 }
 

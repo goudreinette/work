@@ -1,6 +1,17 @@
 <div class="ui container">
     <form class="ui padded segment form" method="post">
-        <%= @class = Session; erb :"partials/form_header" %>
+        <%= @class = Session; @new = @session.new_record?; erb :"partials/form_header" %>
+
+         <div class="field">
+           <label>Job</label>
+            <select class="ui fluid dropdown" name="session[job_id]">
+              <% @jobs.each do |job| %>
+                <option value="<%= job.id %>" <%= 'selected' if job.id == @session.job_id  %>>
+                  <%= job.name %>
+                </option>
+              <% end %>
+            </select>
+          </div>
 
          <div class="field">
            <label>Paid session?</label>
