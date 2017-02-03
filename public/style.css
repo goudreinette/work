@@ -146,20 +146,35 @@ main table {
 /**
  * Feed
  */
+#sessions {
+  position: relative;
+}
+
 .ui.container.feed-container  {
   max-width: 700px !important;
 }
-
 
 .feed .event {
   margin-bottom: 50px !important;
   padding: 25px !important;
 }
 
+.feed .new-session {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: lightgrey;
+  border: 1px dashed lightgrey !important;
+}
+
 .feed .event:hover {
   background-color: rgba(0, 0, 0, 0.03) !important;
 }
 
+
+.feed .new-session:hover {
+  color: grey;
+}
 
 .feed .event .meta > * {
   margin-left: 0 !important;

@@ -26,6 +26,18 @@ namespace "/sessions" do
     end
   end
 
+  namespace "/new" do
+    get do
+      @session = Session.new
+      erb :"sessions/edit"
+    end
+
+    post do
+      session = Session.create params[:session]
+      redirect "/sesisons/#{session.id}"
+    end
+  end
+
   get "/:id" do
     @session = Session.find params[:id]
     erb :"sessions/single"

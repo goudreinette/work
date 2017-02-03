@@ -1,11 +1,6 @@
 <div class="ui container">
     <form class="ui padded segment form" method="post">
-        <h3 class="ui header">
-          Edit Description
-          <button type="submit" class="ui tiny right floated button">
-            Save
-          </button>
-        </h3>
+        <%= @class = Session; erb :"partials/form_header" %>
 
          <div class="field">
            <label>Paid session?</label>
@@ -14,6 +9,20 @@
               <label></label>
             </div>
           </div>
+
+          <div class="field">
+            <label>
+              Date
+            </label>
+          <div class="two fields">
+            <div class="field">
+              <input data-timepicker="true" type="date" name="session[start_date]" value="<%= html_date(@session.start_date || Time.now) %>">
+            </div>
+            <div class="field">
+              <input data-timepicker="true" type="date" name="session[end_date]" value="<%= html_date(@session.end_date || Time.now) %>">
+            </div>
+          </div>
+        </div>
 
 
          <div class="field">

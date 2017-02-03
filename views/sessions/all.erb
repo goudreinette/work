@@ -1,5 +1,9 @@
 <div class="ui container feed-container">
   <div class="ui large feed">
+    <a href="/sessions/new" class="event new-session">
+      <i class="ui plus icon"></i>
+    </a>
+
     <% @sessions.each do |session| %>
       <a class="event" href="/sessions/<%= session.id %>">
         <div class="content">
