@@ -43,8 +43,6 @@ class User < ActiveRecord::Base
       v.map { |e| e.merge('user_id' => id) }
     end
 
-    p data
-
     Client.create(data['clients'])
     Job.create(data['jobs'])
     Invoice.create(data['invoices'])
@@ -53,7 +51,7 @@ class User < ActiveRecord::Base
 
   def export
     [:sessions, :jobs, :clients, :invoices].map do |k|
-      [k, send(k).map { |r| r.attributes.except('id', 'user_id') } ]
+      [k, send(k).map { |r| r.attributes.except('user_id') } ]
     end.to_h.to_yaml
   end
 end

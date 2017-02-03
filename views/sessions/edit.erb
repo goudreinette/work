@@ -16,10 +16,10 @@
             </label>
           <div class="two fields">
             <div class="field">
-              <input data-timepicker="true" type="date" name="session[start_date]" value="<%= html_date(@session.start_date || Time.now) %>">
+              <input class="air" data-timepicker="true" name="session[start_date]" value="<%= html_datetime(@session.start_date || Time.now) %>">
             </div>
             <div class="field">
-              <input data-timepicker="true" type="date" name="session[end_date]" value="<%= html_date(@session.end_date || Time.now) %>">
+              <input class="air" data-timepicker="true" name="session[end_date]" value="<%= html_datetime(@session.end_date || Time.now) %>">
             </div>
           </div>
         </div>

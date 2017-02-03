@@ -15,6 +15,10 @@ helpers do
     date.strftime('%Y-%m-%d')
   end
 
+  def html_datetime date
+    date.strftime('%Y-%m-%d %H:%M')
+  end
+
   def duration n
     seconds = if n.is_a? Numeric or n.nil? then n.to_i else n.duration_in_seconds.to_i end
     [seconds / 3600, seconds / 60 % 60, seconds % 60]

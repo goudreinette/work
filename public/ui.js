@@ -1,7 +1,8 @@
 $(() => {
     $('.ui.dropdown').dropdown()
-    $('input[type=date], input[type=datetime-local]').datepicker({
+    $('input[type=date], .air').datepicker({
         language: 'en',
-        dateFormat: 'yyyy-mm-dd'
+        dateFormat: 'yyyy-mm-dd',
+        timeFormat: 'hh:ii'
     })
 })
