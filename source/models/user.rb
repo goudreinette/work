@@ -39,6 +39,11 @@ class User < ActiveRecord::Base
   end
 
   def import(yaml)
+    clients.each &:destroy
+    jobs.each &:destroy
+    invoices.each &:destroy
+    sessions.each &:destroy
+
     data = YAML.load(yaml).transform_values do |v|
       v.map { |e| e.merge('user_id' => id) }
     end
@@ -50,7 +55,7 @@ class User < ActiveRecord::Base
   end
 
   def export
-    [:sessions, :jobs, :clients, :invoices].map do |k|
+    ['sessions', 'jobs', 'clients', 'invoices'].map do |k|
       [k, send(k).map { |r| r.attributes.except('user_id') } ]
     end.to_h.to_yaml
   end
