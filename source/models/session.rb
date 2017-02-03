@@ -4,6 +4,7 @@ class Session < ActiveRecord::Base
 
   belongs_to :job
   default_scope { order start_date: :desc }
+  before_save :empty_means_nil
 
   def self.active(user_id)
     Session.where(end_date: nil, user_id: user_id).first
@@ -21,6 +22,10 @@ class Session < ActiveRecord::Base
 
   def self.stop
     Session.where(end_date: nil).update_all(end_date: Time.new)
+  end
+
+  def empty_means_nil
+    self.description = nil if self.description == ''
   end
 
   def duration_in_seconds

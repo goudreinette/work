@@ -19,7 +19,6 @@ namespace "/sessions" do
     end
 
     post do
-      params[:session][:description] = nil if params[:session][:description] == ''
       params[:session][:paid?] = false if params[:session][:paid?] == nil
       Session.update params[:id], params[:session]
       redirect "/sessions/#{params[:id]}"
@@ -40,7 +39,7 @@ namespace "/sessions" do
 
   get "/delete/:id" do
     Session.destroy params[:id]
-    redirect "/sessions/"
+    redirect "/sessions"
   end
 
   get "/:id" do
