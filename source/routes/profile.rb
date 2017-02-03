@@ -2,9 +2,12 @@ namespace "/profile" do
   get do
     erb :profile
   end
+end
 
-  post do
+get "/import" do
 
-    redirect "/profile"
-  end
+end
+
+get "/export" do
+
 end

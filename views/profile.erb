@@ -3,19 +3,16 @@
     <h3 class="ui header">
       Profile
       <div class="detail-actions">
-          <button class="ui labeled icon tiny button">
-            <i class="upload icon"></i>
-            Import
-          </button>
-          <button class="ui labeled icon tiny button">
-            <i class="download icon"></i>
-            Export
-          </button>
-          <a href="/logout" class="ui labeled icon tiny button">
-            <i class="sign out icon"></i>
-            Log out
-          </a>
-        </div>
+        <% {'upload' => 'Import',
+            'download' => 'Export',
+            'sign out' => 'Logout'}.each do |icon, label|
+        %>
+          <%= @icon = icon
+              @action = label
+              erb :"partials/icon_button"
+          %>
+        <% end %>
+      </div>
     </h3>
 
     <%=
