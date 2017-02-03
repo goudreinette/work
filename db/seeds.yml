@@ -19,4 +19,3 @@ jobs:
 invoices:
   - user_id: 1
     client_id: 1
-    job_ids: [1]
