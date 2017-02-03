@@ -4,3 +4,5 @@ User.create(data['users'])
 Client.create(data['clients'])
 Job.create(data['jobs'])
 Invoice.create(data['invoices'])
+
+p data
