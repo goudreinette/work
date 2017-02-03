@@ -39,16 +39,14 @@ class User < ActiveRecord::Base
   end
 
   def import(yaml)
-    data = YAML.load(yaml).map do |k,v|
+    data = YAML.load(yaml).transform_values do |v|
       v.map { |e| e.merge({'user_id' => id}) }
     end
 
-    p data
-
-    # Client.create(data['clients'])
-    # Job.create(data['jobs'])
-    # Invoice.create(data['invoices'])
-    # Session.create(data['sessions'])
+    Client.create(data['clients'])
+    Job.create(data['jobs'])
+    Invoice.create(data['invoices'])
+    Session.create(data['sessions'])
   end
 
   def export
