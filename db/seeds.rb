@@ -1,40 +1,8 @@
-user = User.create(
-  username: 'demo',
-  password: 'demo'
-)
+require 'yaml'
 
-other_user = User.create(
-  username: 'me',
-  password: ''
-)
+data = YAML.load_file('db/seeds.yml')
 
-hide_me = Client.create(
-  user_id: other_user.id,
-  name: 'Private Client',
-  address: 'PrivateStreet 12',
-  city: 'MyCity',
-  postcode: '5432VB'
-)
-
-client = Client.create(
-  user_id: user.id,
-  name: 'Test Client',
-  address: 'SomeStreet 12',
-  city: 'New York',
-  postcode: '1234AA'
-)
-
-job = Job.create(
-  user_id: user.id,
-  client: client,
-  name: 'Test Job',
-  pricing_type: 'fixed',
-  pricing_value: 1000
-)
-
-Invoice.create(
-  user_id: user.id,
-  client: client,
-  jobs: [job],
-  date: Time.now
-)
+User.create(data['users'])
+Client.create(data['clients'])
+Job.create(data['jobs'])
+Invoice.create(data['invoices'])

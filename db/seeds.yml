@@ -1,0 +1,23 @@
+users:
+  - username: 'demo'
+    password: 'demo'
+
+clients:
+  - user_id: 1
+    name: 'Test Client'
+    address: 'SomeStreet 12'
+    city: 'New York'
+    postcode: '1234AA'
+
+jobs:
+  - user_id: 1
+    client_id: 1
+    name: 'Test Job'
+    pricing_type: 'fixed'
+    pricing_value: 1000
+
+invoices:
+  - user_id: 1
+    client_id: 1
+    job_ids: [1]
+    date: Time.now

@@ -37,4 +37,12 @@ class User < ActiveRecord::Base
       0
     end
   end
+
+  def import
+
+  end
+
+  def export
+
+  end
 end
