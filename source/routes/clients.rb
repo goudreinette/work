@@ -29,10 +29,8 @@ namespace "/clients" do
   end
 
   get "/:id" do
-    client = Client.find params[:id]
-    @header = client.name
-    @facts = client.facts
-    erb :"partials/detail"
+    @client = Client.find params[:id]
+    erb :"clients/single"
   end
 
   get "/delete/:id" do
