@@ -79,8 +79,8 @@ class DefaultTemplate < Template
 
     text pdf, invoice.recipient,                  	  at: [85, 121], leading: 4
     text pdf, invoice.no,                  					  at: [168, 247], size: 12
-    text pdf, invoice.date.strftime("%d-%m-%Y"),                					  at: [85.5, 292]
-    # text pdf, invoice.reference,           					  at: [276, 292]
+    text pdf, invoice.date.strftime("%d-%m-%Y"),      at: [85.5, 292]
+    text pdf, invoice.client.name,           					at: [276, 292]
     text pdf, invoice.client.name,              					  at: [414, 292]
     text pdf, format_money(invoice.subtotal),         at: [90, 550]
     text pdf, format_money(invoice.tax),              at: [159, 550]
