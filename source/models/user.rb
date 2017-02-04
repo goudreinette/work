@@ -39,19 +39,31 @@ class User < ActiveRecord::Base
   end
 
   def import(yaml)
-    clients.each &:destroy
-    jobs.each &:destroy
-    invoices.each &:destroy
-    sessions.each &:destroy
+    data = YAML.load yaml
+    associations = {
+      'clients'  => Client,
+      'jobs'     => Job,
+      'sessions' => Session,
+      'invoices' => Invoice
+    }
 
-    data = YAML.load(yaml).transform_values do |v|
-      v.map { |e| e.merge('user_id' => id) }
+    associations.each do |key, model|
+      id_offset = model.maximum(:id)
+      records = data[key]
+
     end
+  end
 
-    Client.create(data['clients'])
-    Job.create(data['jobs'])
-    Invoice.create(data['invoices'])
-    Session.create(data['sessions'])
+  def offset_ids(offset, records)
+    records.map do |r|
+      r.map do |k, v|
+        if ['client_id', 'id', 'job_id', 'invoice_id'].include? k
+          {k => v + offset}
+        else
+          {k => v}
+        end
+      end.reduce(&:merge)
+    end
   end
 
   def export
