@@ -12,10 +12,6 @@ class Invoice < ActiveRecord::Base
     "##{date.strftime('%Y%m%d')}"
   end
 
-  def recipient
-    "#{client.name},\n#{client.combined_address}"
-  end
-
   def subtotal
     jobs.map(&:cost).inject(:+)
   end

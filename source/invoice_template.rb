@@ -60,6 +60,14 @@ class DefaultTemplate < Template
     "€ %.2f" % number
   end
 
+  def self.combined_address(client)
+    ["\n#{client.address}", "\n#{client.postcode}", client.city].reject(&:blank?).join ', '
+  end
+
+  def self.recipient(client)
+    "#{client.name}, #{combined_address client}"
+  end
+
   def self.render(invoice, pdf)
     pdf.font_size 9
     pdf.font_families.update 'SourceSans' => {
@@ -77,11 +85,11 @@ class DefaultTemplate < Template
       text pdf, format_money(job.cost), at: [450, 360 + index * 56]
     end
 
-    text pdf, invoice.recipient,                  	  at: [85, 121], leading: 4
+    text pdf, recipient(invoice.client),              at: [85, 121], leading: 4
     text pdf, invoice.no,                  					  at: [168, 247], size: 12
     text pdf, invoice.date.strftime("%d-%m-%Y"),      at: [85.5, 292]
     text pdf, invoice.client.name,           					at: [276, 292]
-    text pdf, invoice.client.name,              					  at: [414, 292]
+    text pdf, invoice.client.name,              			at: [414, 292]
     text pdf, format_money(invoice.subtotal),         at: [90, 550]
     text pdf, format_money(invoice.tax),              at: [159, 550]
     text pdf, format_money(invoice.total),            at: [385, 538], size: 18
