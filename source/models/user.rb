@@ -38,34 +38,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def import(yaml)
-    data = YAML.load yaml
-    associations = {
-      'clients'  => Client,
-      'jobs'     => Job,
-      'sessions' => Session,
-      'invoices' => Invoice
-    }
-
-    associations.each do |key, model|
-      id_offset = model.maximum(:id)
-      records = data[key]
-
-    end
-  end
-
-  def offset_ids(offset, records)
-    records.map do |r|
-      r.map do |k, v|
-        if ['client_id', 'id', 'job_id', 'invoice_id'].include? k
-          {k => v + offset}
-        else
-          {k => v}
-        end
-      end.reduce(&:merge)
-    end
-  end
-
   def export
     ['sessions', 'jobs', 'clients', 'invoices'].map do |k|
       [k, send(k).map { |r| r.attributes.except('user_id') } ]
