@@ -1,7 +1,0 @@
-require_relative "models/belongs_to_user.rb"
-require_relative "models/user.rb"
-require_relative "models/duration.rb"
-require_relative "models/client.rb"
-require_relative "models/job.rb"
-require_relative "models/session.rb"
-require_relative "models/invoice.rb"

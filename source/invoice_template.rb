@@ -1,6 +1,3 @@
-require "prawn"
-require "combine_pdf"
-
 class Template
   def self.render_to_pdf(invoice)
     file = "#{generated_path}/Invoice #{invoice.no} for #{invoice.client.name}.pdf"
