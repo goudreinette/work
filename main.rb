@@ -25,9 +25,6 @@ database.default_timezone = :local
 enable :sessions
 
 require_relative "source/resource.rb"
-
-register Resource
-
-require_relative "source/routes.rb"
 require_relative "source/models.rb"
+require_relative "source/routes.rb"
 require_relative "source/invoice_template.rb"

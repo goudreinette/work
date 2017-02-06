@@ -49,3 +49,6 @@ module Resource
     end
   end
 end
+
+
+register Resource
