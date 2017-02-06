@@ -12,11 +12,12 @@ module Resource
 
       namespace "/edit/:id" do
         get do
-          instance_variable_set "@#{plural}".to_sym, model.find(params[:id])
+          instance_variable_set "@#{singular}".to_sym, model.find(params[:id])
           erb "#{plural}/edit".to_sym
         end
 
         post do
+          model.update params[:id], params[singular.to_sym]
           redirect "/#{plural}/#{params[:id]}"
         end
       end
