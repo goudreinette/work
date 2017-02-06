@@ -1,0 +1,9 @@
+<%=
+@header = lambda(&:no)
+@cards = @invoices
+@meta = lambda do |invoice|
+  "#{date invoice.date}, #{pluralize invoice.jobs.count, 'jobs'}"
+end
+
+erb :"partials/cards"
+%>
