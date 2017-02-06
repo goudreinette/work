@@ -8,6 +8,7 @@ require "time_difference"
 require "juxt"
 require "prawn"
 require "combine_pdf"
+require "require_all"
 
 
 local_db = {
@@ -24,7 +25,4 @@ database.default_timezone = :local
 
 enable :sessions
 
-require_relative "source/resource.rb"
-require_relative "source/models.rb"
-require_relative "source/routes.rb"
-require_relative "source/invoice_template.rb"
+require_all "source"
