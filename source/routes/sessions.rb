@@ -1,6 +1,5 @@
 resource Session do
   get "/start/:id" do
-    Session.stop
     Session.start params[:id]
   end
 
