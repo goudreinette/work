@@ -2,6 +2,7 @@ $(() => {
     $('#try').click(()      => tryLogin('/try'))
     $('#register').click(() => tryLogin('/register'))
     $('#login').click(()    => tryLogin('/login'))
+    $(document).keydown((e) => e.which == 13 ? tryLogin('/login') : null)
 
     function tryLogin (url) {
         $.post(url, $('form').serialize())

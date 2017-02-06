@@ -10,12 +10,4 @@ class Client < ActiveRecord::Base
   def combined_address
     "#{address}, \n#{postcode}, #{city}"
   end
-
-  def facts
-    {'Address'  => address,
-     'City'     => city,
-     'Postcode' => postcode,
-     'Jobs'     => jobs.count,
-     'Sessions' => sessions.count}
-  end
 end
