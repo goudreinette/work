@@ -11,3 +11,4 @@ Het is geschreven in Ruby, en maakt gebruik van Sinatra en ActiveRecord.
 * Genereren van PDF facturen
 * Export als yaml
 * Globale statistieken
+* Onbetaalde werktijd los bijhouden
