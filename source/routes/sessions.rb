@@ -1,8 +1,4 @@
-namespace "/sessions" do
-  get do
-    erb :"sessions/all"
-  end
-
+resource Session do
   get "/start/:id" do
     Session.stop
     Session.start params[:id]
@@ -12,38 +8,9 @@ namespace "/sessions" do
     Session.stop
   end
 
-  namespace "/edit/:id" do
-    get do
-      @session = Session.find params[:id]
-      erb :"sessions/edit"
-    end
-
-    post do
-      params[:session][:paid?] = false if params[:session][:paid?] == nil
-      Session.update params[:id], params[:session]
-      redirect "/sessions/#{params[:id]}"
-    end
-  end
-
-  namespace "/new" do
-    get do
-      @session = Session.new
-      erb :"sessions/edit"
-    end
-
-    post do
-      session = Session.create params[:session]
-      redirect "/sessions/#{session.id}"
-    end
-  end
-
-  get "/delete/:id" do
-    Session.destroy params[:id]
-    redirect "/sessions"
-  end
-
-  get "/:id" do
-    @session = Session.find params[:id]
-    erb :"sessions/single"
+  post "/edit/:id" do
+    params[:session][:paid?] = false if params[:session][:paid?] == nil
+    Session.update params[:id], params[:session]
+    redirect "/sessions/#{params[:id]}"
   end
 end

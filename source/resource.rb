@@ -1,10 +1,13 @@
 module Resource
-  def resource model
+  def resource model, &block
     singular = model.name.downcase
     plural   = singular.pluralize
     prefix   = "/#{plural}"
 
     namespace prefix do
+      # Allow overriding
+      class_eval(&block) if block_given?
+
       get do
         instance_variable_set "@prefix".to_sym, plural
         erb "#{plural}/all".to_sym
@@ -43,9 +46,6 @@ module Resource
         instance_variable_set "@#{singular}".to_sym, model.find(params[:id])
         erb "#{plural}/single".to_sym
       end
-
-      # Allow extra routes
-      yield if block_given?
     end
   end
 end
