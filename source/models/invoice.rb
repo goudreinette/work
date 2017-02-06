@@ -13,7 +13,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def subtotal
-    jobs.map(&:cost).inject(:+)
+    jobs.map(&:cost).inject(0, :+)
   end
 
   def tax
