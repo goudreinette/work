@@ -1,4 +1,4 @@
-<table class="ui celled table job-table">
+<table class="ui celled table project-table">
   <thead>
     <tr>
       <th>Job</th>
@@ -9,12 +9,12 @@
   </thead>
 
   <tbody>
-    <% @jobs.each do |job| %>
+    <% @projects.each do |project| %>
       <tr>
-        <td><%= job.name %></td>
-        <td><%= money job.cost  %></td>
-        <td><%= money job.tax %></td>
-        <td><%= money job.cost_with_tax %></td>
+        <td><%= project.name %></td>
+        <td><%= money project.cost  %></td>
+        <td><%= money project.tax %></td>
+        <td><%= money project.cost_with_tax %></td>
       </tr>
     <% end %>
   </tbody>

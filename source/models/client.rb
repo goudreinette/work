@@ -1,10 +1,10 @@
 class Client < ActiveRecord::Base
   include BelongsToUser
-  has_many :jobs
+  has_many :projects
   has_many :invoices
 
   def sessions
-    jobs.flat_map(&:sessions)
+    projects.flat_map(&:sessions)
   end
 
   def combined_address

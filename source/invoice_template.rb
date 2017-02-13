@@ -77,9 +77,9 @@ class DefaultTemplate < Template
     pdf.font "SourceSans"
 
     # items
-    invoice.jobs.each_with_index do |job, index|
-      text pdf, job.name,              			           at: [90, 360 + index * 56], style: :bold
-      text pdf, format_money(job.cost), at: [450, 360 + index * 56]
+    invoice.projects.each_with_index do |project, index|
+      text pdf, project.name,              			           at: [90, 360 + index * 56], style: :bold
+      text pdf, format_money(project.cost), at: [450, 360 + index * 56]
     end
 
     text pdf, recipient(invoice.client),              at: [85, 121], leading: 4

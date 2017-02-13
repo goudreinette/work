@@ -1,6 +1,6 @@
 <%=
-@header = "#{@session.job.name} #{session_span @session}"
-@facts  = {'Job'  => @session.job.name,
+@header = "#{@session.project.name} #{session_span @session}"
+@facts  = {'Job'  => @session.project.name,
            'Description'   => @session.description || '-',
            'Paid session?' => @session.paid? ? 'Yes' : 'No',
            'Duration'      => @session.duration}

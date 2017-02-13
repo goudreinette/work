@@ -7,7 +7,7 @@ ActiveRecord::Schema.define do
     t.belongs_to :user
   end
 
-  create_table :jobs do |t|
+  create_table :projects do |t|
     t.string     :name
     t.column     :pricing_type, "ENUM('fixed', 'hourly')", default: 'fixed'
     t.float      :pricing_value
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define do
     t.datetime   :end_date
     t.text       :description
     t.boolean    :paid?
-    t.belongs_to :job
+    t.belongs_to :project
     t.belongs_to :user
   end
 
@@ -31,9 +31,9 @@ ActiveRecord::Schema.define do
     t.belongs_to :user
   end
 
-  create_join_table :invoices, :jobs do |t|
-    t.index [:job_id, :invoice_id]
-    t.index [:invoice_id, :job_id]
+  create_join_table :invoices, :projects do |t|
+    t.index [:project_id, :invoice_id]
+    t.index [:invoice_id, :project_id]
   end
 
   create_table :users do |t|

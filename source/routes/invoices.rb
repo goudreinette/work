@@ -1,7 +1,7 @@
 resource Invoice do
   before do
-    if params[:job_ids]
-      params[:invoice][:jobs] = Job.find(params[:job_ids])
+    if params[:project_ids]
+      params[:invoice][:projects] = Job.find(params[:project_ids])
     end
   end
 

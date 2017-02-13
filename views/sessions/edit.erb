@@ -4,10 +4,10 @@
 
          <div class="field">
            <label>Job</label>
-            <select class="ui fluid dropdown" name="session[job_id]">
-              <% @jobs.each do |job| %>
-                <option value="<%= job.id %>" <%= 'selected' if job.id == @session.job_id  %>>
-                  <%= job.name %>
+            <select class="ui fluid dropdown" name="session[project_id]">
+              <% @projects.each do |project| %>
+                <option value="<%= project.id %>" <%= 'selected' if project.id == @session.project_id  %>>
+                  <%= project.name %>
                 </option>
               <% end %>
             </select>

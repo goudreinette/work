@@ -3,7 +3,7 @@
   @header = lambda(&:name)
 
   @meta = lambda do |client|
-    "#{pluralize client.jobs.count, 'jobs'} and #{pluralize client.sessions.count, 'sessions'}"
+    "#{pluralize client.projects.count, 'projects'} and #{pluralize client.sessions.count, 'sessions'}"
   end
 
   erb :"partials/cards"

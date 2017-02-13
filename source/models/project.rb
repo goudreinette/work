@@ -1,4 +1,4 @@
-class Job < ActiveRecord::Base
+class Project < ActiveRecord::Base
   include Duration
   include BelongsToUser
 

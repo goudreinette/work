@@ -8,5 +8,5 @@ end
 
 
 # Resources
-resource Job
+resource Project
 resource Client

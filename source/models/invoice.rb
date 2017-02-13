@@ -1,7 +1,7 @@
 class Invoice < ActiveRecord::Base
   include BelongsToUser
   belongs_to :client
-  has_and_belongs_to_many :jobs
+  has_and_belongs_to_many :projects
   before_save :defaults
 
   def defaults
@@ -13,7 +13,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def subtotal
-    jobs.map(&:cost).inject(0, :+)
+    projects.map(&:cost).inject(0, :+)
   end
 
   def tax

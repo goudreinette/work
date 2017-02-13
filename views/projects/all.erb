@@ -1,0 +1,11 @@
+<%=
+@cards = @projects
+@header = lambda(&:name)
+
+@meta = lambda do |project|
+  "<div>#{project.client.name}</div>
+  <div>#{project.duration}</div>"
+end
+
+erb :"partials/cards"
+%>

@@ -9,9 +9,9 @@ clients:
     city: 'New York'
     postcode: '1234AA'
 
-jobs:
+projects:
   - user_id: 1
     client_id: 1
-    name: 'Test Job'
+    name: 'Test Project'
     pricing_type: 'fixed'
     pricing_value: 1000

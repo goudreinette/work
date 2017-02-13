@@ -2,7 +2,7 @@ class Session < ActiveRecord::Base
   include Duration
   include BelongsToUser
 
-  belongs_to :job
+  belongs_to :project
   default_scope { order start_date: :desc }
   before_save :empty_means_nil
 
@@ -16,9 +16,9 @@ class Session < ActiveRecord::Base
       end_date: Time.now.beginning_of_day..Time.now.end_of_day)
   end
 
-  def self.start(job_id)
+  def self.start(project_id)
     Session.stop
-    Session.create(job_id: job_id, start_date: Time.new, paid?: true)
+    Session.create(project_id: project_id, start_date: Time.new, paid?: true)
   end
 
   def self.stop

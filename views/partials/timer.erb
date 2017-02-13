@@ -1,24 +1,24 @@
 <div
   class="ui timer right floated"
   data-seconds="<%= @active_session&.duration_in_seconds&.floor %>"
-  data-job-id="<%= @active_session&.job_id %>"
+  data-project-id="<%= @active_session&.project_id %>"
   data-playing="<%= not @active_session.nil? %>"
 >
-  <button class="toggle" <%= 'disabled' unless @jobs.present?  %>>
+  <button class="toggle" <%= 'disabled' unless @projects.present?  %>>
     <i class="ui icon play"></i>
     <i class="ui icon stop"></i>
   </button>
   <div class="text">
-    <span class="job"></span>
+    <span class="project"></span>
     <span class="duration"></span>
   </div>
-  <% if @jobs.present? %>
-    <select class="job-select">
-      <% @jobs.each do |job| %>
-        <option data-id="<%= job.id %>" value="<%= job.id %>"><%= job.name %></option>
+  <% if @projects.present? %>
+    <select class="project-select">
+      <% @projects.each do |project| %>
+        <option data-id="<%= project.id %>" value="<%= project.id %>"><%= project.name %></option>
       <% end %>
     </select>
   <% else %>
-    <span class="placeholder">no jobs</span>
+    <span class="placeholder">no projects</span>
   <% end %>
 </div>

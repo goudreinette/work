@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :clients
-  has_many :jobs
+  has_many :projects
   has_many :sessions
   has_many :invoices
 
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def total_earned
-    jobs.map(&:cost).reduce(0, :+)
+    projects.map(&:cost).reduce(0, :+)
   end
 
   def average_hourly_rate
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def export
-    ['sessions', 'jobs', 'clients', 'invoices'].map do |k|
+    ['sessions', 'projects', 'clients', 'invoices'].map do |k|
       [k, send(k).map { |r| r.attributes.except('user_id') } ]
     end.to_h.to_yaml
   end

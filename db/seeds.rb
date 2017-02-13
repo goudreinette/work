@@ -2,5 +2,5 @@ data = YAML.load_file('db/seeds.yml')
 
 User.create(data['users'])
 Client.create(data['clients'])
-Job.create(data['jobs'])
+Project.create(data['projects'])
 Invoice.create(data['invoices'])

@@ -8,9 +8,9 @@ $(() => {
     const $play         = $timer.find('.play')
     const $stop         = $timer.find('.stop')
     const $text         = $timer.find('.text')
-    const $jobText      = $timer.find('.job')
+    const $projectText      = $timer.find('.project')
     const $durationText = $timer.find('.duration')
-    const $jobSelect    = $timer.find('.job-select')
+    const $projectSelect    = $timer.find('.project-select')
 
     // Event handlers
     $toggle.click(toggle)
@@ -19,7 +19,7 @@ $(() => {
     update()
 
     function update (newData) {
-        const {jobId, seconds, playing} = newData || $timer.data()
+        const {projectId, seconds, playing} = newData || $timer.data()
 
         // Timer
         if (playing) {
@@ -29,11 +29,11 @@ $(() => {
         }
 
         // Job label
-        const jobName = $jobSelect.find(`[data-id="${jobId}"]`).text()
-        $jobText.text(jobName)
+        const projectName = $projectSelect.find(`[data-id="${projectId}"]`).text()
+        $projectText.text(projectName)
 
         // Visibility: Elements for stopped state
-        $jobSelect.toggle(!playing)
+        $projectSelect.toggle(!playing)
         $play.toggle(!playing)
 
         // Visibility: Elements for playing state
@@ -50,13 +50,13 @@ $(() => {
     }
 
     function start () {
-        const jobId = $jobSelect.val()
-        $.get(`/sessions/start/${jobId}`)
-        update({playing: true, seconds: 0, jobId})
+        const projectId = $projectSelect.val()
+        $.get(`/sessions/start/${projectId}`)
+        update({playing: true, seconds: 0, projectId})
     }
 
     function stop () {
         $.get(`/sessions/stop`)
-        update({playing: false, seconds: 0, jobId: null})
+        update({playing: false, seconds: 0, projectId: null})
     }
 })

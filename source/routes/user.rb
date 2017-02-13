@@ -40,7 +40,7 @@ before do
 
   if authenticated?
     @user = $USER = user # HACK
-    @jobs = @user.jobs
+    @projects = @user.projects
     @clients = @user.clients
     @invoices = @user.invoices
     @sessions = @user.sessions

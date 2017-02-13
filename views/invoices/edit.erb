@@ -31,10 +31,10 @@
           <label>
             Jobs
           </label>
-          <select multiple class="ui fluid dropdown" name="job_ids[]">
-            <% @jobs.each do |job| %>
-              <option value="<%= job.id %>" <%= 'selected' if @invoice.job_ids.include?(job.id) %>>
-                <%= job.name %>
+          <select multiple class="ui fluid dropdown" name="project_ids[]">
+            <% @projects.each do |project| %>
+              <option value="<%= project.id %>" <%= 'selected' if @invoice.project_ids.include?(project.id) %>>
+                <%= project.name %>
               </option>
             <% end %>
           </select>

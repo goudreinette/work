@@ -25,17 +25,17 @@ helpers do
       .map { |t| t.to_s.rjust(2,'0') }.join(':')
   end
 
-  def cost_calculation job
-    case job.pricing_type
+  def cost_calculation project
+    case project.pricing_type
     when 'fixed'
-      "#{money job.cost} / #{job.duration} = #{money (job.pricing_value / job.duration_in_hours)}/hour"
+      "#{money project.cost} / #{project.duration} = #{money (project.pricing_value / project.duration_in_hours)}/hour"
     when 'hourly'
-      "#{money job.pricing_value} * #{job.duration} = #{money job.cost}"
+      "#{money project.pricing_value} * #{project.duration} = #{money project.cost}"
     end
   end
 
-  def job_cost job
-    "#{job.pricing_type.capitalize}: #{cost_calculation job}"
+  def project_cost project
+    "#{project.pricing_type.capitalize}: #{cost_calculation project}"
   end
 
   def session_span session

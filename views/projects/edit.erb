@@ -1,20 +1,20 @@
 <div class="ui container">
     <form class="ui padded segment form" method="post">
         <%=
-          @new = @job.new_record?
-          @class = @job.class
+          @new = @project.new_record?
+          @class = @project.class
           erb :"partials/form_header"
         %>
         <div class="field">
           <label>Name</label>
-          <input name="job[name]" value="<%= @job.name %>"/>
+          <input name="project[name]" value="<%= @project.name %>"/>
         </div>
 
         <div class="field">
           <label>Client</label>
-          <select class="ui fluid dropdown" name="job[client_id]">
+          <select class="ui fluid dropdown" name="project[client_id]">
             <% @clients.each do |client| %>
-              <option value="<%= client.id %>" <%= 'selected' if client.id == @job.client_id  %>>
+              <option value="<%= client.id %>" <%= 'selected' if client.id == @project.client_id  %>>
                 <%= client.name %>
               </option>
             <% end %>
@@ -25,14 +25,14 @@
         <label>Pricing</label>
         <div class="two fields">
           <div class="field">
-            <input name="job[pricing_value]" value="<%= @job.pricing_value %>" placeholder="Price">
+            <input name="project[pricing_value]" value="<%= @project.pricing_value %>" placeholder="Price">
           </div>
           <div class="field">
-            <select class="ui fluid dropdown" name="job[pricing_type]">
+            <select class="ui fluid dropdown" name="project[pricing_type]">
               <% ['Fixed', 'Hourly'].each do |pricing_type| %>
                 <option
                   value="<%= pricing_type.downcase  %>"
-                  <%= 'selected' if @job.pricing_type == pricing_type.downcase %>
+                  <%= 'selected' if @project.pricing_type == pricing_type.downcase %>
                 >
                   <%= pricing_type %>
                 </option>
