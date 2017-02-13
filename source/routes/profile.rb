@@ -1,6 +1,18 @@
 namespace "/profile" do
   get do
-    erb :profile
+    erb :'profile/show'
+  end
+
+  namespace "/edit" do
+    get do
+      erb :'profile/edit'
+    end
+
+    post do
+      @user.wakatime_api_key = params[:user][:wakatime_api_key]
+      @user.save
+      redirect "/profile"
+    end
   end
 end
 

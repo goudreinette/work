@@ -39,6 +39,7 @@ ActiveRecord::Schema.define do
   create_table :users do |t|
     t.string  :username
     t.string  :password
+    t.string  :wakatime_api_key
     t.float   :default_hourly_rate
     t.boolean :pomodoro?
   end

@@ -11,6 +11,11 @@
           <input id="import" type="file" id="file" style="display:none">
         </div>
 
+        <a class="ui tiny labeled icon button" href="profile/edit">
+          <i class="ui icon edit"></i>
+          Edit
+        </a>
+
         <% {'download' => 'Export',
             'sign out' => 'Logout'}.each do |icon, label|
         %>
@@ -24,7 +29,8 @@
 
     <%=
       @items = {
-        'Username' =>  @user.username
+        'Username' =>  @user.username,
+        'WakaTime API Key' => @user.wakatime_api_key
       }
 
       erb :"partials/divided_list"

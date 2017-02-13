@@ -1,0 +1,16 @@
+<div class="ui container">
+  <form class="ui form padded segment" method="post">
+    <h3 class="ui header">
+      Edit Profile
+      <div class="detail-actions">
+        <button class="ui tiny button" type="submit">
+          Save
+        </button>
+      </div>
+    </h3>
+    <div class="ui field">
+      <label>WakaTime API key</label>
+      <input name="user[wakatime_api_key]" placeholder="API key" value="<%= @user.wakatime_api_key %>">
+    </div>
+  </form>
+</div>
