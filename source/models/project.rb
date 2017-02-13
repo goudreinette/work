@@ -6,7 +6,9 @@ class Project < ActiveRecord::Base
   belongs_to :client
 
   def duration_in_seconds
-    sessions.map(&:duration_in_seconds).sum
+    from_wakatime = nil
+    from_sessions = sessions.map(&:duration_in_seconds).sum
+    from_sessions + (from_wakatime || 0)
   end
 
   def paid_sessions
